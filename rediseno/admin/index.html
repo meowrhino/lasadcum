@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>publicar · laSADCUM</title>
+<meta name="description" content="laSADCUM, companyia de dansa. Barcelona.">
+<meta name="robots" content="noindex">
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="icon" href="data:,">
+</head>
+<body class="admin">
+<a class="marca" href="../"><span class="c1">la</span><span class="c2">SAD</span><span class="c3">CUM</span></a>
+<nav class="menu"><a href="../about/">about</a><a href="../calendario/">calendari</a><a href="../trabajos/">treballs</a><a href="../contacto/">contacte</a><a href="../blog/" aria-current="page">blog</a></nav>
+<main>
+<form class="publicar" method="post" action="/api/posts" enctype="multipart/form-data">
+<label><span class="y">text</span><textarea name="text" rows="6" required></textarea></label>
+<label><span class="y">imatge</span><span class="t"><input type="file" name="image" accept="image/*"> <span class="pista">es passa a webp, màx. 2000 px</span></span></label>
+<p><span class="y"></span><button>publicar</button></p>
+</form>
+<h2 class="etiqueta">publicat</h2>
+<ol class="posts admin-posts">
+<li id="p3"><a class="d" href="#p3">21.10.26</a><div class="t"><p>(exemple) Assaig d’EVERAFTER avui. Ens veiem al Mercat de les Flors del 25 al 28 de febrer.</p><img src="../projects/everafter/img/3.webp" width="1333" height="2000" alt="" loading="lazy"></div><button class="esborrar" data-id="3">esborrar</button></li>
+<li id="p2"><a class="d" href="#p2">09.10.26</a><div class="t"><p>(exemple) Un post sense imatge, per veure com queda quan només hi ha paraules.</p><p>I un segon paràgraf, perquè el text pot ser tan llarg com vulgui.</p></div><button class="esborrar" data-id="2">esborrar</button></li>
+<li id="p1"><a class="d" href="#p1">30.09.26</a><div class="t"><p>(exemple) Arxiu: THE LESSON, 2020.</p><img src="../projects/the-lesson/img/2.webp" width="2000" height="1334" alt="" loading="lazy"></div><button class="esborrar" data-id="1">esborrar</button></li>
+</ol>
+</main>
+
+<script src="../js/main.js" defer></script>
+</body>
+</html>

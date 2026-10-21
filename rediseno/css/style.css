@@ -25,17 +25,16 @@ a { color: inherit; text-underline-offset: .15em; }
 img { display: block; max-width: 100%; height: auto; }
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
-/* menú arriba, idioma y blog abajo del todo, la marca arriba a la izquierda: se van con la página */
+/* menú arriba, idioma abajo del todo, la marca arriba a la izquierda: se van con la página */
 body { position: relative; }
-.menu, .marca, .idioma, .blog { position: absolute; z-index: 2; }
+.menu, .marca, .idioma { position: absolute; z-index: 2; }
 .menu { top: 40px; right: var(--m); display: flex; gap: 2.6em; }
-.menu a, .idioma a, .blog { text-decoration: none; }
-.menu a:hover, .idioma a:hover, .blog:hover,
-.menu [aria-current], .idioma [aria-current], .blog[aria-current] { text-decoration: underline; }
+.menu a, .idioma a { text-decoration: none; }
+.menu a:hover, .idioma a:hover,
+.menu [aria-current], .idioma [aria-current] { text-decoration: underline; }
 .marca { top: 40px; left: var(--m); text-decoration: none; }
 .idioma { left: var(--m); bottom: 28px; }
 .idioma a + a { margin-left: .3em; }
-.blog { right: var(--m); bottom: 28px; }
 
 .c1 { color: var(--c1); }
 .c2 { color: var(--c2); }
@@ -100,7 +99,24 @@ main { padding: var(--top) var(--m) 140px; }
 .fotos { display: grid; gap: var(--m); }
 .fotos iframe, .texto iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
 
+/* blog: fecha en gris y el post al lado, a lo billwurtz */
+.posts li { display: grid; grid-template-columns: 5em minmax(0, 560px); gap: 1em; }
+.posts li + li { margin-top: 2.4em; }
+.posts .d { color: var(--gris); text-decoration: none; }
+.posts .d:hover { text-decoration: underline; }
+.posts .t > * + * { margin-top: 1em; }
+.posts img { max-height: 80vh; width: auto; }
+
+/* admin: publicar en el blog */
+.publicar label, .publicar p { display: grid; grid-template-columns: 5em minmax(0, 560px); gap: 1em; margin-bottom: 1em; }
+.publicar .y, .pista { color: var(--gris); }
+.publicar textarea { font: inherit; border: 0; border-bottom: 1px solid; resize: vertical; padding: 0; }
+.publicar input[type=file] { font: inherit; }
+.publicar button, .esborrar { font: inherit; border: 0; background: none; padding: 0; text-decoration: underline; cursor: pointer; color: var(--link); justify-self: start; }
+.esborrar { grid-column: 2; justify-self: start; color: var(--gris); }
+
 /* about */
+.etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
 .bio a.obra { text-decoration: none; }
@@ -113,8 +129,9 @@ main { padding: var(--top) var(--m) 140px; }
   .menu { top: calc(16px + 1.6em); left: var(--m); right: var(--m); gap: .3em 1.1em; flex-wrap: wrap; }
   .marca { top: 16px; }
   .home .menu { top: 16px; left: auto; }
-  .idioma, .blog { bottom: 16px; }
+  .idioma { bottom: 16px; }
   .cols { grid-template-columns: 1fr; gap: 2.4em; }
+  .posts li, .publicar label, .publicar p,
   .lista li, .lista.prensa li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
   .lista li.sub { padding-left: 1.6em; }
   .lista li.sub .t { padding-left: 0; }

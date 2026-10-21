@@ -9,6 +9,8 @@ const site = read('data/site.json');
 const about = read('data/about.json');
 const agenda = read('data/agenda.json');
 const press = read('data/press.json');
+// shortcut: posts de ejemplo para ver el diseño; con el Worker los pone él (manus/blog.md)
+const blog = read('data/blog-ejemplo.json');
 const projects = Object.fromEntries(fs.readdirSync(path.join(ROOT, 'projects'))
   .filter(s => fs.existsSync(path.join(ROOT, 'projects', s, 'project.json')))
   .map(s => [s, read(`projects/${s}/project.json`)]));
@@ -26,6 +28,7 @@ const T = {
   video: { ca: 'veure el vídeo', es: 'ver el vídeo', en: 'watch the video' },
   apuntame: { ca: 'apunta-m’hi', es: 'apúntame', en: 'sign me up' },
   tuEmail: { ca: 'el teu email', es: 'tu email', en: 'your email' },
+  prensa: { ca: 'Premsa', es: 'Prensa', en: 'Press' },
 };
 
 const pick = (v, l) => v == null ? '' : (typeof v === 'object' && !Array.isArray(v)) ? (v[l] ?? v[DEF] ?? Object.values(v)[0]) : v;
@@ -41,7 +44,7 @@ const relOf = (l, p) => '../'.repeat(file(l, p).split('/').length - 1);
 function page({ l, p, title, body, cls = '', current = '', desc }) {
   const rel = relOf(l, p);
   const href = (lang, q) => rel + (lang === DEF ? '' : lang + '/') + q || './';
-  const nav = ['about', 'calendario', 'trabajos', 'contacto'].map(k => {
+  const nav = ['about', 'calendario', 'trabajos', 'contacto', 'blog'].map(k => {
     const label = k === 'trabajos' && current.startsWith('trabajos - ') ? pick(T.trabajos, l) + current.slice(8) : pick(T[k], l);
     return `<a href="${href(l, k + '/')}"${current.startsWith(k) ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
   }).join('');
@@ -54,7 +57,7 @@ function page({ l, p, title, body, cls = '', current = '', desc }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc || pick(site.description, l))}">
 <meta name="robots" content="noindex">
-${LANGS.map(x => `<link rel="alternate" hreflang="${x}" href="${href(x, p)}">`).join('\n')}
+${cls === 'admin' ? '' : LANGS.map(x => `<link rel="alternate" hreflang="${x}" href="${href(x, p)}">`).join('\n')}
 <link rel="stylesheet" href="${rel}css/style.css">
 <link rel="icon" href="data:,">
 </head>
@@ -64,8 +67,7 @@ ${cls === 'home' ? '' : `<a class="marca" href="${href(l, '')}">${wordmark}</a>`
 <main>
 ${body}
 </main>
-<nav class="idioma">${langs}</nav>
-<a class="blog" href="${href(l, 'blog/')}"${current === 'blog' ? ' aria-current="page"' : ''}>${pick(T.blog, l)}</a>
+${cls === 'admin' ? '' : `<nav class="idioma">${langs}</nav>`}
 <script src="${rel}js/main.js" defer></script>
 </body>
 </html>
@@ -77,6 +79,10 @@ ${body}
 }
 
 const titleOf = (s, l) => pick(projects[s].title, l);
+const fechaPost = iso => iso.slice(8, 10) + '.' + iso.slice(5, 7) + '.' + yy(iso);
+const post = (x, rel = '') => `<li id="p${x.id}"><a class="d" href="#p${x.id}">${fechaPost(x.created_at)}</a><div class="t">${
+  x.text.split(/\n{2,}/).map(par => `<p>${esc(par).replace(/\n/g, '<br>')}</p>`).join('')}${
+  x.image ? `<img src="${/^(https?:|\/)/.test(x.image.src) ? '' : rel}${esc(x.image.src)}" width="${x.image.width}" height="${x.image.height}" alt="" loading="lazy">` : ''}</div></li>`;
 const img = (rel, s, n, lazy = true, alt = '') =>
   `<img src="${rel}projects/${s}/img/${n}.webp" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ''}>`;
 
@@ -143,7 +149,10 @@ ${(pj.photos || []).map((n, i) => img(rel, s, n, i > 0, i ? '' : name)).join('\n
   // about
   page({
     l, p: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
-    body: `<div class="bio">\n${aboutText(l, relOf(l, 'about/') + (l === DEF ? '' : l + '/'))}\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>\n</div>`,
+    body: `<div class="bio">\n${aboutText(l, relOf(l, 'about/') + (l === DEF ? '' : l + '/'))}\n</div>
+<h2 class="etiqueta">${pick(T.prensa, l)}</h2>
+<ul class="lista prensa">\n${press.map(x => `<li><span class="y">${esc(pick(x.source, l))}</span><span class="t"><a href="${esc(x.url)}">${esc(pick(x.title, l))}</a></span></li>`).join('\n')}\n</ul>
+<div class="bio">\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>\n</div>`,
   });
 
   // calendario: lo que viene en negro, lo que pasó en gris
@@ -174,10 +183,21 @@ ${site.newsletter ? `<li><span class="y">newsletter</span><span class="t"><form 
 </ul>`,
   });
 
-  // blog: lo que se ha escrito de laSADCUM
+  // blog: lo que publica la compañía (el Worker rellena <ol class="posts">; ver manus/blog.md)
   page({
     l, p: 'blog/', title: `blog · ${site.title}`, current: 'blog', cls: 'blog-page',
-    body: `<ul class="lista prensa">\n${press.map(x => `<li><span class="y">${esc(pick(x.source, l))}</span><span class="t"><a href="${esc(x.url)}">${esc(pick(x.title, l))}</a></span></li>`).join('\n')}\n</ul>`,
+    body: `<ol class="posts" data-api="/api/posts">\n${blog.map(x => post(x, relOf(l, 'blog/'))).join('\n')}\n</ol>`,
   });
 }
+// /admin/: donde la compañía publica en el blog. Solo el diseño; lo programa el Worker (manus/blog.md)
+page({
+  l: DEF, p: 'admin/', title: `publicar · ${site.title}`, current: 'blog', cls: 'admin',
+  body: `<form class="publicar" method="post" action="/api/posts" enctype="multipart/form-data">
+<label><span class="y">text</span><textarea name="text" rows="6" required></textarea></label>
+<label><span class="y">imatge</span><span class="t"><input type="file" name="image" accept="image/*"> <span class="pista">es passa a webp, màx. 2000 px</span></span></label>
+<p><span class="y"></span><button>publicar</button></p>
+</form>
+<h2 class="etiqueta">publicat</h2>
+<ol class="posts admin-posts">\n${blog.map(x => post(x, relOf(DEF, 'admin/')).replace('</li>', '<button class="esborrar" data-id="' + x.id + '">esborrar</button></li>')).join('\n')}\n</ol>`,
+});
 console.log(`${LANGS.length} idiomas, ${Object.keys(projects).length} proyectos, ${agenda.length} fechas`);
