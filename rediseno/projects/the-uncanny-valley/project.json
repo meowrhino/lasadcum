@@ -1,0 +1,89 @@
+{
+  "title": "THE UNCANNY VALLEY",
+  "year": 2019,
+  "kind": {
+    "ca": "peça escénica / laSADCUM",
+    "es": "pieza escénica / laSADCUM",
+    "en": "dance piece / laSADCUM"
+  },
+  "text": {
+    "ca": [
+      "Ulay i Eva son dos personatges ficcionals que es troben dins d’un videojoc de realitat virtual. Enmarcats en un paissatge barroc-futurista, Ulay i Eva es convierteixen en un reflex distópic de la virtualizació del cos humà, mostran la desnaturalizació de l’hombre i la mecanizació de les seves accions."
+    ],
+    "es": [
+      "Ulay y Eva son dos personajes ficticios que se encuentran dentro de un videojuego de realidad virtual. Enmarcados en un paisaje barroco-futurista, Ulay y Eva se convierten un reflejo distópico de la virtualización del cuerpo humano, mostrando la desnaturalización del hombre y la mecanización de sus acciones."
+    ],
+    "en": [
+      "Ulay and Eva are two fictional characters who live in a virtual reality video game. Framed in on Baroque-futurist landscape, Ulay and Eva coexist in a dystopic reflection of the virtualization of the human body, they show the denaturation of the humber and the mechanization of its actions."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Coreografia i direcció",
+        "es": "Coreografía y dirección",
+        "en": "Choreography and direction"
+      },
+      "name": {
+        "ca": "Guillem Jiménez",
+        "es": "Guillem Jiménez",
+        "en": "Guillem Jiménez Perfomers Guillem Jiménez i Ona Cros"
+      }
+    },
+    {
+      "role": {
+        "ca": "Interpretació",
+        "es": "Interpretación",
+        "en": "Costume design"
+      },
+      "name": {
+        "ca": "Guillem Jiménez i Ona Cros",
+        "es": "Guillem Jiménez y Ona Cros",
+        "en": "Guillem Rodriguez"
+      }
+    },
+    {
+      "role": {
+        "ca": "Disseny i confecció de vestuari",
+        "es": "Diseño y confección de vestuario",
+        "en": "Mentorship"
+      },
+      "name": {
+        "ca": "Guillem Rodriguez",
+        "es": "Guillem Rodriguez",
+        "en": "Juan Carlos Lérida"
+      }
+    },
+    {
+      "role": {
+        "ca": "Tutorització",
+        "es": "Tutorización"
+      },
+      "name": "Juan Carlos Lérida"
+    }
+  ],
+  "awards": {
+    "ca": [
+      "Premiada en el 33o Certamen Coreográfico de Madrid amb una resdicencia a La Caldera"
+    ],
+    "es": [
+      "Premiada en el 33o Certamen Coreográfico de Madrid con una residencia en La Caldera"
+    ],
+    "en": [
+      "Awarded at the 33o Certamen Coreográfico of Madrid awith a residency at La Caldera"
+    ]
+  },
+  "photo_credit": {
+    "ca": "Fotos Andrea Campillo",
+    "es": "Fotos Andrea Campillo",
+    "en": "Pics Andrea Campillo"
+  },
+  "video": "https://player.vimeo.com/video/424312527?h=94f1c6b7ec",
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ]
+}

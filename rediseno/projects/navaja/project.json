@@ -1,0 +1,198 @@
+{
+  "title": "NAVAJA",
+  "year": 2024,
+  "kind": {
+    "ca": "peça escénica / laSADCUM",
+    "es": "pieza escénica / laSADCUM",
+    "en": "dance piece / laSADCUM"
+  },
+  "text": {
+    "ca": [
+      "NAVAJA presenta un autoretrat escènic sobre poètiques sexoafectives en l’autoaprenentatge dictat per l’algoritme en l’adolescència SADCUM. Cinc personatges denominats LOINKS emprenen un (no)viatge emmarcats en una demo abandonada a mig programar."
+    ],
+    "es": [
+      "NAVAJA presenta un autorretrato escénico sobre poéticas sexoafectivas en el autoaprendizaje dictado por el algoritmo en la adolescencia SADCUM. Cinco personajes denominados LOINKS emprenden un (no)viaje de tres actos, enmarcados en una demo abandonada a medio programar."
+    ],
+    "en": [
+      "NAVAJA presents a scenic self-portrait on sex-affective poetics in self-learning dictated by the algorithm in SADCUM adolescence. Five characters called LOINKS embark on a (non)journey framed in an abandoned half-programmed demo."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Autoria",
+        "es": "Autoría",
+        "en": "Author"
+      },
+      "name": "laSADCUM"
+    },
+    {
+      "role": {
+        "ca": "Direcció",
+        "es": "Dirección",
+        "en": "Director"
+      },
+      "name": "Guillem Jiménez"
+    },
+    {
+      "role": {
+        "ca": "Assistència de direcció",
+        "es": "Asistencia de dirección",
+        "en": "Assistant director"
+      },
+      "name": "Vera Palomino"
+    },
+    {
+      "role": {
+        "ca": "Coreografia",
+        "es": "Coreografía",
+        "en": "Choreography"
+      },
+      "name": {
+        "ca": "Guillem Jiménez amb la col·laboració dels intèrprets",
+        "es": "Guillem Jiménez en colaboración con lxs intérpretes",
+        "en": "Guillem Jiménez in collaboration with the performers"
+      }
+    },
+    {
+      "role": {
+        "ca": "Interpretació",
+        "es": "Interpretación",
+        "en": "Performers"
+      },
+      "name": "Judit Amengual, Laia Camps, Guillem Jiménez, Wilchaan Roy, Javi Valls"
+    },
+    {
+      "role": {
+        "ca": "Composició musical",
+        "es": "Composición musical",
+        "en": "Music comopsition"
+      },
+      "name": "Alejandro Da Rocha, Guillem Jiménez"
+    },
+    {
+      "role": {
+        "ca": "Col·laboració musical",
+        "es": "Colaboración musical",
+        "en": "Musical collaboration"
+      },
+      "name": "Tarta Relena"
+    },
+    {
+      "role": {
+        "ca": "Disseny d’il·luminació",
+        "es": "Diseño de iluminación",
+        "en": "Lighting design"
+      },
+      "name": "Oscila"
+    },
+    {
+      "role": {
+        "ca": "Disseny de vestuari",
+        "es": "Diseño de vestuario",
+        "en": "Costume design"
+      },
+      "name": "Gina Berenguer"
+    },
+    {
+      "role": {
+        "ca": "Escenografia",
+        "es": "Escenografía",
+        "en": "Staging"
+      },
+      "name": "Oriol Corral"
+    },
+    {
+      "role": {
+        "ca": "Maquillatge",
+        "es": "Maquillaje",
+        "en": "Make-up"
+      },
+      "name": "Juan Galo"
+    },
+    {
+      "role": {
+        "ca": "Muntatge Audiovisual",
+        "es": "Montaje Audiovisual",
+        "en": "Audiovisual composition"
+      },
+      "name": {
+        "ca": "Alan Gomis i Guillem Jiménez",
+        "es": "Alan Gomis, Guillem Jiménez",
+        "en": "Alan Gomis, Guillem Jiménez"
+      }
+    },
+    {
+      "role": {
+        "ca": "Producció",
+        "es": "Producción",
+        "en": "Production"
+      },
+      "name": "Lila Brick (Muntsa Roca), Blanca Sartorius"
+    },
+    {
+      "role": {
+        "ca": "Assessorament artístic",
+        "es": "Asesoramiento artístico",
+        "en": "Artistic adviser"
+      },
+      "name": "Roberto Fratini, Juan Carlos Lérida"
+    },
+    {
+      "role": {
+        "ca": "Coproducció",
+        "es": "Coproducción",
+        "en": "Co-produced by"
+      },
+      "name": "Dansa Metropolitana"
+    },
+    {
+      "role": {
+        "ca": "Amb la col·laboració de",
+        "es": "Con la colaboración de",
+        "en": "In collaboration with"
+      },
+      "name": "Paral·lel 62"
+    },
+    {
+      "role": {
+        "ca": "Amb el suport de",
+        "es": "Con el apoyo de",
+        "en": "With the support of"
+      },
+      "name": {
+        "ca": "El Corralito CCA (TNT’23), Fabra i Coats (Fàbrica de creació), Laboratori Escénic (CCCB), Generalitat de Catalunya i Estruch (Fàbrica de creació de les arts en viu).",
+        "es": "El Corralito CCA (TNT’23), Fabra i Coats (Fábrica de creación), Laboratorio Escénico (CCCB), Generalitat de Catalunya y Estruch (Fàbrica de creació de les arts en viu).",
+        "en": "El Corralito CCA (TNT'23), Fabra i Coats -Art Factory, Laboratori Escénic (CCCB), Government of Catalonia and Estruch Live Arts Creation Factory."
+      }
+    }
+  ],
+  "awards": {
+    "ca": [
+      "Premi a Millor Espectacle als premis DansaCat 2024",
+      "Premi del Juart a millor peça al festival Pedra Viva 2024"
+    ],
+    "es": [
+      "Premio a Mejor Eespectáculo en los premios DansaCat 2024",
+      "Premio del Jurado a mejor pieza en el festival Pedra Viva 2024"
+    ],
+    "en": [
+      "Award to Best Show at DansaCat Awards 2024",
+      "Award of the Jury to best dance piece at the Festival Pedra Viva 2024"
+    ]
+  },
+  "photo_credit": {
+    "ca": "Fotos: Alan Gomi",
+    "es": "Fotos: Alan Gomi",
+    "en": "Pics: Alan Gomi"
+  },
+  "video": "https://player.vimeo.com/video/925945618?h=5ea57a490b",
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ]
+}

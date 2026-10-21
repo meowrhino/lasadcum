@@ -1,0 +1,33 @@
+{
+  "title": "laSADCUM",
+  "url": null,
+  "langs": ["ca", "es", "en"],
+  "description": {
+    "ca": "laSADCUM, companyia de dansa. Barcelona.",
+    "es": "laSADCUM, compañía de danza. Barcelona.",
+    "en": "laSADCUM, dance company. Barcelona."
+  },
+  "email": null,
+  "instagram": "https://www.instagram.com/lasadcum",
+  "social": {
+    "vimeo": "https://vimeo.com/lasadcum"
+  },
+  "newsletter": "https://google.us21.list-manage.com/subscribe/post?u=411c6a0b6a6b5532a3580e7f8&id=ac87bff6e0&f_id=004af6e6f0",
+  "lists": {
+    "trabajos": [
+      { "project": "everafter" },
+      { "title": "OLIVER", "year": 2024 },
+      { "project": "navaja" },
+      { "project": "twink-twink-twink" },
+      { "project": "aclucalls" },
+      { "project": "capsula-aclucalls", "under": "aclucalls" },
+      { "project": "untitled" },
+      { "project": "the-lesson" },
+      { "project": "requiem-the-lesson", "under": "the-lesson" },
+      { "project": "classmates", "under": "the-lesson" },
+      { "project": "the-uncanny-valley" },
+      { "project": "dance-the-internet" },
+      { "project": "el-cos-emmascarat", "under": "dance-the-internet" }
+    ]
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "title": "REQUIEM. THE LESSON",
+  "year": 2022,
+  "kind": {
+    "ca": "performance instlativa / laSADCUM",
+    "es": "performance instalativa / laSADCUM",
+    "en": "instalative performance / laSADCUM"
+  },
+  "text": {
+    "ca": [
+      "Al 2022 des de l’exposició AAA feta a l’IDEAL, Mabel Olea ens va convidar a crear una performance-instalativa de 3h: REQUIEM. THE LESSON. L’enterrameent de THE LESSON."
+    ],
+    "es": [
+      "En 2022 desde la exposición AAA que tubo lugar el IDEAL, se encargó la performance-instalativa de 3h REQUIEM. THE LESSON. El entierro de la pieza THE LESSON."
+    ],
+    "en": [
+      "In 2022, from the AAA exhibition at IDEAL, Mabel Olea invited us to create the performance-installation of 3h REQUIEM. THE LESSON. The burial of the piece THE LESSON."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Direcció",
+        "es": "Dirección",
+        "en": "Direction"
+      },
+      "name": "Guillem Jiménez"
+    },
+    {
+      "role": {
+        "ca": "Concepte i interpretació",
+        "es": "Concepto e interpretación",
+        "en": "Concept and performance"
+      },
+      "name": {
+        "ca": "Guillem Jiménez, Vera Palomino i Juan Gallo",
+        "es": "Guillem Jiménez, Vera Palomino y Juan Gallo",
+        "en": "Guillem Jiménez, Vera Palomino & Juan Gallo"
+      }
+    },
+    {
+      "role": {
+        "ca": "Maquillatge",
+        "es": "Maquillaje",
+        "en": "Make Up"
+      },
+      "name": "Jaun Gallo"
+    }
+  ],
+  "photo_credit": {
+    "ca": "Fotos AAA",
+    "es": "Fotos AAA",
+    "en": "Pics courtesy of AAA"
+  },
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3"
+  ]
+}

@@ -1,0 +1,127 @@
+/* laSADCUM: blanco, una sola letra, un solo tamaño. Lo divertido, en los colores de la marca. */
+:root {
+  --fg: #000;
+  --gris: #a8a8a8;
+  --link: #0000ee;
+  --visto: #551a8b;
+  --c1: #1c7fff;
+  --c2: #ff171a;
+  --c3: #00b400;
+  --m: 32px;
+  --top: 160px;
+}
+
+* { box-sizing: border-box; }
+html {
+  font: 20px/1.2 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: var(--fg);
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+}
+body { margin: 0; min-height: 100vh; }
+h1, h2, p, ul, dl { margin: 0; font-size: 1rem; font-weight: 400; }
+ul { padding: 0; list-style: none; }
+a { color: inherit; text-underline-offset: .15em; }
+img { display: block; max-width: 100%; height: auto; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* menú arriba, idioma y blog abajo del todo, la marca arriba a la izquierda: se van con la página */
+body { position: relative; }
+.menu, .marca, .idioma, .blog { position: absolute; z-index: 2; }
+.menu { top: 40px; right: var(--m); display: flex; gap: 2.6em; }
+.menu a, .idioma a, .blog { text-decoration: none; }
+.menu a:hover, .idioma a:hover, .blog:hover,
+.menu [aria-current], .idioma [aria-current], .blog[aria-current] { text-decoration: underline; }
+.marca { top: 40px; left: var(--m); text-decoration: none; }
+.idioma { left: var(--m); bottom: 28px; }
+.idioma a + a { margin-left: .3em; }
+.blog { right: var(--m); bottom: 28px; }
+
+.c1 { color: var(--c1); }
+.c2 { color: var(--c2); }
+.c3 { color: var(--c3); }
+
+main { padding: var(--top) var(--m) 140px; }
+
+/* portada: el nombre, enorme, abajo */
+.home main { padding: 0; }
+.gigante {
+  position: fixed;
+  left: 0; right: 0; bottom: 9vh;
+  margin: 0;
+  text-align: center;
+  font-size: 18.2vw;
+  line-height: .8;
+  letter-spacing: -.03em;
+  white-space: nowrap;
+}
+.gigante span { color: var(--fg); transition: color .15s; }
+.gigante span:hover, .gigante.pintada span { color: var(--pinta, var(--fg)); }
+
+/* listas a lo billwurtz: una columna estrecha y el enlace al lado */
+.lista li { display: grid; grid-template-columns: 3.4em 1fr; gap: 1em; }
+.lista .y { color: var(--gris); }
+.lista.prensa li { grid-template-columns: 14em 1fr; }
+.contacto .lista li { grid-template-columns: 6em 1fr; }
+.lista li.sub .t { padding-left: 1.6em; }
+.lista a, .fechas a, .bio a.obra, .texto p a { color: var(--link); }
+.lista a:visited, .fechas a:visited, .bio a.obra:visited, .texto p a:visited { color: var(--visto); }
+.trabajos .t { text-transform: lowercase; }
+.cover {
+  position: fixed; z-index: 1;
+  right: var(--m); top: var(--top);
+  width: min(42vw, 560px); max-height: calc(100vh - var(--top) - 100px);
+  object-fit: contain; object-position: right top;
+  pointer-events: none;
+}
+.contacto form { display: inline; }
+.contacto input, .contacto button { font: inherit; border: 0; border-bottom: 1px solid; padding: 0; background: none; border-radius: 0; color: inherit; }
+.contacto input { width: 12em; }
+.contacto button { cursor: pointer; border: 0; text-decoration: underline; }
+
+/* dos columnas, la de la derecha empieza a media pantalla */
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--m); align-items: start; }
+
+/* calendario */
+.fechas li { padding-left: 4.5em; text-indent: -4.5em; }
+.fechas .d { display: inline-block; min-width: 4.2em; text-indent: 0; }
+.pasadas, .pasadas a, .pasadas a:visited { color: var(--gris); }
+.fechas { text-transform: lowercase; }
+
+/* proyecto */
+.texto > * + * { margin-top: 1.2em; }
+.texto h1 { font-weight: 700; text-transform: lowercase; }
+.texto h1 .y { font-weight: 400; }
+.tipo, .pie { color: var(--gris); }
+.tipo { margin-top: 0 !important; }
+.creditos { display: grid; grid-template-columns: max-content 1fr; gap: 0 1em; }
+.creditos dt { color: var(--gris); }
+.creditos dd { margin: 0; }
+.fotos { display: grid; gap: var(--m); }
+.fotos iframe, .texto iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+
+/* about */
+.bio { max-width: 920px; }
+.bio p + p { margin-top: 1.2em; }
+.bio a.obra { text-decoration: none; }
+.bio a.obra:hover { text-decoration: underline; }
+.firma { color: var(--gris); font-size: .7rem; margin-top: 3em !important; }
+
+@media (max-width: 760px) {
+  :root { --m: 16px; --top: 120px; }
+  html { font-size: 17px; }
+  .menu { top: calc(16px + 1.6em); left: var(--m); right: var(--m); gap: .3em 1.1em; flex-wrap: wrap; }
+  .marca { top: 16px; }
+  .home .menu { top: 16px; left: auto; }
+  .idioma, .blog { bottom: 16px; }
+  .cols { grid-template-columns: 1fr; gap: 2.4em; }
+  .lista li, .lista.prensa li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
+  .lista li.sub { padding-left: 1.6em; }
+  .lista li.sub .t { padding-left: 0; }
+  .cover { display: none; }
+  .gigante { bottom: 12vh; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gigante span { transition: none; }
+}

@@ -1,0 +1,32 @@
+{
+  "title": "DANCE THE INTERNET",
+  "year": 2022,
+  "kind": {
+    "ca": "taller / laSADCUM",
+    "es": "taller / laSADCUM",
+    "en": "workshop / laSADCUM"
+  },
+  "text": {
+    "ca": [
+      "DANCE THE INTERNET és un taller entorn de la peça ACLUCALLS on s'exploren diferents cossos en moviment, a partir de conceptes com el workout, la pantalla i la programació informàtica.",
+      "Una sessió de cos que aporta eines físiques a totes aquelles persones que vulguin moure's i per a descobrir (i provar) com queda afectat el cos per la virtualitat de la xarxa (plena d'imatges en moviment de cossos, molts moviments de molts cossos diferents) a partir de pautes d'improvisació, del propi imaginari i també les limitacions físiques."
+    ],
+    "es": [
+      "DANCE THE INTERNET es un taller en torno a la pieza ACLUCALLS donde se exploran diferentes cuerpos en movimiento, a partir de conceptos como el workout, la pantalla y la programación informática.",
+      "Una sesión de cuerpo que aporta herramientas físicas a todas aquellas personas que quieran moverse y para descubrir (y probar) cómo queda afectado el cuerpo por la virtualidad de la red (llena de imágenes en movimiento de cuerpos, muchos movimientos de muchos cuerpos diferentes) a partir de pautas de improvisación, del propio imaginario y también las limitaciones físicas."
+    ],
+    "en": [
+      "DANCE THE INTERNET is a workshop around the ACLUCALLS piece where different bodies in movement are explored, based on concepts such as workout, screen and computer programming.",
+      "A body session that provides physical tools to all those who want to move and to discover (and test) how the body is affected by the virtuality of the network (full of images in movement of bodies, many movements of many different bodies) based on improvisation guidelines, the imaginary itself and also physical limitations."
+    ]
+  },
+  "photo_credit": {
+    "ca": "Foto Mila Ercoli",
+    "es": "Foto Mila Ercoli",
+    "en": "Pic Mila Ercoli"
+  },
+  "cover": "1",
+  "photos": [
+    "1"
+  ]
+}

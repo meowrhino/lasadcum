@@ -1,0 +1,202 @@
+{
+  "title": "ACLUCALLS",
+  "year": 2022,
+  "kind": {
+    "ca": "peça escénica / laSADCUM",
+    "es": "pieza escénica / laSADCUM",
+    "en": "dance piece / laSADCUM"
+  },
+  "text": {
+    "ca": [
+      "Una peça de dansa que fa un retrat grotesc de la societat i generació post internet a partir de tres conceptes representatius: el workout, la pantalla i la programació informatica; exposant de manera escènica alguns dels traumes i frustracions generacionals."
+    ],
+    "es": [
+      "Una pieza de danza que hace un retrato grotesco de la sociedad y generación post internet a partir de tres conceptos representativos: el workout, la pantalla y la programación informatica; exponiendo de forma escénica esos traumas y frustraciones generacionales."
+    ],
+    "en": [
+      "A dance piece that makes a grotesque portrait of the post-Internet society and generation based on three representative concepts: workout, screen and computer programming; exposing some of the traumas and generational frustrations on stage.."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Coreografia i dirección",
+        "es": "Coreografía y dirección",
+        "en": "Direction and Choreography"
+      },
+      "name": "Guillem Jiménez"
+    },
+    {
+      "role": {
+        "ca": "Assessoria de movimient",
+        "es": "Asesoría de movimiento",
+        "en": "Movement Asistant"
+      },
+      "name": "Carla Moll"
+    },
+    {
+      "role": {
+        "ca": "Interpretació",
+        "es": "Interpretación",
+        "en": "Performance"
+      },
+      "name": {
+        "ca": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares y Vera Palomino",
+        "es": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares y Vera Palomino",
+        "en": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares & Vera Palomino"
+      }
+    },
+    {
+      "role": {
+        "ca": "Música original i disseny sonor",
+        "es": "Música original y diseño sonoro",
+        "en": "Original music and sound design"
+      },
+      "name": "DA ROCHA"
+    },
+    {
+      "role": {
+        "ca": "Escenografia i il·luminació",
+        "es": "Escenografía e iluminación",
+        "en": "Set and lighting"
+      },
+      "name": "Oriol Corral"
+    },
+    {
+      "role": {
+        "ca": "Visuals",
+        "es": "Visuales",
+        "en": "Media art"
+      },
+      "name": "Guillem Jiménez"
+    },
+    {
+      "role": {
+        "ca": "Disseny i confecció de vestuari",
+        "es": "Diseño y confección de vestuario",
+        "en": "Costume design"
+      },
+      "name": "Gina Berenguer"
+    },
+    {
+      "role": {
+        "ca": "Mirada externa",
+        "es": "Mirada externa",
+        "en": "Extrenal view"
+      },
+      "name": "Claudia Mirambell"
+    },
+    {
+      "role": {
+        "ca": "Disseny gràfic i animació",
+        "es": "Diseño gráfico y animación",
+        "en": "Grafic design and animation"
+      },
+      "name": "Aina Mira"
+    },
+    {
+      "role": {
+        "ca": "Disseny logo",
+        "es": "Diseño logo",
+        "en": "Logo Design"
+      },
+      "name": "Eduard Taberner"
+    },
+    {
+      "role": {
+        "ca": "Agent de producció",
+        "es": "Agente de producción",
+        "en": "Agent of producction"
+      },
+      "name": "Blanca Sartorius"
+    },
+    {
+      "role": {
+        "ca": "Gestió de producció",
+        "es": "Gestión de producción",
+        "en": "Producción"
+      },
+      "name": "Anastàtica Cultural - Muntsa Roca"
+    },
+    {
+      "role": {
+        "ca": "Pràcticas artístiques",
+        "es": "Prácticas artísticas",
+        "en": "Artistic Intership"
+      },
+      "name": "Gabriel Levie"
+    },
+    {
+      "role": "Trailer",
+      "name": "Johann Pérez"
+    },
+    {
+      "role": {
+        "ca": "Fotos",
+        "es": "Fotos",
+        "en": "Pictures"
+      },
+      "name": "Pablo de Pastor"
+    },
+    {
+      "role": {
+        "ca": "Coproducció",
+        "es": "Coproducción",
+        "en": "Coproduccion"
+      },
+      "name": "CCCB, laSADCUM, ELAMOR"
+    },
+    {
+      "role": {
+        "ca": "Amb el suport de",
+        "es": "Con el apoyo de",
+        "en": "With the support of"
+      },
+      "name": {
+        "ca": "Dansa Metropolitana, Centre Cívic Barceloneta, Ayudas Creación Injuve, La Caldera, OSIC Generalitat de Catalunya",
+        "es": "Dansa Metropolitana, Centre Cívic Barceloneta, Ayudas Creación Injuve, La Caldera, OSIC Generalitat de Catalunya",
+        "en": "Dansa Metropolitana, Centre Cívic Barceloneta, Ayudas Creación Injuve, La Caldera, OSIC Generalitat de Catalunya & Graner"
+      }
+    },
+    {
+      "role": {
+        "ca": "Agraïments",
+        "es": "Agradecimientos",
+        "en": "Thanks to"
+      },
+      "name": {
+        "ca": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU y participantes del crowdfunding.",
+        "es": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU y participantes del crowdfunding.",
+        "en": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU & participantes del crowdfunding."
+      }
+    }
+  ],
+  "awards": {
+    "ca": [
+      "Premi a Millor Coreografía als premis DansaCat 2024",
+      "Premi a Millor Espai Socnor als premis DansaCat 2024"
+    ],
+    "es": [
+      "Premio a Mejor Coreografía en los premios DansaCat 2024",
+      "Premio a Mejor Espacio Sonoro en los premios DansaCat 2024"
+    ],
+    "en": [
+      "Award to Best Choreography at the DansaCat Awards 2024",
+      "Award to Best Sound Design at the DansaCat Awards 2024"
+    ]
+  },
+  "photo_credit": {
+    "ca": "Fotos Pablo de Pastor",
+    "es": "Fotos Pablo de Pastor",
+    "en": "Pics by Pablo de Pastor"
+  },
+  "video": "https://player.vimeo.com/video/693868817?h=0c62d3047a",
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+  ]
+}

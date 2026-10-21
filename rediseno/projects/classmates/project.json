@@ -1,0 +1,58 @@
+{
+  "title": "CLASSMATES",
+  "year": 2020,
+  "kind": {
+    "ca": "exposició / laSADCUM x TKM ROOM",
+    "es": "exposición / laSADCUM x TKM ROOM",
+    "en": "exibition / laSADCUM x TKM ROOM"
+  },
+  "text": {
+    "ca": [
+      "CLASSMATES es una exposició / esdeveniment creat per a TKM Room (Barcelona). L’exposició tracta sobre l’unió entre educación, copia i saturació. L’exposició es forma amb treballs reutilizats (instal·lació DANCE LESSONS i la pieça escénica THE LESSON) i obra nova (#FACEAPPropriation, la pre-performance de THE LESSON y NintenSelfie)."
+    ],
+    "es": [
+      "CLASSMATES es una exposición / evento creado para TKM Room (Barcelona). La exposición trata sobre la union entre educación, copia y saturación. La exposición cuenta con trabajos preexistentes (instalación de DANCE LESSONS y la pieza THE LESSON) y trabajos nuevos (#FACEAPPropriation, la pre-performance de THE LESSON y NintenSelfie)."
+    ],
+    "en": [
+      "CLASSMATES is an exhibition/event created for TKM Room (Barcelona). The exhibition is about the union between education, copy and saturation. The exhibition features pre-existing works (installation from DANCE LESSONS and the piece THE LESSON) and new works (#FACEAPPropriation, the pre-performance of THE LESSON and NintendoSelfie)."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Concepte i construcció",
+        "es": "Concepto y construcción",
+        "en": "Concept and construction"
+      },
+      "name": "Guillem Jiménez"
+    },
+    {
+      "role": "Performers",
+      "name": {
+        "ca": "Guillem Jiménez i Vera Palomino",
+        "es": "Guillem Jiménez y Vera Palomino",
+        "en": "Guillem Jiménez & Vera Palomino"
+      }
+    },
+    {
+      "role": {
+        "ca": "Coproducció",
+        "es": "Coproducción",
+        "en": "Coproduction"
+      },
+      "name": "TKM ROOM"
+    }
+  ],
+  "photo_credit": {
+    "ca": "Fotos Andrea Campillo",
+    "es": "Fotos Andrea Campillo",
+    "en": "Pics Andrea Campillo"
+  },
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ]
+}
