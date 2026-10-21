@@ -43,10 +43,11 @@ const file = (l, p) => (l === DEF ? '' : l + '/') + p + 'index.html';
 const relOf = (l, p) => '../'.repeat(file(l, p).split('/').length - 1);
 function page({ l, p, title, body, cls = '', current = '', desc }) {
   const rel = relOf(l, p);
+  const unIdioma = cls === 'admin' || cls === 'blog-page'; // el blog es uno solo, sin idiomas
   const href = (lang, q) => rel + (lang === DEF ? '' : lang + '/') + q || './';
   const nav = ['about', 'calendario', 'trabajos', 'contacto', 'blog'].map(k => {
     const label = k === 'trabajos' && current.startsWith('trabajos - ') ? pick(T.trabajos, l) + current.slice(8) : pick(T[k], l);
-    return `<a href="${href(l, k + '/')}"${current.startsWith(k) ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
+    return `<a href="${href(k === 'blog' ? DEF : l, k + '/')}"${current.startsWith(k) ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
   }).join('');
   const langs = LANGS.map(x => `<a href="${href(x, p)}" hreflang="${x}"${x === l ? ' aria-current="true"' : ''}>${x}</a>`).join(' ');
   const html = `<!doctype html>
@@ -57,7 +58,7 @@ function page({ l, p, title, body, cls = '', current = '', desc }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(desc || pick(site.description, l))}">
 <meta name="robots" content="noindex">
-${cls === 'admin' ? '' : LANGS.map(x => `<link rel="alternate" hreflang="${x}" href="${href(x, p)}">`).join('\n')}
+${unIdioma ? '' : LANGS.map(x => `<link rel="alternate" hreflang="${x}" href="${href(x, p)}">`).join('\n')}
 <link rel="stylesheet" href="${rel}css/style.css">
 <link rel="icon" href="data:,">
 </head>
@@ -67,7 +68,7 @@ ${cls === 'home' ? '' : `<a class="marca" href="${href(l, '')}">${wordmark}</a>`
 <main>
 ${body}
 </main>
-${cls === 'admin' ? '' : `<nav class="idioma">${langs}</nav>`}
+${unIdioma ? '' : `<nav class="idioma">${langs}</nav>`}
 <script src="${rel}js/main.js" defer></script>
 </body>
 </html>
@@ -183,12 +184,13 @@ ${site.newsletter ? `<li><span class="y">newsletter</span><span class="t"><form 
 </ul>`,
   });
 
-  // blog: lo que publica la compañía (el Worker rellena <ol class="posts">; ver manus/blog.md)
-  page({
-    l, p: 'blog/', title: `blog · ${site.title}`, current: 'blog', cls: 'blog-page',
-    body: `<ol class="posts" data-api="/api/posts">\n${blog.map(x => post(x, relOf(l, 'blog/'))).join('\n')}\n</ol>`,
-  });
 }
+// blog: uno solo, sin idiomas (el Worker rellena <ol class="posts">; ver manus/blog.md)
+page({
+  l: DEF, p: 'blog/', title: `blog · ${site.title}`, current: 'blog', cls: 'blog-page',
+  body: `<ol class="posts" data-api="/api/posts">\n${blog.map(x => post(x, relOf(DEF, 'blog/'))).join('\n')}\n</ol>`,
+});
+
 // /admin/: donde la compañía publica en el blog. Solo el diseño; lo programa el Worker (manus/blog.md)
 page({
   l: DEF, p: 'admin/', title: `publicar · ${site.title}`, current: 'blog', cls: 'admin',

@@ -8,9 +8,9 @@ ponga los de verdad.
 
 - La compañía entra en **`/admin/`** con una contraseña, escribe un **texto**, sube una
   **imagen** (opcional) y publica. Puede borrar lo publicado. Nada más: sin títulos, sin
-  hashtags, sin vídeo, sin idiomas (un post se escribe en el idioma que quieran y sale igual en
-  ca/es/en).
-- El público lo ve en **`/blog/`** (y `/es/blog/`, `/en/blog/`): fecha en gris + texto + imagen,
+  hashtags, sin vídeo, sin idiomas.
+- El público lo ve en **`/blog/`**, una sola página **sin selector de idioma** (desde `/es/` y
+  `/en/`, "blog" lleva ahí): fecha en gris + texto + imagen,
   lo más nuevo arriba. Cada post tiene ancla `#p<id>`.
 
 ## cómo: el motor de elmundodelasjordis, recortado
@@ -29,7 +29,7 @@ Copiar de `~/Documents/GitHub/jordis-twoitter` (Workers + Hono + D1 + R2) y quit
 
 | ruta | quién | qué hace |
 | --- | --- | --- |
-| `GET /blog/`, `/es/blog/`, `/en/blog/` | público | la página estática del build, con los posts **dentro del HTML**: el Worker la pasa por `HTMLRewriter` y rellena `<ol class="posts">` con la misma plantilla que `post()` de `build.mjs` (regla 1: se lee sin JS) |
+| `GET /blog/` | público | la página estática del build, con los posts **dentro del HTML**: el Worker la pasa por `HTMLRewriter` y rellena `<ol class="posts">` con la misma plantilla que `post()` de `build.mjs` (regla 1: se lee sin JS) |
 | `GET /api/posts` | público | JSON de los posts visibles, nuevos primero |
 | `GET /media/<key>` | público | la imagen desde R2, `Cache-Control: public, max-age=31536000, immutable` |
 | `GET /login`, `POST /api/login` | público | contraseña → cookie de sesión |
@@ -39,7 +39,7 @@ Copiar de `~/Documents/GitHub/jordis-twoitter` (Workers + Hono + D1 + R2) y quit
 | `GET /api/export` | sesión | todo en JSON, de copia |
 | el resto | público | los ficheros estáticos de `dist/` (binding `ASSETS`) |
 
-`wrangler.jsonc`: `assets: { directory: "dist", binding: "ASSETS", run_worker_first: ["/blog/*", "/*/blog/*", "/admin/*", "/api/*", "/media/*", "/login"] }`
+`wrangler.jsonc`: `assets: { directory: "dist", binding: "ASSETS", run_worker_first: ["/blog/*", "/admin/*", "/api/*", "/media/*", "/login"] }`
 (solo esas rutas pasan por el Worker; el resto lo sirve Cloudflare directamente). D1 `lasadcum-db`,
 R2 `lasadcum-media`, secretos `PASSWORD` y `AUTH_SECRET` con `wrangler secret put`.
 
