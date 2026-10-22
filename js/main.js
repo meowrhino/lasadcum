@@ -1,5 +1,27 @@
 // Lo poco que añade el navegador; sin JS la web se lee igual.
-const PALETA = ['#1c7fff', '#2824b1', '#ff171a', '#ff5c00', '#00b400', '#ce00ff', '#e0a800', '#616161'];
+// todos los colores con nombre de HTML (es.wikipedia.org/wiki/Colores_web), como los escribe
+// billwurtz: también los amarillos y los casi blancos, que sobre blanco casi desaparecen
+const PALETA = [
+  'lightcoral', 'salmon', 'indianred', 'red', 'crimson', 'firebrick', 'brown', 'darkred', 'maroon',
+  'papayawhip', 'blanchedalmond', 'bisque', 'moccasin', 'peachpuff', 'navajowhite', 'lightsalmon',
+  'darksalmon', 'orange', 'darkorange', 'coral', 'tomato', 'orangered', 'wheat', 'burlywood', 'tan',
+  'sandybrown', 'goldenrod', 'peru', 'darkgoldenrod', 'chocolate', 'sienna', 'saddlebrown',
+  'lightyellow', 'cornsilk', 'lemonchiffon', 'lightgoldenrodyellow', 'palegoldenrod', 'khaki',
+  'yellow', 'gold', 'darkkhaki', 'olive', 'greenyellow', 'chartreuse', 'lawngreen', 'yellowgreen',
+  'olivedrab', 'darkolivegreen', 'palegreen', 'lightgreen', 'mediumspringgreen', 'springgreen',
+  'lime', 'darkseagreen', 'limegreen', 'mediumseagreen', 'seagreen', 'forestgreen', 'green',
+  'darkgreen', 'lightcyan', 'paleturquoise', 'aquamarine', 'turquoise', 'mediumturquoise',
+  'darkturquoise', 'mediumaquamarine', 'lightseagreen', 'cadetblue', 'darkcyan', 'teal', 'lavender',
+  'powderblue', 'lightblue', 'lightskyblue', 'skyblue', 'lightsteelblue', 'deepskyblue',
+  'cornflowerblue', 'dodgerblue', 'steelblue', 'royalblue', 'blue', 'mediumblue', 'darkblue',
+  'navy', 'midnightblue', 'darkslateblue', 'thistle', 'plum', 'violet', 'orchid', 'mediumpurple',
+  'mediumorchid', 'mediumslateblue', 'slateblue', 'blueviolet', 'darkviolet', 'darkorchid',
+  'darkmagenta', 'purple', 'indigo', 'mistyrose', 'pink', 'lightpink', 'hotpink', 'rosybrown',
+  'palevioletred', 'deeppink', 'mediumvioletred', 'white', 'whitesmoke', 'snow', 'seashell',
+  'linen', 'antiquewhite', 'oldlace', 'floralwhite', 'ivory', 'beige', 'honeydew', 'mintcream',
+  'azure', 'aliceblue', 'ghostwhite', 'lavenderblush', 'gainsboro', 'lightgrey', 'silver',
+  'darkgray', 'lightslategray', 'slategray', 'gray', 'dimgray', 'darkslategray', 'black',
+];
 const azar = () => Math.floor(Math.random() * PALETA.length);
 
 // la marca: tres trozos, tres colores distintos en cada visita (billwurtz)

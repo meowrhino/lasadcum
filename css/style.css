@@ -4,9 +4,9 @@
   --gris: #a8a8a8;
   --link: #0000ee;
   --visto: #551a8b;
-  --c1: #1c7fff;
-  --c2: #ff171a;
-  --c3: #00b400;
+  --c1: dodgerblue;   /* sin JS; con JS, tres de la paleta de js/main.js */
+  --c2: red;
+  --c3: forestgreen;
   --m: 32px;
   --top: 160px;
 }
