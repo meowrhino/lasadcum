@@ -1,0 +1,39 @@
+{
+  "title": "OLIVER",
+  "year": 2024,
+  "text": {
+    "es": [
+      "OLIVER es un personaje “sadcumado” que plantea, mediante la sátira, diversas reflexiones en torno al capitalismo, la digitalización, el ilusionismo y el tecnofeudalismo. OLIVER funciona como una ventana ‘world-glimpsing’ al mundo poético-ficcional de laSADCUM.",
+      "Cada vez en una dimensión nueva. Cada vez un ensayo corporal nuevo."
+    ]
+  },
+  "credits": [
+    {
+      "role": {
+        "ca": "Concepte i interpretació",
+        "es": "Concepto e interpretación",
+        "en": "Concept and performance"
+      },
+      "name": "Guillem Jiménez"
+    }
+  ],
+  "videos": [
+    {
+      "title": "Oliver 06 (CA2M)",
+      "url": "https://www.youtube.com/watch?v=FiZag5yvErk"
+    },
+    {
+      "title": "Oliver 05 (homesession)",
+      "url": "https://www.youtube.com/watch?v=Qaxgdsi-rl4"
+    }
+  ],
+  "cover": "1",
+  "photos": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ]
+}

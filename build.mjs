@@ -37,7 +37,7 @@ const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\[([^\]]+
 const yy = d => d.slice(2, 4);
 // un vídeo: el enlace lleva a su página (sin JS) y el JS lo incrusta al pulsar
 const videoPage = u => u.includes('player.vimeo.com') ? 'https://vimeo.com/' + (u.match(/video\/(\d+)/) || [])[1] : u;
-const videoEmbed = u => /youtu\.?be/.test(u) ? 'https://www.youtube-nocookie.com/embed/' + u.split('/').pop().split(/[?&]/)[0] : u;
+const videoEmbed = u => { const id = (u.match(/(?:youtu\.be\/|[?&]v=)([\w-]{6,})/) || [])[1]; return id ? 'https://www.youtube-nocookie.com/embed/' + id : u; };
 const wordmark = '<span class="c1">la</span><span class="c2">SAD</span><span class="c3">CUM</span>';
 
 // página: ruta sin idioma ('', 'trabajos/navaja/') → archivo y enlaces relativos
@@ -103,7 +103,7 @@ function ficha(s, l, rel, h) {
   return `<article class="cols${h === 'h2' ? ' parte' : ''}">
 <div class="texto">
 <${h}>${esc(name)} <span class="y">(${pj.year})</span></${h}>
-<p class="tipo">${esc(pick(pj.kind, l))}</p>
+${pj.kind ? `<p class="tipo">${esc(pick(pj.kind, l))}</p>` : ''}
 ${text.map(t => `<p>${md(t)}</p>`).join('\n')}
 ${awards.length ? `<ul class="premios">${awards.map(a => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
 ${credits ? `<dl class="creditos">${credits}</dl>` : ''}
@@ -144,7 +144,8 @@ for (const l of LANGS) {
       const pj = it.project && projects[it.project];
       const name = pj ? titleOf(it.project, l) : it.title;
       const year = pj ? pj.year : it.year;
-      const t = pj ? `<a href="${it.project}/" data-cover="${relOf(l, 'trabajos/')}projects/${it.project}/img/${pj.cover}.webp">${esc(name)}</a>` : esc(name);
+      const cover = pj && pj.cover ? ` data-cover="${relOf(l, 'trabajos/')}projects/${it.project}/img/${pj.cover}.webp"` : '';
+      const t = pj ? `<a href="${it.project}/"${cover}>${esc(name)}</a>` : esc(name);
       return `<li><span class="y">${year}</span><span class="t">${t}</span></li>`;
     }).join('\n')}\n</ul>`).join('\n')}\n<img class="cover" alt="" hidden>`,
   });

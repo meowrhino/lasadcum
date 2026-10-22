@@ -57,16 +57,13 @@
       },
       "items": [
         {
-          "title": "CLICK TAROLA",
-          "year": 2026
+          "project": "click-tarola"
         },
         {
-          "title": "CYBERMEDIEVAL",
-          "year": 2026
+          "project": "cybermedieval"
         },
         {
-          "title": "OLIVER",
-          "year": 2024
+          "project": "oliver"
         },
         {
           "project": "twink-twink-twink"
