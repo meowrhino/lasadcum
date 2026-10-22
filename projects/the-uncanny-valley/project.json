@@ -1,4 +1,5 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "THE UNCANNY VALLEY",
   "year": 2019,
   "kind": {

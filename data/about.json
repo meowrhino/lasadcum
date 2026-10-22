@@ -1,4 +1,5 @@
 {
+  "$schema": "../schema/about.json",
   "ca": [
     "laSADCUM (Barcelona, 2019) és el projecte de dansa del coreògraf i ballarí barceloní Guillem Jiménez, des del qual desenvolupa gran part de la seva pràctica artística.",
     "El seu treball parteix de l’anàlisi de les dinàmiques culturals de la societat postinternet, entenent la cultura digital no només com un context, sinó també com un tret identitari i un territori de recerca coreogràfica.",

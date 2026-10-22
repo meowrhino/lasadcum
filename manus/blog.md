@@ -1,6 +1,6 @@
 # blog de laSADCUM: el plan para el Worker
 
-Lo que falta programar. El diseño ya está hecho (`blog/` y `admin/` salen de `build.mjs`); los
+Lo que falta programar. El diseño ya está hecho (`blog/` y `admin/` salen de `build/paginas.mjs`); los
 posts que se ven ahora son de ejemplo (`data/blog-ejemplo.json`) y desaparecen cuando el Worker
 ponga los de verdad.
 
@@ -29,7 +29,7 @@ Copiar de `~/Documents/GitHub/jordis-twoitter` (Workers + Hono + D1 + R2) y quit
 
 | ruta | quién | qué hace |
 | --- | --- | --- |
-| `GET /blog/` | público | la página estática del build, con los posts **dentro del HTML**: el Worker la pasa por `HTMLRewriter` y rellena `<ol class="posts">` con la misma plantilla que `post()` de `build.mjs` (regla 1: se lee sin JS) |
+| `GET /blog/` | público | la página estática del build, con los posts **dentro del HTML**: el Worker la pasa por `HTMLRewriter` y rellena `<ol class="posts">` con la misma plantilla que `post()` de `build/paginas.mjs` (regla 1: se lee sin JS) |
 | `GET /api/posts` | público | JSON de los posts visibles, nuevos primero |
 | `GET /media/<key>` | público | la imagen desde R2, `Cache-Control: public, max-age=31536000, immutable` |
 | `GET /login`, `POST /api/login` | público | contraseña → cookie de sesión |

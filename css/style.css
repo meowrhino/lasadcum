@@ -19,8 +19,8 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 body { margin: 0; min-height: 100vh; }
-h1, h2, p, ul, dl { margin: 0; font-size: 1rem; font-weight: 400; }
-ul { padding: 0; list-style: none; }
+h1, h2, p, ul, ol, dl { margin: 0; font-size: 1rem; font-weight: 400; }
+ul, ol { padding: 0; list-style: none; }
 a { color: inherit; text-underline-offset: .15em; }
 img { display: block; max-width: 100%; height: auto; }
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
@@ -55,25 +55,16 @@ main { padding: var(--top) var(--m) 140px; }
   white-space: nowrap;
 }
 .gigante span { color: var(--fg); transition: color .15s; }
-.gigante span:hover, .gigante.pintada span { color: var(--pinta, var(--fg)); }
+.gigante span:hover { color: var(--pinta, var(--fg)); }
 
 /* listas a lo billwurtz: una columna estrecha y el enlace al lado */
 .lista li { display: grid; grid-template-columns: 3.4em 1fr; gap: 1em; }
 .lista .y { color: var(--gris); }
-.lista.prensa li { grid-template-columns: 14em 1fr; }
 .contacto .lista li { grid-template-columns: 6em 1fr; }
-.lista li.sub .t { padding-left: 1.6em; }
-.lista a, .fechas a, .bio a.obra, .texto p a { color: var(--link); }
-.lista a:visited, .fechas a:visited, .bio a.obra:visited, .texto p a:visited { color: var(--visto); }
+.lista a, .fechas a, .bio a, .texto p a { color: var(--link); }
+.lista a:visited, .fechas a:visited, .bio a:visited, .texto p a:visited { color: var(--visto); }
 .trabajos .t { text-transform: lowercase; }
 .trabajos .etiqueta:first-child { margin-top: 0; }
-.cover {
-  position: fixed; z-index: 1;
-  right: var(--m); top: var(--top);
-  width: min(42vw, 560px); max-height: calc(100vh - var(--top) - 100px);
-  object-fit: contain; object-position: right top;
-  pointer-events: none;
-}
 .contacto form { display: inline; }
 .contacto input, .contacto button { font: inherit; border: 0; border-bottom: 1px solid; padding: 0; background: none; border-radius: 0; color: inherit; }
 .contacto input { width: 12em; }
@@ -93,8 +84,12 @@ main { padding: var(--top) var(--m) 140px; }
 .texto h1, .texto h2 { font-weight: 700; text-transform: lowercase; }
 .texto h1 .y, .texto h2 .y { font-weight: 400; }
 .parte { margin-top: 6em; }
+.videos li + li { margin-top: .6em; }
 .videos a { color: var(--link); text-decoration: none; }
 .videos a:hover { text-decoration: underline; }
+.flecha { display: inline-block; transition: transform .2s; }
+.abierto .flecha { transform: rotate(90deg); }
+.videos iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; margin: .8em 0 1.4em; }
 .nota, .texto .nota a { color: var(--gris); }
 .tipo, .pie { color: var(--gris); }
 .tipo { margin-top: 0 !important; }
@@ -103,14 +98,13 @@ main { padding: var(--top) var(--m) 140px; }
 .creditos dd { margin: 0; }
 .fotos { display: grid; gap: var(--m); }
 .fotos img { max-height: 90vh; width: auto; }
-.fotos iframe, .texto iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
 
-/* blog: fecha en gris y el post al lado, a lo billwurtz */
-.posts li { display: grid; grid-template-columns: 5em minmax(0, 560px); gap: 1em; }
-.posts li + li { margin-top: 2.4em; }
-.posts .d { color: var(--gris); text-decoration: none; }
+/* blog: el texto, la foto y la fecha en gris debajo */
+.posts { max-width: 560px; }
+.posts li > * + * { margin-top: 1em; }
+.posts li + li { margin-top: 3em; }
+.posts .d { display: inline-block; color: var(--gris); text-decoration: none; }
 .posts .d:hover { text-decoration: underline; }
-.posts .t > * + * { margin-top: 1em; }
 .posts img { max-height: 80vh; width: auto; }
 
 /* admin: publicar en el blog */
@@ -120,7 +114,7 @@ main { padding: var(--top) var(--m) 140px; }
 .publicar input[type=file] { font: inherit; max-width: 100%; }
 .publicar textarea, .publicar .t { min-width: 0; width: 100%; }
 .publicar button, .esborrar { font: inherit; border: 0; background: none; padding: 0; text-decoration: underline; cursor: pointer; color: var(--link); justify-self: start; }
-.esborrar { grid-column: 2; justify-self: start; color: var(--gris); }
+.esborrar { color: var(--gris); margin-left: 1em; }
 
 /* about de Guillem: el CV, una línea por cosa */
 .guillem h1 { font-weight: 700; margin-bottom: 1.2em; }
@@ -130,8 +124,6 @@ main { padding: var(--top) var(--m) 140px; }
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
-.bio a.obra { text-decoration: none; }
-.bio a.obra:hover { text-decoration: underline; }
 .firma { color: var(--gris); font-size: .7rem; margin-top: 3em !important; }
 
 @media (max-width: 760px) {
@@ -141,14 +133,11 @@ main { padding: var(--top) var(--m) 140px; }
   .marca { top: 16px; }
   .home .menu { top: 16px; left: auto; }
   .idioma { bottom: 16px; }
-  .posts li, .publicar label, .publicar p,
-  .lista li, .lista.prensa li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
-  .lista li.sub { padding-left: 1.6em; }
-  .lista li.sub .t { padding-left: 0; }
-  .cover { display: none; }
+  .publicar label, .publicar p,
+  .lista li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
   .gigante { bottom: 12vh; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gigante span { transition: none; }
+  .gigante span, .flecha { transition: none; }
 }

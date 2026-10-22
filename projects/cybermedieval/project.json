@@ -1,9 +1,16 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "CYBERMEDIEVAL",
   "year": 2026,
   "text": {
+    "ca": [
+      "Cybermedieval és un periple, un escàner, un portal, una dimensió, un temps. Un escenari especulatiu sci-fi fantasy en què les empreses tecnològiques han substituït el model d’estat-nació territorial i dirigeixen el món a través del control del Big Data. El capitalisme ha esdevingut tecnofeudalisme. Les corporacions Big Tech s’erigeixen com a regnes i els seus sobirans són els CEO, els algoritmes i les IA que governen una servitud digital, les USERF (user + serf, ‘usuari + serf’), a través d’uns pactes de “termes i condicions” que permeten utilitzar les terres dels lords vectorialistes (les plataformes de dades) a canvi de conrear-les amb la producció incessant de contingut i la datificació dels cossos."
+    ],
     "es": [
       "Cybermedieval es un periplo, un escáner, un portal, una dimensión, un tiempo. Un escenario especulativo sci-fi fantasy en el que las empresas tecnológicas han sustituido al modelo estado-nación territorial y dirigen el mundo a través del control del Big Data. El capitalismo ha devenido tecnofeudalismo. Las corporaciones Big Tech se erigen como reinos y sus soberanos son los CEO, los algoritmos y las IA que gobiernan a una servidumbre digitales, les USERF (user + serf, ‘usuario + siervo’), a través de unos pactos de “términos y condiciones” que permiten utilizar las tierras de los lores vectorialistas (las plataformas de datos) a cambio de cultivarlas con la producción incesante de contenido y la datificación de los cuerpos."
+    ],
+    "en": [
+      "Cybermedieval is a journey, a scanner, a portal, a dimension, a time. A speculative sci-fi fantasy scenario in which tech companies have replaced the territorial nation-state and run the world through the control of Big Data. Capitalism has become technofeudalism. Big Tech corporations rise as kingdoms, and their sovereigns are the CEOs, the algorithms and the AIs that rule over a digital serfdom, the USERFs (user + serf), through “terms and conditions” pacts that allow them to use the lands of the vectoralist lords (the data platforms) in exchange for cultivating them with the endless production of content and the datafication of bodies."
     ]
   },
   "cover": "1",

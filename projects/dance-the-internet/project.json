@@ -1,4 +1,5 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "DANCE THE INTERNET",
   "year": 2022,
   "kind": {

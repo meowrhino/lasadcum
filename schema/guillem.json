@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "data/guillem.json: el CV de Guillem Jiménez (about/guillem/)",
+  "description": "data/guillem.json: el CV de Guillem Jiménez (about/guillem/). Lo lee VS Code (por el \"$schema\" de arriba del JSON) para explicar cada campo y subrayar lo que está mal; el build valida con este mismo fichero.",
+  "type": "object",
+  "required": [
+    "title",
+    "items"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_": {
+      "type": "string",
+      "description": "Una nota para quien edita. No sale en la web."
+    },
+    "title": {
+      "type": "string",
+      "description": "El título de arriba: \"Guillem Jiménez (Barcelona, 1999)\"."
+    },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Una línea por cosa, en el orden en que salen."
+    }
+  },
+  "$defs": {
+    "texto": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "description": "El texto en cada idioma: { \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" }. Si falta uno, sale en catalán.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "string"
+            },
+            "es": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "description": "Un texto: igual en todos los idiomas (\"OLIVER\") o uno por idioma ({ \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" })."
+    },
+    "parrafos": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "description": "Los párrafos en cada idioma.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "es": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "en": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "description": "Párrafos: una lista de textos, cada uno entre comillas y separados por comas. Por idioma: { \"ca\": [\"…\", \"…\"], \"es\": [...] }."
+    }
+  }
+}

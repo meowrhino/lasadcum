@@ -1,4 +1,5 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "CLASSMATES",
   "year": 2020,
   "kind": {

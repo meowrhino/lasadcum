@@ -93,7 +93,7 @@
     "text": {
       "ca": "EVERAFTER / Festival TNT, Terrassa (Espanya)",
       "es": "EVERAFTER / Terrassa (España)",
-      "en": "EVERAFTER / Festival TNT, Terrassa (Espanya)"
+      "en": "EVERAFTER / Festival TNT, Terrassa (Spain)"
     }
   },
   {
@@ -137,12 +137,20 @@
   {
     "date": "2026-04-09",
     "days": "09/04",
-    "text": "EVERAFTER (OpenStudio) / La Briqueteries, Paris (França)"
+    "text": {
+      "ca": "EVERAFTER (OpenStudio) / La Briqueterie, París (França)",
+      "es": "EVERAFTER (OpenStudio) / La Briqueterie, París (Francia)",
+      "en": "EVERAFTER (OpenStudio) / La Briqueterie, Paris (France)"
+    }
   },
   {
     "date": "2026-03-11",
     "days": "11/03",
-    "text": "EVERAFTER (OpenStudio) / FEEDBACK x Fabra i Coats, Barcelona (Espanya)"
+    "text": {
+      "ca": "EVERAFTER (OpenStudio) / FEEDBACK x Fabra i Coats, Barcelona (Espanya)",
+      "es": "EVERAFTER (OpenStudio) / FEEDBACK x Fabra i Coats, Barcelona (España)",
+      "en": "EVERAFTER (OpenStudio) / FEEDBACK x Fabra i Coats, Barcelona (Spain)"
+    }
   },
   {
     "date": "2026-02-28",
@@ -325,7 +333,11 @@
   {
     "date": "2024-09-26",
     "days": "26/09",
-    "text": "OLIVER 01 / Vasto Gallery x Naked Space, Barcelona (Espanya)"
+    "text": {
+      "ca": "OLIVER 01 / Vasto Gallery x Naked Space, Barcelona (Espanya)",
+      "es": "OLIVER 01 / Vasto Gallery x Naked Space, Barcelona (España)",
+      "en": "OLIVER 01 / Vasto Gallery x Naked Space, Barcelona (Spain)"
+    }
   },
   {
     "date": "2024-08-31",

@@ -1,0 +1,13 @@
+.DS_Store
+
+# La web generada: la escribe `npm run build` y la publica la Action (o Cloudflare)
+dist/
+node_modules/
+.wrangler/
+
+# Las imágenes para compartir: las hace el build (sharp)
+.cache/
+
+# De VS Code, solo los ajustes de la web (Sync sin preguntar)
+.vscode/*
+!.vscode/settings.json

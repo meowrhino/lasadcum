@@ -1,10 +1,19 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "OLIVER",
   "year": 2024,
   "text": {
+    "ca": [
+      "OLIVER és un personatge “sadcumat” que planteja, a través de la sàtira, diverses reflexions al voltant del capitalisme, la digitalització, l’il·lusionisme i el tecnofeudalisme. OLIVER funciona com una finestra ‘world-glimpsing’ al món poeticoficcional de laSADCUM.",
+      "Cada vegada en una dimensió nova. Cada vegada un assaig corporal nou."
+    ],
     "es": [
       "OLIVER es un personaje “sadcumado” que plantea, mediante la sátira, diversas reflexiones en torno al capitalismo, la digitalización, el ilusionismo y el tecnofeudalismo. OLIVER funciona como una ventana ‘world-glimpsing’ al mundo poético-ficcional de laSADCUM.",
       "Cada vez en una dimensión nueva. Cada vez un ensayo corporal nuevo."
+    ],
+    "en": [
+      "OLIVER is a “sadcummed” character who uses satire to raise a range of reflections on capitalism, digitalisation, illusionism and technofeudalism. OLIVER works as a ‘world-glimpsing’ window into the poetic-fictional world of laSADCUM.",
+      "Each time in a new dimension. Each time a new bodily essay."
     ]
   },
   "credits": [

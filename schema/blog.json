@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "data/blog-ejemplo.json: posts de ejemplo del blog",
+  "description": "Solo para ver el diseño hasta que el blog funcione con su Worker (manus/blog.md).",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "id",
+      "created_at",
+      "text"
+    ],
+    "properties": {
+      "id": {
+        "type": "number"
+      },
+      "created_at": {
+        "type": "string"
+      },
+      "text": {
+        "type": "string"
+      },
+      "image": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "src",
+          "width",
+          "height"
+        ],
+        "properties": {
+          "src": {
+            "type": "string"
+          },
+          "width": {
+            "type": "number"
+          },
+          "height": {
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

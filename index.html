@@ -1,24 +1,31 @@
 <!doctype html>
-<html lang="ca">
+<!--
+  VISTA PREVIA LOCAL
+  Este fichero no se publica: la web de verdad la escribe build/build.mjs
+  al subir los cambios. Esto es para revisarlos antes, con la extensión
+  Live Server de VS Code ("Go Live", abajo a la derecha).
+  Lee data/*.json y pinta la página con las mismas plantillas que el build.
+-->
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>laSADCUM</title>
-<meta name="description" content="laSADCUM, companyia de dansa. Barcelona.">
-<meta name="robots" content="noindex">
-<link rel="alternate" hreflang="ca" href="./">
-<link rel="alternate" hreflang="es" href="es/">
-<link rel="alternate" hreflang="en" href="en/">
-<link rel="stylesheet" href="css/style.css">
-<link rel="icon" href="data:,">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>vista previa — laSADCUM</title>
+  <style>
+    body{margin:0;padding:clamp(24px,6vw,80px);font:16px/1.5 -apple-system,Helvetica,Arial,sans-serif;background:#fff;color:#888}
+    p{max-width:62ch}
+  </style>
 </head>
-<body class="home">
-
-<nav class="menu"><a href="about/">about</a><a href="calendario/">calendari</a><a href="trabajos/">treballs</a><a href="contacto/">contacte</a><a href="blog/">blog</a></nav>
-<main>
-<h1 class="gigante"><span class="c1">la</span><span class="c2">SAD</span><span class="c3">CUM</span></h1>
-</main>
-<nav class="idioma"><a href="./" hreflang="ca" aria-current="true">ca</a> <a href="es/" hreflang="es">es</a> <a href="en/" hreflang="en">en</a></nav>
-<script src="js/main.js" defer></script>
+<body>
+  <p id="aviso">cargando la vista previa…</p>
+  <script>
+    // Abierto con doble clic desde el Finder, el navegador no deja leer los
+    // JSON ni cargar los módulos: hace falta un servidor, y ese es Live Server.
+    if (location.protocol === 'file:') document.getElementById('aviso').innerHTML =
+      'Esta página hay que abrirla con <b>Live Server</b>: en VS Code, botón ' +
+      '<b>Go Live</b> abajo a la derecha. Abierta con doble clic no puede leer los datos.';
+  </script>
+  <script type="module" src="build/preview.mjs"></script>
 </body>
 </html>

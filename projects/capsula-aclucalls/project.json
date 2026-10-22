@@ -1,4 +1,5 @@
 {
+  "$schema": "../../schema/project.json",
   "title": "CÁPSULA ACLUCALLS",
   "year": 2022,
   "kind": {

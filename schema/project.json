@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "projects/<carpeta>/project.json: un proyecto",
+  "description": "projects/<carpeta>/project.json: un proyecto. Lo lee VS Code (por el \"$schema\" de arriba del JSON) para explicar cada campo y subrayar lo que está mal; el build valida con este mismo fichero.",
+  "type": "object",
+  "required": [
+    "title",
+    "year"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_": {
+      "type": "string",
+      "description": "Una nota para quien edita. No sale en la web."
+    },
+    "title": {
+      "$ref": "#/$defs/texto",
+      "description": "El título: \"NAVAJA\", o uno por idioma si cambia."
+    },
+    "year": {
+      "type": "number",
+      "minimum": 1990,
+      "description": "El año. Sale al lado del título y en la lista de treballs."
+    },
+    "kind": {
+      "$ref": "#/$defs/texto",
+      "description": "(opcional) La línea gris de debajo del título: \"pieza escénica / laSADCUM\"."
+    },
+    "description": {
+      "$ref": "#/$defs/texto",
+      "description": "(opcional) Lo que sale en Google y al compartir. Si no está, el primer párrafo del texto."
+    },
+    "text": {
+      "$ref": "#/$defs/parrafos",
+      "description": "El texto, en párrafos y por idioma: { \"ca\": [\"…\"], \"es\": [\"…\"], \"en\": [\"…\"] }."
+    },
+    "awards": {
+      "$ref": "#/$defs/parrafos",
+      "description": "(opcional) Los premios, uno por línea y por idioma."
+    },
+    "credits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "name"
+        ],
+        "properties": {
+          "role": {
+            "$ref": "#/$defs/texto",
+            "description": "El rol, en cada idioma: { \"ca\": \"Direcció\", \"es\": \"Dirección\", \"en\": \"Director\" }."
+          },
+          "name": {
+            "$ref": "#/$defs/texto",
+            "description": "Quién (una persona o varias, separadas por comas)."
+          }
+        }
+      },
+      "description": "La ficha artística: un rol por línea."
+    },
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "^https://",
+            "description": "La dirección del vídeo en YouTube o Vimeo."
+          },
+          "title": {
+            "type": "string",
+            "description": "(opcional) Cómo se llama el enlace. Sin título: «veure el tràiler»."
+          }
+        }
+      },
+      "description": "(opcional) Los vídeos: [{ \"url\": \"https://youtu.be/…\", \"title\": \"Trailer\" }]."
+    },
+    "photo_credit": {
+      "$ref": "#/$defs/texto",
+      "description": "(opcional) Quién ha hecho las fotos: \"Fotos: Alan Gomis\"."
+    },
+    "cover": {
+      "type": "string",
+      "pattern": "^[0-9]+$",
+      "description": "La foto para compartir (en WhatsApp, Instagram…), por su número: \"1\" es img/1.webp."
+    },
+    "photos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9]+$",
+        "description": "Una foto por su número: \"3\" es img/3.webp."
+      },
+      "description": "Las fotos, en el orden en que salen: [\"1\", \"2\", \"3\"]."
+    }
+  },
+  "$defs": {
+    "texto": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "description": "El texto en cada idioma: { \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" }. Si falta uno, sale en catalán.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "string"
+            },
+            "es": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "description": "Un texto: igual en todos los idiomas (\"OLIVER\") o uno por idioma ({ \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" })."
+    },
+    "parrafos": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "description": "Los párrafos en cada idioma.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "es": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "en": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "description": "Párrafos: una lista de textos, cada uno entre comillas y separados por comas. Por idioma: { \"ca\": [\"…\", \"…\"], \"es\": [...] }."
+    }
+  }
+}

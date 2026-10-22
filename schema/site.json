@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "data/site.json: lo general de la web",
+  "description": "data/site.json: lo general de la web. Lo lee VS Code (por el \"$schema\" de arriba del JSON) para explicar cada campo y subrayar lo que está mal; el build valida con este mismo fichero.",
+  "type": "object",
+  "required": [
+    "title",
+    "url",
+    "lang",
+    "langs",
+    "description",
+    "menu",
+    "lists"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_": {
+      "type": "string",
+      "description": "Una nota para quien edita. No sale en la web."
+    },
+    "title": {
+      "type": "string",
+      "description": "El nombre de la web: sale en la pestaña del navegador, en Google y al compartir."
+    },
+    "url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "La dirección de la web con su dominio (\"https://lasadcum.com\"). Mientras sea null, Google no la indexa."
+    },
+    "lang": {
+      "type": "string",
+      "enum": [
+        "ca",
+        "es",
+        "en"
+      ],
+      "description": "El idioma principal: va en la raíz y es el que sale si falta un texto."
+    },
+    "langs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "ca",
+          "es",
+          "en"
+        ]
+      },
+      "description": "Los idiomas de la web, en el orden del selector."
+    },
+    "description": {
+      "$ref": "#/$defs/texto",
+      "description": "La descripción para Google y al compartir, en cada idioma."
+    },
+    "email": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "El correo de contacto. null: no sale."
+    },
+    "instagram": {
+      "type": "string",
+      "description": "Solo el usuario de Instagram, sin @ ni dirección: \"lasadcum\"."
+    },
+    "social": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^https?://"
+      },
+      "description": "Otras redes, con su nombre y su dirección: { \"vimeo\": \"https://vimeo.com/lasadcum\" }. Salen en contacto."
+    },
+    "newsletter": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "La dirección del formulario de Mailchimp (la del action=\"…\"). null: no sale."
+    },
+    "menu": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/texto"
+      },
+      "description": "Los textos fijos de la web (menú, botones, avisos), en cada idioma."
+    },
+    "lists": {
+      "type": "object",
+      "description": "Las listas de treballs: qué proyectos salen, en qué orden y en qué lista.",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "projects"
+        ],
+        "properties": {
+          "name": {
+            "$ref": "#/$defs/texto",
+            "description": "El título de la lista, en cada idioma."
+          },
+          "projects": {
+            "type": "array",
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+                  "description": "El nombre de la carpeta del proyecto en projects/"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "project"
+                  ],
+                  "properties": {
+                    "project": {
+                      "type": "string",
+                      "description": "El nombre de la carpeta del proyecto en projects/"
+                    },
+                    "parts": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Proyectos que salen dentro de la página de este, debajo (como la cápsula dentro de ACLUCALLS)."
+                    },
+                    "visible": {
+                      "type": "boolean",
+                      "description": "false: tiene su página (para mandarla) pero no sale en la lista ni en Google."
+                    }
+                  }
+                }
+              ],
+              "description": "Un proyecto: \"navaja\", o { \"project\": \"aclucalls\", \"parts\": [\"capsula-aclucalls\"] }, o { \"project\": \"x\", \"visible\": false }."
+            },
+            "description": "Los proyectos, en el orden en que salen."
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "texto": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "description": "El texto en cada idioma: { \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" }. Si falta uno, sale en catalán.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "string"
+            },
+            "es": {
+              "type": "string"
+            },
+            "en": {
+              "type": "string"
+            }
+          }
+        }
+      ],
+      "description": "Un texto: igual en todos los idiomas (\"OLIVER\") o uno por idioma ({ \"ca\": \"…\", \"es\": \"…\", \"en\": \"…\" })."
+    },
+    "parrafos": {
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        {
+          "type": "object",
+          "description": "Los párrafos en cada idioma.",
+          "additionalProperties": false,
+          "properties": {
+            "ca": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "es": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "en": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ],
+      "description": "Párrafos: una lista de textos, cada uno entre comillas y separados por comas. Por idioma: { \"ca\": [\"…\", \"…\"], \"es\": [...] }."
+    }
+  }
+}

@@ -1,6 +1,8 @@
 {
+  "$schema": "../schema/site.json",
   "title": "laSADCUM",
   "url": null,
+  "lang": "ca",
   "langs": [
     "ca",
     "es",
@@ -12,25 +14,79 @@
     "en": "laSADCUM, dance company. Barcelona."
   },
   "email": null,
-  "instagram": "https://www.instagram.com/lasadcum",
+  "instagram": "lasadcum",
   "social": {
     "vimeo": "https://vimeo.com/lasadcum"
   },
   "newsletter": "https://google.us21.list-manage.com/subscribe/post?u=411c6a0b6a6b5532a3580e7f8&id=ac87bff6e0&f_id=004af6e6f0",
+  "menu": {
+    "about": {
+      "ca": "about",
+      "es": "about",
+      "en": "about"
+    },
+    "calendario": {
+      "ca": "calendari",
+      "es": "calendario",
+      "en": "calendar"
+    },
+    "trabajos": {
+      "ca": "treballs",
+      "es": "trabajos",
+      "en": "works"
+    },
+    "contacto": {
+      "ca": "contacte",
+      "es": "contacto",
+      "en": "contact"
+    },
+    "blog": "blog",
+    "proximas": {
+      "ca": "Properes dates",
+      "es": "Próximas fechas",
+      "en": "Upcoming dates"
+    },
+    "pasadas": {
+      "ca": "Dates anteriors",
+      "es": "Fechas anteriores",
+      "en": "Past dates"
+    },
+    "trailer": {
+      "ca": "veure el tràiler",
+      "es": "ver el tráiler",
+      "en": "watch the trailer"
+    },
+    "completa": {
+      "ca": "Per veure la peça completa, poseu-vos en contacte.",
+      "es": "Para ver la pieza completa, póngase en contacto.",
+      "en": "To see the full piece, please get in touch."
+    },
+    "apuntame": {
+      "ca": "apunta-m’hi",
+      "es": "apúntame",
+      "en": "sign me up"
+    },
+    "tuEmail": {
+      "ca": "el teu email",
+      "es": "tu email",
+      "en": "your email"
+    },
+    "noEncontrada": {
+      "ca": "Aquesta pàgina no existeix.",
+      "es": "Esta página no existe.",
+      "en": "This page does not exist."
+    }
+  },
   "lists": {
     "propias": {
-      "title": {
+      "name": {
         "ca": "Produccions pròpies",
         "es": "Producciones propias",
         "en": "Own productions"
       },
-      "items": [
-        {
-          "project": "everafter"
-        },
-        {
-          "project": "navaja"
-        },
+      "projects": [
+        "everafter",
+        "navaja",
         {
           "project": "aclucalls",
           "parts": [
@@ -44,39 +100,23 @@
             "classmates"
           ]
         },
-        {
-          "project": "the-uncanny-valley"
-        }
+        "the-uncanny-valley"
       ]
     },
     "otros": {
-      "title": {
+      "name": {
         "ca": "Col·laboracions, encàrrecs i altres",
         "es": "Colaboraciones, encargos y otros",
         "en": "Collaborations, commissions and others"
       },
-      "items": [
-        {
-          "project": "click-tarola"
-        },
-        {
-          "project": "cybermedieval"
-        },
-        {
-          "project": "oliver"
-        },
-        {
-          "project": "twink-twink-twink"
-        },
-        {
-          "project": "untitled"
-        },
-        {
-          "project": "dance-the-internet"
-        },
-        {
-          "project": "el-cos-emmascarat"
-        }
+      "projects": [
+        "click-tarola",
+        "cybermedieval",
+        "oliver",
+        "twink-twink-twink",
+        "untitled",
+        "dance-the-internet",
+        "el-cos-emmascarat"
       ]
     }
   }

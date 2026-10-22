@@ -1,0 +1,15 @@
+{
+  "name": "lasadcum",
+  "private": true,
+  "description": "La web de laSADCUM: un proyecto por carpeta (project.json + img/), HTML estático en dist/",
+  "type": "module",
+  "scripts": {
+    "build": "node build/build.mjs"
+  },
+  "dependencies": {
+    "sharp": "^0.35.5"
+  },
+  "engines": {
+    "node": "22"
+  }
+}

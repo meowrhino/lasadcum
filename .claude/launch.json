@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "web", "runtimeExecutable": "npx", "runtimeArgs": ["-y", "serve@14.2.4", "-l", "4321", "."], "port": 4321 }
+    { "name": "web", "runtimeExecutable": "npx", "runtimeArgs": ["-y", "serve@14.2.4", "-l", "4321", "."], "port": 4321 },
+    { "name": "dist", "runtimeExecutable": "npx", "runtimeArgs": ["-y", "serve@14.2.4", "-l", "4322", "dist"], "port": 4322 }
   ]
 }
