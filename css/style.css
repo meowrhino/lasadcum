@@ -124,7 +124,9 @@ main { padding: var(--top) var(--m) 140px; }
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
-.firma { color: var(--gris); font-size: .7rem; margin-top: 3em !important; }
+/* la firma: abajo a la derecha, a la altura de los idiomas, en gris y sin subrayar */
+.firma { position: absolute; right: var(--m); bottom: 28px; color: var(--gris); font-size: .7rem; }
+.firma a { color: inherit; text-decoration: none; }
 
 @media (max-width: 760px) {
   :root { --m: 16px; --top: 120px; }
@@ -133,6 +135,7 @@ main { padding: var(--top) var(--m) 140px; }
   .marca { top: 16px; }
   .home .menu { top: 16px; left: auto; }
   .idioma { bottom: 16px; }
+  .firma { bottom: 16px; }
   .publicar label, .publicar p,
   .lista li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
   .gigante { bottom: 12vh; }

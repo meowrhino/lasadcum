@@ -293,7 +293,7 @@ ${(p.photos || []).map(fotoTag).join('\n')}
   const aboutPag = l => pagina({
     l, path: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
     desc: (about[l] || about[DEF])[0],
-    body: `<div class="bio">\n${aboutTexto(l)}\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>\n</div>`,
+    body: `<div class="bio">\n${aboutTexto(l)}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
   });
 
   // calendario: lo que viene en negro, lo que pasó en gris
