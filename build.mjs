@@ -8,7 +8,7 @@ const read = p => JSON.parse(fs.readFileSync(path.join(ROOT, p), 'utf8'));
 const site = read('data/site.json');
 const about = read('data/about.json');
 const agenda = read('data/agenda.json');
-const press = read('data/press.json');
+const guillem = read('data/guillem.json');
 // shortcut: posts de ejemplo para ver el diseño; con el Worker los pone él (manus/blog.md)
 const blog = read('data/blog-ejemplo.json');
 const projects = Object.fromEntries(fs.readdirSync(path.join(ROOT, 'projects'))
@@ -25,17 +25,19 @@ const T = {
   blog: { ca: 'blog', es: 'blog', en: 'blog' },
   proximas: { ca: 'Properes dates', es: 'Próximas fechas', en: 'Upcoming dates' },
   pasadas: { ca: 'Dates anteriors', es: 'Fechas anteriores', en: 'Past dates' },
-  video: { ca: 'veure el vídeo', es: 'ver el vídeo', en: 'watch the video' },
+  trailer: { ca: 'veure el tràiler', es: 'ver el tráiler', en: 'watch the trailer' },
+  completa: { ca: 'Per veure la peça completa, poseu-vos en contacte.', es: 'Para ver la pieza completa, póngase en contacto.', en: 'To see the full piece, please get in touch.' },
   apuntame: { ca: 'apunta-m’hi', es: 'apúntame', en: 'sign me up' },
   tuEmail: { ca: 'el teu email', es: 'tu email', en: 'your email' },
-  prensa: { ca: 'Premsa', es: 'Prensa', en: 'Press' },
 };
 
 const pick = (v, l) => v == null ? '' : (typeof v === 'object' && !Array.isArray(v)) ? (v[l] ?? v[DEF] ?? Object.values(v)[0]) : v;
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const md = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, '<a href="$2">$1</a>');
 const yy = d => d.slice(2, 4);
-const vimeoPage = src => 'https://vimeo.com/' + (src.match(/video\/(\d+)/) || [])[1];
+// un vídeo: el enlace lleva a su página (sin JS) y el JS lo incrusta al pulsar
+const videoPage = u => u.includes('player.vimeo.com') ? 'https://vimeo.com/' + (u.match(/video\/(\d+)/) || [])[1] : u;
+const videoEmbed = u => /youtu\.?be/.test(u) ? 'https://www.youtube-nocookie.com/embed/' + u.split('/').pop().split(/[?&]/)[0] : u;
 const wordmark = '<span class="c1">la</span><span class="c2">SAD</span><span class="c3">CUM</span>';
 
 // página: ruta sin idioma ('', 'trabajos/navaja/') → archivo y enlaces relativos
@@ -43,7 +45,7 @@ const file = (l, p) => (l === DEF ? '' : l + '/') + p + 'index.html';
 const relOf = (l, p) => '../'.repeat(file(l, p).split('/').length - 1);
 function page({ l, p, title, body, cls = '', current = '', desc }) {
   const rel = relOf(l, p);
-  const unIdioma = cls === 'admin' || cls === 'blog-page'; // el blog es uno solo, sin idiomas
+  const unIdioma = ['admin', 'blog-page', 'guillem'].includes(cls); // páginas en un solo idioma
   const href = (lang, q) => rel + (lang === DEF ? '' : lang + '/') + q || './';
   const nav = ['about', 'calendario', 'trabajos', 'contacto', 'blog'].map(k => {
     const label = k === 'trabajos' && current.startsWith('trabajos - ') ? pick(T.trabajos, l) + current.slice(8) : pick(T[k], l);
@@ -87,8 +89,36 @@ const post = (x, rel = '') => `<li id="p${x.id}"><a class="d" href="#p${x.id}">$
 const img = (rel, s, n, lazy = true, alt = '') =>
   `<img src="${rel}projects/${s}/img/${n}.webp" alt="${esc(alt)}"${lazy ? ' loading="lazy"' : ''}>`;
 
+// qué proyectos van dentro de otro (site.json: "parts")
+const partsOf = {}, partOf = {};
+for (const list of Object.values(site.lists)) for (const it of list.items)
+  if (it.parts) { partsOf[it.project] = it.parts; it.parts.forEach(x => partOf[x] = it.project); }
+
+function ficha(s, l, rel, h) {
+  const pj = projects[s], name = titleOf(s, l);
+  const credits = (pj.credits || []).map(c => `<dt>${esc(pick(c.role, l))}</dt><dd>${md(pick(c.name, l))}</dd>`).join('');
+  const awards = pick(pj.awards, l) || [];
+  const text = (pick(pj.text, l) || []).filter(Boolean);
+  const videos = pj.videos || [];
+  return `<article class="cols${h === 'h2' ? ' parte' : ''}">
+<div class="texto">
+<${h}>${esc(name)} <span class="y">(${pj.year})</span></${h}>
+<p class="tipo">${esc(pick(pj.kind, l))}</p>
+${text.map(t => `<p>${md(t)}</p>`).join('\n')}
+${awards.length ? `<ul class="premios">${awards.map(a => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
+${credits ? `<dl class="creditos">${credits}</dl>` : ''}
+${videos.length ? `<ul class="videos">${videos.map(v => `<li><a class="video" href="${esc(videoPage(v.url))}" data-embed="${esc(videoEmbed(v.url))}">▸ ${esc(v.title || pick(T.trailer, l))}</a></li>`).join('')}</ul>
+<p class="nota"><a href="${rel}${l === DEF ? '' : l + '/'}contacto/">${pick(T.completa, l)}</a></p>` : ''}
+${pj.photo_credit ? `<p class="pie">${esc(pick(pj.photo_credit, l))}</p>` : ''}
+</div>
+<div class="fotos">
+${(pj.photos || []).map((n, i) => img(rel, s, n, h === 'h2' || i > 0, i ? '' : name)).join('\n')}
+</div>
+</article>`;
+}
+
 // el about enlaza solo los proyectos que nombra
-function aboutText(l, rel) {
+function aboutText(l, rel, root) {
   const names = Object.keys(projects).flatMap(s => LANGS.map(x => [titleOf(s, x), s]))
     .sort((a, b) => b[0].length - a[0].length);
   return (about[l] || about[DEF]).map(par => {
@@ -99,7 +129,7 @@ function aboutText(l, rel) {
       const re = new RegExp(`(?<![\\wÀ-ÿ>])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\s*\\(\\d{4}\\))?`);
       if (re.test(h)) { h = h.replace(re, m => `<a class="obra" href="${rel}trabajos/${s}/">${m}</a>`); done.add(s); }
     }
-    return `<p>${h.replace(/Guillem Jiménez/, '<b>Guillem Jiménez</b>')}</p>`;
+    return `<p>${h.replace(/Guillem Jiménez/, `<a class="obra" href="${root}about/guillem/" target="_blank" rel="noopener"><b>Guillem Jiménez</b></a>`)}</p>`;
   }).join('\n');
 }
 
@@ -107,53 +137,36 @@ for (const l of LANGS) {
   // portada
   page({ l, p: '', title: site.title, cls: 'home', body: `<h1 class="gigante">${wordmark}</h1>` });
 
-  // trabajos
+  // treballs: producciones propias y lo demás; las partes (cápsula, réquiem…) van dentro de su proyecto
   page({
     l, p: 'trabajos/', title: `${pick(T.trabajos, l)} · ${site.title}`, current: 'trabajos', cls: 'trabajos',
-    body: `<ul class="lista">\n${site.lists.trabajos.map(it => {
+    body: `${Object.values(site.lists).map(list => `<h2 class="etiqueta">${esc(pick(list.title, l))}</h2>\n<ul class="lista">\n${list.items.map(it => {
       const pj = it.project && projects[it.project];
       const name = pj ? titleOf(it.project, l) : it.title;
       const year = pj ? pj.year : it.year;
       const t = pj ? `<a href="${it.project}/" data-cover="${relOf(l, 'trabajos/')}projects/${it.project}/img/${pj.cover}.webp">${esc(name)}</a>` : esc(name);
-      return `<li${it.under ? ' class="sub"' : ''}><span class="y">${year}</span><span class="t">${t}</span></li>`;
-    }).join('\n')}\n</ul>\n<img class="cover" alt="" hidden>`,
+      return `<li><span class="y">${year}</span><span class="t">${t}</span></li>`;
+    }).join('\n')}\n</ul>`).join('\n')}\n<img class="cover" alt="" hidden>`,
   });
 
-  // un proyecto, una página
+  // un proyecto, una página; sus partes, debajo
   for (const [s, pj] of Object.entries(projects)) {
-    const name = titleOf(s, l);
-    const credits = (pj.credits || []).map(c => `<dt>${esc(pick(c.role, l))}</dt><dd>${md(pick(c.name, l))}</dd>`).join('');
-    const awards = pick(pj.awards, l) || [];
+    if (partOf[s]) continue;
     const p = `trabajos/${s}/`;
     const rel = relOf(l, p);
-    const text = (pick(pj.text, l) || []).filter(Boolean);
+    const name = titleOf(s, l);
     page({
       l, p, title: `${name} (${pj.year}) · ${site.title}`, current: 'trabajos - ' + name.toLowerCase(), cls: 'proyecto',
-      desc: text[0],
-      body: `<article class="cols">
-<div class="texto">
-<h1>${esc(name)} <span class="y">(${pj.year})</span></h1>
-<p class="tipo">${esc(pick(pj.kind, l))}</p>
-${text.map(t => `<p>${md(t)}</p>`).join('\n')}
-${awards.length ? `<ul class="premios">${awards.map(a => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
-${credits ? `<dl class="creditos">${credits}</dl>` : ''}
-${pj.video ? `<p><a class="video" href="${vimeoPage(pj.video)}" data-embed="${esc(pj.video)}">▸ ${pick(T.video, l)}</a></p>` : ''}
-${pj.photo_credit ? `<p class="pie">${esc(pick(pj.photo_credit, l))}</p>` : ''}
-</div>
-<div class="fotos">
-${(pj.photos || []).map((n, i) => img(rel, s, n, i > 0, i ? '' : name)).join('\n')}
-</div>
-</article>`,
+      desc: (pick(pj.text, l) || []).filter(Boolean)[0],
+      body: [s, ...(partsOf[s] || [])].map((x, i) => ficha(x, l, rel, i ? 'h2' : 'h1')).join('\n'),
     });
   }
 
   // about
   page({
     l, p: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
-    body: `<div class="bio">\n${aboutText(l, relOf(l, 'about/') + (l === DEF ? '' : l + '/'))}\n</div>
-<h2 class="etiqueta">${pick(T.prensa, l)}</h2>
-<ul class="lista prensa">\n${press.map(x => `<li><span class="y">${esc(pick(x.source, l))}</span><span class="t"><a href="${esc(x.url)}">${esc(pick(x.title, l))}</a></span></li>`).join('\n')}\n</ul>
-<div class="bio">\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>\n</div>`,
+    body: `<div class="bio">\n${aboutText(l, relOf(l, 'about/') + (l === DEF ? '' : l + '/'), relOf(l, 'about/'))}
+<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>\n</div>`,
   });
 
   // calendario: lo que viene en negro, lo que pasó en gris
@@ -185,6 +198,12 @@ ${site.newsletter ? `<li><span class="y">newsletter</span><span class="t"><form 
   });
 
 }
+// Guillem Jiménez: su CV, tal cual lo pasan, en un solo idioma (se abre en otra pestaña desde el about)
+page({
+  l: DEF, p: 'about/guillem/', title: `Guillem Jiménez · ${site.title}`, current: 'about', cls: 'guillem',
+  body: `<div class="bio">\n<h1>${esc(guillem.title)}</h1>\n<ul class="cv">\n${guillem.items.map(x => `<li>${esc(x)}</li>`).join('\n')}\n</ul>\n</div>`,
+});
+
 // blog: uno solo, sin idiomas (el Worker rellena <ol class="posts">; ver manus/blog.md)
 page({
   l: DEF, p: 'blog/', title: `blog · ${site.title}`, current: 'blog', cls: 'blog-page',

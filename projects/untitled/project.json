@@ -54,9 +54,13 @@
       "name": "Mentah"
     }
   ],
-  "video": "https://player.vimeo.com/video/547620927?h=040860c473",
   "cover": "1",
   "photos": [
     "1"
+  ],
+  "videos": [
+    {
+      "url": "https://player.vimeo.com/video/547620927?h=040860c473"
+    }
   ]
 }

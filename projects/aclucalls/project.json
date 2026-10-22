@@ -190,7 +190,6 @@
     "es": "Fotos Pablo de Pastor",
     "en": "Pics by Pablo de Pastor"
   },
-  "video": "https://player.vimeo.com/video/693868817?h=0c62d3047a",
   "cover": "1",
   "photos": [
     "1",
@@ -198,5 +197,10 @@
     "3",
     "4",
     "5"
+  ],
+  "videos": [
+    {
+      "url": "https://player.vimeo.com/video/693868817?h=0c62d3047a"
+    }
   ]
 }

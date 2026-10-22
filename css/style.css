@@ -66,6 +66,7 @@ main { padding: var(--top) var(--m) 140px; }
 .lista a, .fechas a, .bio a.obra, .texto p a { color: var(--link); }
 .lista a:visited, .fechas a:visited, .bio a.obra:visited, .texto p a:visited { color: var(--visto); }
 .trabajos .t { text-transform: lowercase; }
+.trabajos .etiqueta:first-child { margin-top: 0; }
 .cover {
   position: fixed; z-index: 1;
   right: var(--m); top: var(--top);
@@ -89,8 +90,12 @@ main { padding: var(--top) var(--m) 140px; }
 
 /* proyecto */
 .texto > * + * { margin-top: 1.2em; }
-.texto h1 { font-weight: 700; text-transform: lowercase; }
-.texto h1 .y { font-weight: 400; }
+.texto h1, .texto h2 { font-weight: 700; text-transform: lowercase; }
+.texto h1 .y, .texto h2 .y { font-weight: 400; }
+.parte { margin-top: 6em; }
+.videos a { color: var(--link); text-decoration: none; }
+.videos a:hover { text-decoration: underline; }
+.nota, .texto .nota a { color: var(--gris); }
 .tipo, .pie { color: var(--gris); }
 .tipo { margin-top: 0 !important; }
 .creditos { display: grid; grid-template-columns: max-content 1fr; gap: 0 1em; }
@@ -116,6 +121,10 @@ main { padding: var(--top) var(--m) 140px; }
 .publicar textarea, .publicar .t { min-width: 0; width: 100%; }
 .publicar button, .esborrar { font: inherit; border: 0; background: none; padding: 0; text-decoration: underline; cursor: pointer; color: var(--link); justify-self: start; }
 .esborrar { grid-column: 2; justify-self: start; color: var(--gris); }
+
+/* about de Guillem: el CV, una línea por cosa */
+.guillem h1 { font-weight: 700; margin-bottom: 1.2em; }
+.cv li + li { margin-top: .5em; }
 
 /* about */
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }

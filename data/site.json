@@ -1,7 +1,11 @@
 {
   "title": "laSADCUM",
   "url": null,
-  "langs": ["ca", "es", "en"],
+  "langs": [
+    "ca",
+    "es",
+    "en"
+  ],
   "description": {
     "ca": "laSADCUM, companyia de dansa. Barcelona.",
     "es": "laSADCUM, compañía de danza. Barcelona.",
@@ -14,20 +18,69 @@
   },
   "newsletter": "https://google.us21.list-manage.com/subscribe/post?u=411c6a0b6a6b5532a3580e7f8&id=ac87bff6e0&f_id=004af6e6f0",
   "lists": {
-    "trabajos": [
-      { "project": "everafter" },
-      { "title": "OLIVER", "year": 2024 },
-      { "project": "navaja" },
-      { "project": "twink-twink-twink" },
-      { "project": "aclucalls" },
-      { "project": "capsula-aclucalls", "under": "aclucalls" },
-      { "project": "untitled" },
-      { "project": "the-lesson" },
-      { "project": "requiem-the-lesson", "under": "the-lesson" },
-      { "project": "classmates", "under": "the-lesson" },
-      { "project": "the-uncanny-valley" },
-      { "project": "dance-the-internet" },
-      { "project": "el-cos-emmascarat", "under": "dance-the-internet" }
-    ]
+    "propias": {
+      "title": {
+        "ca": "Produccions pròpies",
+        "es": "Producciones propias",
+        "en": "Own productions"
+      },
+      "items": [
+        {
+          "project": "everafter"
+        },
+        {
+          "project": "navaja"
+        },
+        {
+          "project": "aclucalls",
+          "parts": [
+            "capsula-aclucalls"
+          ]
+        },
+        {
+          "project": "the-lesson",
+          "parts": [
+            "requiem-the-lesson",
+            "classmates"
+          ]
+        },
+        {
+          "project": "the-uncanny-valley"
+        }
+      ]
+    },
+    "otros": {
+      "title": {
+        "ca": "Col·laboracions, encàrrecs i altres",
+        "es": "Colaboraciones, encargos y otros",
+        "en": "Collaborations, commissions and others"
+      },
+      "items": [
+        {
+          "title": "CLICK TAROLA",
+          "year": 2026
+        },
+        {
+          "title": "CYBERMEDIEVAL",
+          "year": 2026
+        },
+        {
+          "title": "OLIVER",
+          "year": 2024
+        },
+        {
+          "project": "twink-twink-twink"
+        },
+        {
+          "project": "untitled"
+        },
+        {
+          "project": "dance-the-internet"
+        },
+        {
+          "project": "el-cos-emmascarat"
+        }
+      ]
+    }
   }
 }

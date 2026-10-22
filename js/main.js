@@ -24,7 +24,7 @@ document.querySelectorAll('a.video').forEach(a => a.addEventListener('click', e 
   f.src = a.dataset.embed + (a.dataset.embed.includes('?') ? '&' : '?') + 'autoplay=1';
   f.allow = 'autoplay; fullscreen; picture-in-picture';
   f.allowFullscreen = true;
-  a.parentNode.replaceWith(f);
+  a.replaceWith(f);
 }));
 
 // calendario: lo que ya ha pasado desde el último build baja a la columna gris

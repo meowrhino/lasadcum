@@ -78,12 +78,16 @@
     "es": "Fotos Andrea Campillo",
     "en": "Pics Andrea Campillo"
   },
-  "video": "https://player.vimeo.com/video/424312527?h=94f1c6b7ec",
   "cover": "1",
   "photos": [
     "1",
     "2",
     "3",
     "4"
+  ],
+  "videos": [
+    {
+      "url": "https://player.vimeo.com/video/424312527?h=94f1c6b7ec"
+    }
   ]
 }

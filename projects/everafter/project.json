@@ -146,7 +146,6 @@
     "es": "Fotos: Alan Gomi",
     "en": "Pics: Alan Gomi"
   },
-  "video": "https://player.vimeo.com/video/1185982055?badge=0&autopause=0&player_id=0&app_id=58479",
   "cover": "1",
   "photos": [
     "1",
@@ -157,5 +156,27 @@
     "6",
     "7",
     "8"
+  ],
+  "videos": [
+    {
+      "title": "Promotional trailer",
+      "url": "https://youtu.be/BUSVn1Zq9VQ"
+    },
+    {
+      "title": "SneakPeek Trailer 1",
+      "url": "https://youtu.be/1il7plhJMGI"
+    },
+    {
+      "title": "SneakPeek Trailer 2",
+      "url": "https://youtu.be/GxFjD1N2vx4"
+    },
+    {
+      "title": "SneakPeek Trailer 3",
+      "url": "https://youtu.be/0wr2uzDWm0I"
+    },
+    {
+      "title": "SneakPeek Trailer 4",
+      "url": "https://youtu.be/dqUWCgGCeyo"
+    }
   ]
 }

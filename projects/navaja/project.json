@@ -186,7 +186,6 @@
     "es": "Fotos: Alan Gomi",
     "en": "Pics: Alan Gomi"
   },
-  "video": "https://player.vimeo.com/video/925945618?h=5ea57a490b",
   "cover": "1",
   "photos": [
     "1",
@@ -194,5 +193,10 @@
     "3",
     "4",
     "5"
+  ],
+  "videos": [
+    {
+      "url": "https://player.vimeo.com/video/925945618?h=5ea57a490b"
+    }
   ]
 }
