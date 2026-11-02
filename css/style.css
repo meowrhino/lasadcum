@@ -65,6 +65,14 @@ main { padding: var(--top) var(--m) 140px; }
 .lista a:visited, .fechas a:visited, .bio a:visited, .texto p a:visited { color: var(--visto); }
 .trabajos .t { text-transform: lowercase; }
 .trabajos .etiqueta:first-child { margin-top: 0; }
+/* la portada del proyecto al pasar por el título, fija a la derecha */
+.cover {
+  position: fixed; z-index: 1;
+  right: var(--m); top: var(--top);
+  width: min(42vw, 560px); max-height: calc(100vh - var(--top) - 100px);
+  object-fit: contain; object-position: right top;
+  pointer-events: none;
+}
 .contacto form { display: inline; }
 .contacto input, .contacto button { font: inherit; border: 0; border-bottom: 1px solid; padding: 0; background: none; border-radius: 0; color: inherit; }
 .contacto input { width: 12em; }
@@ -90,10 +98,11 @@ main { padding: var(--top) var(--m) 140px; }
 .flecha { display: inline-block; transition: transform .2s; }
 .abierto .flecha { transform: rotate(90deg); }
 .videos iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; margin: .8em 0 1.4em; }
+.videos .vertical iframe { width: auto; height: min(80vh, 640px); max-width: 100%; aspect-ratio: 9 / 16; }
 .nota, .texto .nota a { color: var(--gris); }
 .tipo, .pie { color: var(--gris); }
 .tipo { margin-top: 0 !important; }
-.creditos { display: grid; grid-template-columns: max-content 1fr; gap: 0 1em; }
+.creditos { display: grid; grid-template-columns: fit-content(16em) 1fr; gap: 0 1em; }
 .creditos dt { color: var(--gris); }
 .creditos dd { margin: 0; }
 .fotos { display: grid; gap: var(--m); }
@@ -124,6 +133,10 @@ main { padding: var(--top) var(--m) 140px; }
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
+.bio .cv { margin: 1.2em 0 0 2em; }
+/* tres fotos del blog, al azar, debajo de la bio */
+.azar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--m); margin-top: 3em; max-width: 920px; }
+.azar img { max-height: 40vh; width: auto; min-width: 0; flex: 0 1 auto; }
 /* la firma: abajo a la derecha, a la altura de los idiomas, en gris y sin subrayar */
 .firma { position: absolute; right: var(--m); bottom: 28px; color: var(--gris); font-size: .7rem; }
 .firma a { color: inherit; text-decoration: none; }
@@ -138,6 +151,7 @@ main { padding: var(--top) var(--m) 140px; }
   .firma { bottom: 16px; }
   .publicar label, .publicar p,
   .lista li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
+  .cover { display: none; }
   .gigante { bottom: 12vh; }
 }
 

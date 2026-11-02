@@ -16,6 +16,6 @@ tamaño, listas de fecha + enlace y la marca partida en colores (billwurtz.com).
 
 Sale de la web de Cargo: todo su contenido (textos, fotos originales, meta) está en
 `Desktop/lasadcum/contenido`, y la copia estática que hubo aquí, en el historial (`9236363`).
-Falta: el email de contacto, las fotos de Click Tarola y los textos nuevos en ca y en.
+Falta: las fotos de Click Tarola y los textos nuevos en ca y en.
 
 Lo que edita laSADCUM: [GUIA.md](GUIA.md). Si el build falla: [CLAUDE.md](CLAUDE.md).

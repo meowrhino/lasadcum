@@ -98,17 +98,19 @@ export const entradas = lista => (Array.isArray(lista?.projects) ? lista.project
 export function pintarPost(x, { src = f => f, borrar = false } = {}) {
   const iso = String(x.created_at);
   const fecha = `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(2, 4)}`;
-  const foto = x.image
-    ? `<img src="${/^(https?:|\/)/.test(x.image.src) ? esc(x.image.src) : src(esc(x.image.src))}" width="${x.image.width}" height="${x.image.height}" alt="" loading="lazy">`
-    : '';
+  const foto = x.image ? fotoPost(x, src) : '';
   return `<li id="p${x.id}">${String(x.text).split(/\n{2,}/).map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('')}${foto}`
     + `<a class="d" href="#p${x.id}">${fecha}</a>${borrar ? ` <button class="esborrar" data-id="${x.id}">esborrar</button>` : ''}</li>`;
 }
 
+/** La foto de un post (la usa también el about, para sus fotos al azar). */
+export const fotoPost = (x, src = f => f, extra = '') =>
+  `<img src="${/^(https?:|\/)/.test(x.image.src) ? esc(x.image.src) : src(esc(x.image.src))}" width="${x.image.width}" height="${x.image.height}" alt="" loading="lazy"${extra}>`;
+
 /** Un vídeo: el enlace lleva a su página (se ve sin JS) y js/main.js lo
     incrusta al pulsar; los de YouTube, desde youtube-nocookie. */
 export const videoPagina = u => (u.includes('player.vimeo.com') ? 'https://vimeo.com/' + (u.match(/video\/(\d+)/) || [])[1] : u);
-export const youtube = u => (String(u).match(/(?:youtu\.be\/|[?&]v=|embed\/)([\w-]{11})/) || [])[1];
+export const youtube = u => (String(u).match(/(?:youtu\.be\/|[?&]v=|embed\/|shorts\/)([\w-]{11})/) || [])[1];
 export const videoIncrustado = u => (youtube(u) ? 'https://www.youtube-nocookie.com/embed/' + youtube(u) : u);
 
 export function crearSitio({ site, about, agenda, guillem, blog = [], proyectos, base = '', origen = '',
@@ -245,8 +247,8 @@ ${p.kind ? `<p class="tipo">${esc(t(p.kind, l))}</p>` : ''}
 ${text.map(x => `<p>${md(x)}</p>`).join('\n')}
 ${awards.length ? `<ul class="premios">${awards.map(a => `<li>${esc(a)}</li>`).join('')}</ul>` : ''}
 ${credits ? `<dl class="creditos">${credits}</dl>` : ''}
-${videos.length ? `<ul class="videos">${videos.map(v => `<li><a class="video" href="${esc(videoPagina(v.url))}" data-embed="${esc(videoIncrustado(v.url))}"><span class="flecha" aria-hidden="true">▸</span> ${esc(v.title || t(M.trailer, l))}</a></li>`).join('')}</ul>
-<p class="nota"><a href="${url(l, 'contacto/')}">${esc(t(M.completa, l))}</a></p>` : ''}
+${videos.length ? `<ul class="videos">${videos.map(v => `<li${String(v.url).includes('/shorts/') ? ' class="vertical"' : ''}><a class="video" href="${esc(videoPagina(v.url))}" data-embed="${esc(videoIncrustado(v.url))}"><span class="flecha" aria-hidden="true">▸</span> ${esc(v.title || t(M.trailer, l))}</a></li>`).join('')}</ul>${p.full_note === false ? '' : `
+<p class="nota"><a href="${url(l, 'contacto/')}">${esc(t(M.completa, l))}</a></p>`}` : ''}
 ${p.photo_credit ? `<p class="pie">${esc(t(p.photo_credit, l))}</p>` : ''}
 </div>
 <div class="fotos">
@@ -263,8 +265,9 @@ ${(p.photos || []).map(fotoTag).join('\n')}
     body: `${listas.map(lista => `<h2 class="etiqueta">${esc(t(lista.name, l))}</h2>\n<ul class="lista">\n${lista.entradas
       .filter(e => e.visible && porSlug[e.slug]).map(e => {
         const p = porSlug[e.slug];
-        return `<li><span class="y">${p.year}</span><span class="t"><a href="${url(l, `trabajos/${p.slug}/`)}">${esc(titulo(p, l))}</a></span></li>`;
-      }).join('\n')}\n</ul>`).join('\n')}`,
+        const cover = p.cover ? ` data-cover="${src(foto(p.slug, p.cover))}"` : '';
+        return `<li><span class="y">${p.year}</span><span class="t"><a href="${url(l, `trabajos/${p.slug}/`)}"${cover}>${esc(titulo(p, l))}</a></span></li>`;
+      }).join('\n')}\n</ul>`).join('\n')}\n<img class="cover" alt="" hidden>`,
   });
 
   const proyecto = (p, l) => pagina({
@@ -275,7 +278,7 @@ ${(p.photos || []).map(fotoTag).join('\n')}
     body: [p, ...(partesDe[p.slug] || []).map(s => porSlug[s]).filter(Boolean)].map((x, i) => ficha(x, l, i ? 'h2' : 'h1')).join('\n'),
   });
 
-  // el about enlaza los proyectos que nombra, y Guillem Jiménez, su CV en otra pestaña
+  // el about enlaza los proyectos que nombra, y Guillem Jiménez, su CV (js/main.js lo despliega ahí mismo)
   function aboutTexto(l) {
     const nombres = proyectos.filter(p => !padreDe[p.slug]).flatMap(p => LANGS.map(x => [titulo(p, x), p.slug]))
       .sort((a, b) => b[0].length - a[0].length);
@@ -287,13 +290,15 @@ ${(p.photos || []).map(fotoTag).join('\n')}
         const re = new RegExp(`(?<![\\wÀ-ÿ>])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\s*\\(\\d{4}\\))?`);
         if (re.test(h)) { h = h.replace(re, m => `<a href="${url(l, `trabajos/${s}/`)}">${m}</a>`); hechos.add(s); }
       }
-      return `<p>${h.replace(/Guillem Jiménez/, `<a href="${url(DEF, 'about/guillem/')}" target="_blank" rel="noopener">Guillem Jiménez</a>`)}</p>`;
+      return `<p>${h.replace(/Guillem Jiménez/, `<a class="guillem" href="${url(DEF, 'about/guillem/')}" target="_blank" rel="noopener">Guillem Jiménez</a>`)}</p>`;
     }).join('\n');
   }
   const aboutPag = l => pagina({
     l, path: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
     desc: (about[l] || about[DEF])[0],
-    body: `<div class="bio">\n${aboutTexto(l)}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
+    body: `<div class="bio">\n${aboutTexto(l)}\n</div>
+<template id="cv"><ul class="cv">${guillem.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul></template>
+<div class="azar">\n${blog.filter(x => x.image).map((x, i) => fotoPost(x, src, i > 2 ? ' hidden' : '')).join('\n')}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
   });
 
   // calendario: lo que viene en negro, lo que pasó en gris

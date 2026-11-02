@@ -43,6 +43,10 @@ Copiar de `~/Documents/GitHub/jordis-twoitter` (Workers + Hono + D1 + R2) y quit
 (solo esas rutas pasan por el Worker; el resto lo sirve Cloudflare directamente). D1 `lasadcum-db`,
 R2 `lasadcum-media`, secretos `PASSWORD` y `AUTH_SECRET` con `wrangler secret put`.
 
+El **about** enseña tres fotos al azar de los posts (`<div class="azar">`, hoy de
+`data/blog-ejemplo.json`): el Worker tiene que rellenarlo también, con `HTMLRewriter` en `/about/`
+(y `/es/about/`, `/en/about/`) o dejando que `js/main.js` las pida a `/api/posts`.
+
 ## base de datos (D1)
 
 ```sql

@@ -32,6 +32,27 @@ const mezcla = [...PALETA].sort(() => Math.random() - .5);
 document.querySelectorAll('.gigante span').forEach(s =>
   s.addEventListener('pointerenter', () => s.style.setProperty('--pinta', PALETA[azar()])));
 
+// treballs: la portada del proyecto al pasar por el título
+const cover = document.querySelector('.cover');
+if (cover) document.querySelectorAll('[data-cover]').forEach(a => {
+  a.addEventListener('pointerenter', () => { cover.src = a.dataset.cover; cover.hidden = false; });
+  a.addEventListener('pointerleave', () => { cover.hidden = true; });
+});
+
+// about: tres fotos del blog al azar (sin JS, las tres últimas)
+const azar3 = [...document.querySelectorAll('.azar img')].sort(() => Math.random() - .5);
+azar3.forEach((img, i) => (img.hidden = i > 2));
+
+// about: el CV de Guillem se despliega debajo del párrafo; otro clic lo cierra (cmd+clic, otra pestaña)
+const cv = document.querySelector('#cv');
+if (cv) document.querySelectorAll('a.guillem').forEach(a => a.addEventListener('click', e => {
+  if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+  e.preventDefault();
+  const p = a.closest('p'), abierto = p.nextElementSibling?.matches('.cv');
+  if (abierto) return p.nextElementSibling.remove();
+  p.after(cv.content.cloneNode(true));
+}));
+
 // los vídeos solo se cargan al pedirlos: la flecha mira abajo y el vídeo sale debajo; otro clic lo cierra
 document.querySelectorAll('a.video').forEach(a => a.addEventListener('click', e => {
   e.preventDefault();

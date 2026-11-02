@@ -85,6 +85,10 @@
       },
       "description": "(opcional) Los vídeos: [{ \"url\": \"https://youtu.be/…\", \"title\": \"Trailer\" }]."
     },
+    "full_note": {
+      "type": "boolean",
+      "description": "(opcional) false: sin la nota «Per veure la peça completa, poseu-vos en contacte» debajo de los vídeos (cuando no hay vídeo completo)."
+    },
     "photo_credit": {
       "$ref": "#/$defs/texto",
       "description": "(opcional) Quién ha hecho las fotos: \"Fotos: Alan Gomis\"."

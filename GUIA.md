@@ -130,7 +130,8 @@ página pero **no salir en la lista** (para mandarlo a alguien): `{ "project": "
 | `text` | el texto, en párrafos y por idioma | `{ "ca": ["…"], "es": ["…"], "en": ["…"] }` |
 | `awards` | *(opcional)* los premios, uno por línea | `{ "ca": ["Premi …"], … }` |
 | `credits` | la ficha artística, un rol por línea | `[{ "role": { "ca": "Direcció", "es": "Dirección", "en": "Director" }, "name": "Guillem Jiménez" }]` |
-| `videos` | *(opcional)* YouTube o Vimeo. Sin `title` dice «veure el tràiler» | `[{ "url": "https://youtu.be/…", "title": "Trailer" }]` |
+| `videos` | *(opcional)* YouTube (también los shorts, que salen en vertical) o Vimeo. Sin `title` dice «veure el tràiler» | `[{ "url": "https://youtu.be/…", "title": "Trailer" }]` |
+| `full_note` | *(opcional)* `false` quita «Per veure la peça completa…» de debajo de los vídeos, si no hay vídeo completo | `false` |
 | `photo_credit` | *(opcional)* quién ha hecho las fotos | `"Fotos: Alan Gomis"` |
 | `cover` | la foto que sale al compartir el enlace (WhatsApp, Instagram…), por su número | `"1"` |
 | `photos` | las fotos, en el orden en que salen | `["1", "2", "3"]` |
@@ -168,9 +169,11 @@ los campos. El orden da igual: la web ordena por fecha y pasa sola al gris lo qu
 ## 6. El about, Guillem y lo general
 
 - **El about**: `data/about.json`, un párrafo por línea en cada idioma.
-- **El CV de Guillem**: `data/guillem.json`, una línea por cosa, en el orden en que salen.
-- **Instagram, Vimeo, la newsletter, el correo**: `data/site.json`. El correo, `"email"`: mientras
-  sea `null`, no sale.
+- **El CV de Guillem**: `data/guillem.json`, una línea por cosa, en el orden en que salen. Se
+  despliega en el about al pulsar su nombre.
+- **Las fotos del about**: tres al azar de las del blog; no hay que tocar nada.
+- **Instagram, Vimeo, la newsletter, el correo**: `data/site.json`. El correo, `"email"`: sale el
+  primero en contacte (con `null`, no sale).
 - **Los textos fijos** (el menú, «veure el tràiler», «Per veure la peça completa…»):
   `data/site.json` → `menu`.
 
