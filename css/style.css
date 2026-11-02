@@ -133,7 +133,6 @@ main { padding: var(--top) var(--m) 140px; }
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
-.bio .cv { margin: 1.2em 0 0 2em; }
 /* tres fotos del blog, al azar, debajo de la bio */
 .azar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--m); margin-top: 3em; max-width: 920px; }
 .azar img { max-height: 40vh; width: auto; min-width: 0; flex: 0 1 auto; }

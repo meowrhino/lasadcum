@@ -278,7 +278,7 @@ ${(p.photos || []).map(fotoTag).join('\n')}
     body: [p, ...(partesDe[p.slug] || []).map(s => porSlug[s]).filter(Boolean)].map((x, i) => ficha(x, l, i ? 'h2' : 'h1')).join('\n'),
   });
 
-  // el about enlaza los proyectos que nombra, y Guillem Jiménez, su CV (js/main.js lo despliega ahí mismo)
+  // el about enlaza los proyectos que nombra, y Guillem Jiménez, su CV en otra pestaña
   function aboutTexto(l) {
     const nombres = proyectos.filter(p => !padreDe[p.slug]).flatMap(p => LANGS.map(x => [titulo(p, x), p.slug]))
       .sort((a, b) => b[0].length - a[0].length);
@@ -290,14 +290,13 @@ ${(p.photos || []).map(fotoTag).join('\n')}
         const re = new RegExp(`(?<![\\wÀ-ÿ>])${name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(\\s*\\(\\d{4}\\))?`);
         if (re.test(h)) { h = h.replace(re, m => `<a href="${url(l, `trabajos/${s}/`)}">${m}</a>`); hechos.add(s); }
       }
-      return `<p>${h.replace(/Guillem Jiménez/, `<a class="guillem" href="${url(DEF, 'about/guillem/')}" target="_blank" rel="noopener">Guillem Jiménez</a>`)}</p>`;
+      return `<p>${h.replace(/Guillem Jiménez/, `<a href="${url(DEF, 'about/guillem/')}" target="_blank" rel="noopener">Guillem Jiménez</a>`)}</p>`;
     }).join('\n');
   }
   const aboutPag = l => pagina({
     l, path: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
     desc: (about[l] || about[DEF])[0],
     body: `<div class="bio">\n${aboutTexto(l)}\n</div>
-<template id="cv"><ul class="cv">${guillem.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul></template>
 <div class="azar">\n${blog.filter(x => x.image).map((x, i) => fotoPost(x, src, i > 2 ? ' hidden' : '')).join('\n')}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
   });
 

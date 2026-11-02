@@ -169,8 +169,7 @@ los campos. El orden da igual: la web ordena por fecha y pasa sola al gris lo qu
 ## 6. El about, Guillem y lo general
 
 - **El about**: `data/about.json`, un párrafo por línea en cada idioma.
-- **El CV de Guillem**: `data/guillem.json`, una línea por cosa, en el orden en que salen. Se
-  despliega en el about al pulsar su nombre.
+- **El CV de Guillem**: `data/guillem.json`, una línea por cosa, en el orden en que salen.
 - **Las fotos del about**: tres al azar de las del blog; no hay que tocar nada.
 - **Instagram, Vimeo, la newsletter, el correo**: `data/site.json`. El correo, `"email"`: sale el
   primero en contacte (con `null`, no sale).
