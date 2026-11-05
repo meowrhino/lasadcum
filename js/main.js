@@ -46,9 +46,9 @@ if (matchMedia('(pointer: coarse)').matches)
     if (a.origin === location.origin) a.removeAttribute('target');
   });
 
-// about: tres fotos del blog al azar (sin JS, las tres últimas)
-const azar3 = [...document.querySelectorAll('.azar img')].sort(() => Math.random() - .5);
-azar3.forEach((img, i) => (img.hidden = i > 2));
+// about: una foto del blog al azar (sin JS, la del post más nuevo; con el Worker ya llega solo una)
+const fotos = [...document.querySelectorAll('.azar img')].sort(() => Math.random() - .5);
+fotos.forEach((img, i) => (img.hidden = i > 0));
 
 
 // los vídeos solo se cargan al pedirlos: la flecha mira abajo y el vídeo sale debajo; otro clic lo cierra

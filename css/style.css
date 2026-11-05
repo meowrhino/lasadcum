@@ -131,7 +131,7 @@ main { padding: var(--top) var(--m) 140px; }
 .sortir button { color: var(--gris); }
 
 /* about de Guillem: el CV, una línea por cosa; sin marca ni menú encima, empieza arriba */
-.guillem main { padding-top: calc(var(--m) + 8px); }
+.guillem main { padding-top: var(--m); }   /* arriba, a la misma distancia del borde que por los lados */
 .guillem h1 { font-weight: 700; margin-bottom: 1.2em; }
 .cv li + li { margin-top: .5em; }
 
@@ -139,7 +139,7 @@ main { padding: var(--top) var(--m) 140px; }
 .etiqueta { color: var(--gris); margin: 3em 0 .6em; }
 .bio { max-width: 920px; }
 .bio p + p { margin-top: 1.2em; }
-/* tres fotos del blog, al azar, debajo de la bio */
+/* una foto del blog, al azar, debajo de la bio */
 .azar { display: flex; flex-wrap: wrap; align-items: flex-start; gap: var(--m); margin-top: 3em; max-width: 920px; }
 .azar img { max-height: 40vh; width: auto; min-width: 0; flex: 0 1 auto; }
 /* la firma: abajo a la derecha, a la altura de los idiomas, en gris y sin subrayar */

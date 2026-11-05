@@ -5,7 +5,7 @@
    rutas de run_worker_first (wrangler.jsonc):
 
      /blog/                los posts, dentro del HTML (se leen sin JS)
-     /about/ (y es, en)    tres fotos de los posts, al azar
+     /about/ (y es, en)    una foto de los posts, al azar
      /admin/               publicar y esborrar (con la contraseña)
      /api/*                login, logout, posts, export
      /media/*              las fotos de los posts, de R2
@@ -160,7 +160,7 @@ export default {
     try {
       if (p === '/blog/') return rellenar(req, env, 'ol.posts', async () => (await posts(env)).map((x) => pintarPost(x)).join('\n'));
       if (/^\/((es|en)\/)?about\/$/.test(p)) return rellenar(req, env, 'div.azar', async () =>
-        (await leer(env, `${VISIBLES} AND image_key IS NOT NULL ORDER BY RANDOM() LIMIT 3`)).map((x) => fotoPost(x)).join('\n'));
+        (await leer(env, `${VISIBLES} AND image_key IS NOT NULL ORDER BY RANDOM() LIMIT 1`)).map((x) => fotoPost(x)).join('\n'));
       if (p.startsWith('/media/') && m === 'GET') return media(decodeURIComponent(p.slice(7)), env);
       if (p === '/api/posts' && m === 'GET') return Response.json(await posts(env));
       if (p === '/api/login' && m === 'POST') return login(req, env);

@@ -14,7 +14,7 @@ tamaño, listas de fecha + enlace y la marca partida en colores (billwurtz.com).
 - `build/paginas.mjs` (la plantilla), `build/build.mjs` (→ `dist/`), `build/preview.mjs` (Live
   Server, con el `index.html` de la raíz).
 - `worker/index.mjs`: el blog. Cloudflare sirve `dist/` y solo pasan por el Worker `/blog/`, el
-  about (sus tres fotos al azar), `/admin/`, `/api/*` y `/media/*` (`wrangler.jsonc`). Posts en
+  about (su foto al azar), `/admin/`, `/api/*` y `/media/*` (`wrangler.jsonc`). Posts en
   D1, fotos en R2, la contraseña en el secreto `PASSWORD`. Probarlo en local: un `.dev.vars` con
   `PASSWORD=…` y `npx wrangler@4 dev`.
 - Publica: la copia de laSADCUM, Workers Builds en su Cloudflare (`wrangler.jsonc`); la nuestra,

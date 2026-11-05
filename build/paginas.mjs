@@ -108,7 +108,7 @@ export function pintarPost(x, { src = f => f, borrar = false } = {}) {
     + `<a class="d" href="#p${x.id}">${fecha}</a>${borrar ? ` <button class="esborrar" data-id="${x.id}">esborrar</button>` : ''}</li>`;
 }
 
-/** La foto de un post (la usa también el about, para sus fotos al azar). El alt, el
+/** La foto de un post (la usa también el about, para su foto al azar). El alt, el
     nombre y el principio del texto: con alt="" Google la toma por decorativa y no la indexa. */
 const altPost = x => {
   const t = `laSADCUM: ${String(x.text ?? '').replace(/\s+/g, ' ').trim()}`;
@@ -312,7 +312,7 @@ ${(p.photos || []).map(fotoTag).join('\n')}
     l, path: 'about/', title: `about · ${site.title}`, current: 'about', cls: 'about',
     desc: (about[l] || about[DEF])[0],
     body: `<div class="bio">\n${aboutTexto(l)}\n</div>
-<div class="azar">\n${blog.filter(x => x.image).map((x, i) => fotoPost(x, src, i > 2 ? ' hidden' : '')).join('\n')}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
+<div class="azar">\n${blog.filter(x => x.image).map((x, i) => fotoPost(x, src, i > 0 ? ' hidden' : '')).join('\n')}\n</div>\n<p class="firma">web: <a href="https://meowrhino.studio" target="_blank" rel="noopener">meowrhino.studio</a></p>`,
   });
 
   // calendario: lo que viene en negro, lo que pasó en gris

@@ -174,7 +174,7 @@ los campos. El orden da igual: la web ordena por fecha y pasa sola al gris lo qu
 
 - **El about**: `data/about.json`, un párrafo por línea en cada idioma.
 - **El CV de Guillem**: `data/guillem.json`, una línea por cosa, en el orden en que salen.
-- **Las fotos del about**: tres al azar de las del blog; no hay que tocar nada.
+- **La foto del about**: una al azar de las del blog, distinta en cada visita; no hay que tocar nada.
 - **Instagram, Vimeo, la newsletter, el correo**: `data/site.json`. El correo, `"email"`: sale el
   primero en contacte (con `null`, no sale).
 - **Los textos fijos** (el menú, «veure el tràiler», «Per veure la peça completa…»):
@@ -207,8 +207,8 @@ momento, sin esperar a nada.
 1. Entrad en **lasadcum.com/admin/** y poned la contraseña.
 2. Escribid el texto (dejad una línea en blanco entre párrafos) y, si queréis, elegid una imagen:
    se pasa sola al formato de la web, no hace falta imgToWeb.
-3. **publicar**. Sale arriba de todo en lasadcum.com/blog/, y su foto, entre las tres que salen al
-   azar en el about.
+3. **publicar**. Sale arriba de todo en lasadcum.com/blog/, y su foto puede salir, al azar,
+   en el about.
 
 - **Corregir un post**: no se edita. Se borra (**esborrar**, al lado de su fecha) y se vuelve a
   publicar bien. Lo borrado no se pierde del todo: si fue sin querer, escribidnos.
