@@ -23,6 +23,7 @@ h1, h2, p, ul, ol, dl { margin: 0; font-size: 1rem; font-weight: 400; }
 ul, ol { padding: 0; list-style: none; }
 a { color: inherit; text-underline-offset: .15em; }
 img { display: block; max-width: 100%; height: auto; }
+[hidden] { display: none !important; }   /* si no, el display: block de arriba gana al hidden (la foto de treballs se quedaba) */
 .oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
 /* menú arriba, idioma abajo del todo, la marca arriba a la izquierda: se van con la página */
