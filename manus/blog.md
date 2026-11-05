@@ -1,8 +1,25 @@
 # blog de laSADCUM: el plan para el Worker
 
-Lo que falta programar. El diseño ya está hecho (`blog/` y `admin/` salen de `build/paginas.mjs`); los
-posts que se ven ahora son de ejemplo (`data/blog-ejemplo.json`) y desaparecen cuando el Worker
-ponga los de verdad.
+**Hecho el 2026-11-05** en `worker/index.mjs` (+ `js/admin.js`, la página `/login/` en
+`build/paginas.mjs`). Lo de abajo es el plan; lo que cambió al programarlo:
+
+- **Decidido**: una sola persona publica → una contraseña (manu). Por defecto, a falta de que lo
+  digan: un post no se edita, se borra y se vuelve a publicar; el blog no sale en la portada.
+- **Sin Hono**: un `fetch` con siete rutas; menos de 200 líneas y ninguna dependencia.
+- **Un solo secreto**, `PASSWORD`: firma también la cookie (sin `AUTH_SECRET`). Cambiarla cierra
+  todas las sesiones.
+- **La tabla se crea sola** con la primera petición (`CREATE TABLE IF NOT EXISTS`): nada que
+  migrar a mano. D1 y R2 van sin id en `wrangler.jsonc`: wrangler 4 los crea en su cuenta con el
+  primer deploy.
+- **Escribir exige `Origin` de la propia web** (y la cookie es `SameSite=Strict`) en vez de una
+  cabecera propia: así vale también el formulario sin JS para un post sin foto.
+- **La foto**: `canvas.toBlob` a webp; donde no sabe (Safari, iPhone), jpg. Sin el WASM de jordis
+  (ni CDN): un jpg q85 de 2000 px está bien.
+- `/login/` la escribe el build, con el diseño de la web; si la contraseña no es, el Worker
+  devuelve la misma con el aviso visible.
+- El about: el Worker pone tres fotos al azar (`ORDER BY RANDOM() LIMIT 3`).
+- La página del blog y el admin salen sin `etag` y con `no-store`: el fichero es el mismo, pero
+  los posts cambian.
 
 ## qué es
 
@@ -81,6 +98,4 @@ Un post en `/api/posts` sale con la forma de `data/blog-ejemplo.json`:
 
 ## pendiente de decidir
 
-- La contraseña: una sola para la compañía (como jordis) o una por persona.
-- Si `/admin/` deja **editar** un post además de borrarlo (jordis lo hace).
-- Si el blog sale también en la portada (el último post, pequeño).
+Nada: arriba, "Decidido".

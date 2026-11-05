@@ -40,6 +40,9 @@ arregla. Al publicarse, la Action cierra el issue sola.
 
 ## Lo que no es del build
 
-- **El blog** (`blog/`, `admin/`): hoy son maquetas con `data/blog-ejemplo.json`. El Worker
-  que los hará funcionar está planeado en `manus/blog.md`, sin programar.
-- `manus/`: notas nuestras. No se publica.
+- **El blog**: `worker/index.mjs` (README). Los posts están en D1, en el Cloudflare de
+  laSADCUM, no en el repo: un fallo del blog no sale en el build, sino en *Workers →
+  lasadcum → Logs*. En la vista previa y en github.io salen los de `data/blog-ejemplo.json`.
+- `manus/`: notas nuestras (el plan del blog, la reunión). No se publica.
+- Sale de la web de Cargo: todo su contenido (textos, fotos originales, meta) está en
+  `Desktop/lasadcum/contenido`, y la copia estática que hubo aquí, en el historial (`9236363`).

@@ -9,7 +9,8 @@ cambiáis los ficheros en el ordenador y, al subirlos, la web se publica sola.
 > es el código: mejor no tocarlo.
 
 Cuando subís un cambio, la web se actualiza sola en **1 o 2 minutos**. Si os equivocáis en algo,
-la web **no se rompe**: se queda como estaba hasta que lo arregléis (punto 8, *Si algo sale en rojo*).
+la web **no se rompe**: se queda como estaba hasta que lo arregléis (punto 9, *Si algo sale en rojo*).
+El blog va aparte: se escribe desde la propia web (punto 8).
 
 ---
 
@@ -22,7 +23,10 @@ la web **no se rompe**: se queda como estaba hasta que lo arregléis (punto 8, *
    **Clone Repository** → **Clone from GitHub** → entrad con vuestra cuenta → elegid la web →
    elegid una carpeta del ordenador → **Open**. Si pide instalar Git, aceptad.
    **Esa carpeta, fuera de Google Drive o Dropbox**: se pelean con los ficheros de Git.
-5. Instalad la extensión **Live Server** (en VS Code, el icono de los cuadraditos → buscad
+5. Decidle a git quién sois (si no, el primer **Commit** se para): en VS Code, *Terminal* →
+   *New Terminal*, y estas dos líneas, con vuestro nombre y el correo de la cuenta de GitHub:
+   `git config --global user.name "laSADCUM"` y `git config --global user.email "lasadcum@gmail.com"`.
+6. Instalad la extensión **Live Server** (en VS Code, el icono de los cuadraditos → buscad
    "Live Server" → **Install**). Es para ver los cambios antes de subirlos (punto 7).
 
 Para preparar las fotos, **imgToWeb**: https://meowrhino.github.io/imgToWeb/ (las pasa al
@@ -60,7 +64,7 @@ acentos ni espacios.
 2. A la izquierda, abrid el fichero (por ejemplo `data/agenda.json`) y cambiad lo que haga
    falta. Guardad con **Cmd+S**.
    Si algo sale **subrayado en rojo**, hay una coma o unas comillas mal, o un campo mal
-   escrito: arregladlo antes de seguir (punto 8). **VS Code os ayuda**: si pasáis el ratón por
+   escrito: arregladlo antes de seguir (punto 9). **VS Code os ayuda**: si pasáis el ratón por
    encima de un campo (`"title"`, `"year"`…) os dice qué es, y dentro de las llaves,
    **Ctrl+Espacio** os enseña qué campos se pueden poner. Lo sabe por la primera línea de cada
    JSON (`"$schema": …`): **no la borréis**.
@@ -71,7 +75,7 @@ acentos ni espacios.
 
 **Para ver si se ha publicado**: en la página de la web en GitHub, al lado del último cambio sale
 una bolita: amarilla mientras se publica, verde ✓ cuando ya está, roja ✗ si algo ha fallado
-(entonces, el punto 8).
+(entonces, el punto 9).
 
 ---
 
@@ -191,7 +195,28 @@ idioma, una foto que pesa demasiado) salen en una franja amarilla arriba.
 
 ---
 
-## 8. Si algo sale en rojo
+## 8. El blog
+
+El blog **no se toca desde VS Code**: se escribe desde la web, también con el móvil, y sale al
+momento, sin esperar a nada.
+
+1. Entrad en **lasadcum.com/admin/** y poned la contraseña.
+2. Escribid el texto (dejad una línea en blanco entre párrafos) y, si queréis, elegid una imagen:
+   se pasa sola al formato de la web, no hace falta imgToWeb.
+3. **publicar**. Sale arriba de todo en lasadcum.com/blog/, y su foto, entre las tres que salen al
+   azar en el about.
+
+- **Corregir un post**: no se edita. Se borra (**esborrar**, al lado de su fecha) y se vuelve a
+  publicar bien. Lo borrado no se pierde del todo: si fue sin querer, escribidnos.
+- **Una copia de todo el blog**: con la sesión abierta, lasadcum.com/api/export descarga los textos
+  en un fichero (las fotos se quedan en Cloudflare).
+- **Cambiar la contraseña**: en Cloudflare, *Workers & Pages* → **lasadcum** → *Settings* →
+  *Variables and Secrets* → `PASSWORD` → editar. Después hay que volver a entrar.
+- **sortir**, abajo del todo en /admin/, cierra la sesión (en un ordenador que no es vuestro).
+
+---
+
+## 9. Si algo sale en rojo
 
 **Casi siempre es una coma.** Lo que más pasa:
 

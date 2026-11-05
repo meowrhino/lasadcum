@@ -1,9 +1,24 @@
 // La copia de laSADCUM, en Cloudflare: Workers Builds conectado a su repo.
 // Se publica en la raíz; con el dominio en data/site.json → "url", se indexa.
-// El blog (manus/blog.md) añadirá aquí su Worker ("main"), D1 y R2.
+// La web la sirve Cloudflare tal cual (dist/); solo las rutas de
+// run_worker_first pasan por el Worker del blog (worker/index.mjs).
+// D1 y R2 se crean solos en su cuenta con el primer deploy (sin id aquí).
+// El secreto PASSWORD (la contraseña de /admin/) se pone en el panel:
+// Workers → lasadcum → Settings → Variables and Secrets. TRASPASO.md.
 {
   "name": "lasadcum",
+  "main": "worker/index.mjs",
   "compatibility_date": "2026-10-01",
   "build": { "command": "node build/build.mjs" },
-  "assets": { "directory": "./dist", "not_found_handling": "404-page" }
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    "run_worker_first": ["/blog/", "/about/", "/es/about/", "/en/about/", "/admin/", "/api/*", "/media/*"]
+  },
+  "d1_databases": [{ "binding": "DB", "database_name": "lasadcum-blog" }],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "lasadcum-blog" }],
+  // diez intentos de contraseña por minuto y por IP
+  "ratelimits": [{ "name": "LOGIN_LIMIT", "namespace_id": "1001", "simple": { "limit": 10, "period": 60 } }],
+  "observability": { "enabled": true }
 }

@@ -11,3 +11,6 @@ node_modules/
 # De VS Code, solo los ajustes de la web (Sync sin preguntar)
 .vscode/*
 !.vscode/settings.json
+
+# Secretos para probar el Worker en local (wrangler dev): PASSWORD=…
+.dev.vars

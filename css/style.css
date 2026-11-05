@@ -117,13 +117,17 @@ main { padding: var(--top) var(--m) 140px; }
 .posts img { max-height: 80vh; width: auto; }
 
 /* admin: publicar en el blog */
-.publicar label, .publicar p { display: grid; grid-template-columns: 5em minmax(0, 560px); gap: 1em; margin-bottom: 1em; }
+.publicar label, .publicar p { display: grid; grid-template-columns: 6em minmax(0, 560px); gap: 1em; margin-bottom: 1em; }
 .publicar .y, .pista { color: var(--gris); }
-.publicar textarea { font: inherit; border: 0; border-bottom: 1px solid; resize: vertical; padding: 0; }
+.publicar textarea, .publicar input[type=password] { font: inherit; border: 0; border-bottom: 1px solid; resize: vertical; padding: 0; border-radius: 0; }
 .publicar input[type=file] { font: inherit; max-width: 100%; }
-.publicar textarea, .publicar .t { min-width: 0; width: 100%; }
-.publicar button, .esborrar { font: inherit; border: 0; background: none; padding: 0; text-decoration: underline; cursor: pointer; color: var(--link); justify-self: start; }
+.publicar textarea, .publicar .t, .publicar input[type=password] { min-width: 0; width: 100%; }
+.publicar button, .esborrar, .sortir button { font: inherit; border: 0; background: none; padding: 0; text-decoration: underline; cursor: pointer; color: var(--link); justify-self: start; }
+.publicar button:disabled { color: var(--gris); cursor: wait; }
+.publicar .error { color: red; }
 .esborrar { color: var(--gris); margin-left: 1em; }
+.sortir { margin-top: 3em; }
+.sortir button { color: var(--gris); }
 
 /* about de Guillem: el CV, una línea por cosa */
 .guillem h1 { font-weight: 700; margin-bottom: 1.2em; }

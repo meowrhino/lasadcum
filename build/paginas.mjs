@@ -345,16 +345,29 @@ ${nl ? `<li><span class="y">newsletter</span><span class="t"><form action="${esc
     body: `<ol class="posts">\n${blog.map(x => post(x)).join('\n')}\n</ol>`,
   });
 
-  // /admin/: donde la compañía publica en el blog. Solo el diseño; lo programará el Worker
+  // /admin/: donde la compañía publica en el blog. El Worker (worker/index.mjs) pide
+  // la contraseña antes, rellena la lista y recibe el formulario; js/admin.js comprime la foto
   const adminPag = () => pagina({
     l: DEF, path: 'admin/', title: `publicar · ${site.title}`, current: 'blog', cls: 'admin', unIdioma: true, indexar: false,
     body: `<form class="publicar" method="post" action="/api/posts" enctype="multipart/form-data">
 <label><span class="y">text</span><textarea name="text" rows="6" required></textarea></label>
 <label><span class="y">imatge</span><span class="t"><input type="file" name="image" accept="image/*"> <span class="pista">es passa a webp, màx. 2000 px</span></span></label>
-<p><span class="y"></span><button>publicar</button></p>
+<p><span class="y"></span><span><button>publicar</button> <span class="pista estat" role="status"></span></span></p>
 </form>
 <h2 class="etiqueta">publicat</h2>
-<ol class="posts admin-posts">\n${blog.map(x => post(x, true)).join('\n')}\n</ol>`,
+<ol class="posts admin-posts">\n${blog.map(x => post(x, true)).join('\n')}\n</ol>
+<form class="sortir" method="post" action="/api/logout"><button>sortir</button></form>
+<script src="${src('js/admin.js')}" defer></script>`,
+  });
+
+  // /login/: la contraseña de /admin/. Si no es, el Worker devuelve esta misma con el aviso visible
+  const loginPag = () => pagina({
+    l: DEF, path: 'login/', title: `entrar · ${site.title}`, current: 'blog', cls: 'admin', unIdioma: true, indexar: false,
+    body: `<form class="publicar" method="post" action="/api/login">
+<label><span class="y">contrasenya</span><input type="password" name="password" required autocomplete="current-password" autofocus></label>
+<p class="error" hidden><span class="y"></span><span>no és aquesta</span></p>
+<p><span class="y"></span><button>entrar</button></p>
+</form>`,
   });
 
   /** La 404: GitHub Pages y Cloudflare la sirven en cualquier dirección que no existe. */
@@ -382,6 +395,7 @@ ${nl ? `<li><span class="y">newsletter</span><span class="t"><form action="${esc
     r.push({ ruta: ruta(DEF, 'about/guillem/'), pintar: guillemPag });
     r.push({ ruta: ruta(DEF, 'blog/'), pintar: blogPag });
     r.push({ ruta: ruta(DEF, 'admin/'), oculto: true, pintar: adminPag });
+    r.push({ ruta: ruta(DEF, 'login/'), oculto: true, pintar: loginPag });
     return r;
   }
 
