@@ -149,7 +149,7 @@ if (avisos.some(a => a.grave)) {
 /* ---------- escribir ------------------------------------ */
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
-for (const dir of ['css', 'js']) cpSync(join(ROOT, dir), join(OUT, dir), { recursive: true });
+for (const dir of ['css', 'js', 'assets']) cpSync(join(ROOT, dir), join(OUT, dir), { recursive: true });
 // las fotos de cada proyecto, en el mismo sitio que en el repo; el project.json no, que va dentro del HTML
 for (const slug of slugs) {
   const img = join(ROOT, 'projects', slug, 'img');

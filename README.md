@@ -11,6 +11,8 @@ tamaño, listas de fecha + enlace y la marca partida en colores (billwurtz.com).
   `about/guillem/`) y `blog-ejemplo.json` (los posts que se ven donde no hay Worker: la vista
   previa y la copia de github.io).
 - `projects/<carpeta>/project.json` + `img/1.webp…`; `schema/`, un esquema por tipo.
+- `assets/navicon.png`: el 🫵 de [Noto Emoji](https://github.com/googlefonts/noto-emoji) (Google,
+  Apache 2.0), en PNG de 180 px: como emoji en texto, los sistemas de antes de 2021 no lo tienen.
 - `build/paginas.mjs` (la plantilla), `build/build.mjs` (→ `dist/`), `build/preview.mjs` (Live
   Server, con el `index.html` de la raíz).
 - `worker/index.mjs`: el blog. Cloudflare sirve `dist/` y solo pasan por el Worker `/blog/`, el

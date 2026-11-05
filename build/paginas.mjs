@@ -165,9 +165,9 @@ export function crearSitio({ site, about, agenda, guillem, blog = [], proyectos,
     return flat.length <= 155 ? flat : flat.slice(0, 152).replace(/\s+\S*$/, '') + '…';
   };
   const wordmark = '<span class="c1">la</span><span class="c2">SAD</span><span class="c3">CUM</span>';
-  // el navicon: el emoji 🫵, que dibuja cada sistema con el suyo (sin fichero)
-  const navicon = 'data:image/svg+xml,' + encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🫵</text></svg>');
+  // el navicon: el 🫵 de Noto Emoji (Google, Apache 2.0) en PNG. Como emoji escrito en un SVG lo
+  // dibujaba cada sistema, y los de antes de 2021 no lo tienen: salía una caja con «1FAF5»
+  const navicon = src('assets/navicon.png');
   const foto = (slug, n) => `projects/${slug}/img/${n}.webp`;
   const titulo = (p, l) => t(p.title, l);
 
@@ -224,7 +224,8 @@ ${canonical ? `<meta property="og:url" content="${abs(l, path)}">` : ''}
 <meta property="og:locale" content="${l === 'ca' ? 'ca_ES' : l === 'es' ? 'es_ES' : 'en_GB'}">
 ${img ? `<meta property="og:image" content="${publica('/' + img)}">` : ''}${dim ? `\n<meta property="og:image:width" content="${dim.w}">\n<meta property="og:image:height" content="${dim.h}">` : ''}
 <meta name="twitter:card" content="${img ? 'summary_large_image' : 'summary'}">
-<link rel="icon" href="${navicon}">
+<link rel="icon" type="image/png" href="${navicon}">
+<link rel="apple-touch-icon" href="${navicon}">
 <link rel="stylesheet" href="${src('css/transicion.css')}">
 <link rel="stylesheet" href="${src('css/style.css')}">
 <script src="${src('js/transicion.js')}" defer></script>
