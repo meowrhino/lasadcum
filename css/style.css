@@ -130,7 +130,8 @@ main { padding: var(--top) var(--m) 140px; }
 .sortir { margin-top: 3em; }
 .sortir button { color: var(--gris); }
 
-/* about de Guillem: el CV, una línea por cosa */
+/* about de Guillem: el CV, una línea por cosa; sin marca ni menú encima, empieza arriba */
+.guillem main { padding-top: calc(var(--m) + 8px); }
 .guillem h1 { font-weight: 700; margin-bottom: 1.2em; }
 .cv li + li { margin-top: .5em; }
 
