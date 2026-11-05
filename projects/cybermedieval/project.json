@@ -2,6 +2,11 @@
   "$schema": "../../schema/project.json",
   "title": "CYBERMEDIEVAL",
   "year": 2026,
+  "kind": {
+    "ca": "performance / YE$$I PERSE",
+    "es": "performance / YE$$I PERSE",
+    "en": "performance / YE$$I PERSE"
+  },
   "text": {
     "ca": [
       "Cybermedieval és un periple, un escàner, un portal, una dimensió, un temps. Un escenari especulatiu sci-fi fantasy en què les empreses tecnològiques han substituït el model d’estat-nació territorial i dirigeixen el món a través del control del Big Data. El capitalisme ha esdevingut tecnofeudalisme. Les corporacions Big Tech s’erigeixen com a regnes i els seus sobirans són els CEO, els algoritmes i les IA que governen una servitud digital, les USERF (user + serf, ‘usuari + serf’), a través d’uns pactes de “termes i condicions” que permeten utilitzar les terres dels lords vectorialistes (les plataformes de dades) a canvi de conrear-les amb la producció incessant de contingut i la datificació dels cossos."
