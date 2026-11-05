@@ -47,7 +47,9 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
 ## 3. La contraseña del blog
 
 - [ ] *Workers* → **lasadcum** → *Settings* → *Variables and Secrets* → *Add* → tipo **Secret**,
-      nombre `PASSWORD`, valor: la suya. La escriben ellos.
+      nombre `PASSWORD`, valor: la suya. La escriben ellos. **No en *Build → Variables and
+      secrets*** (eso solo lo ve el build) **ni como *Text*** (el siguiente deploy lo borra):
+      lasadcum, 2026-11-05. Si falta, `/api/login` lo dice.
 - [ ] En `…workers.dev/admin/`: entra con la contraseña y **sortir** cierra la sesión.
 
 ## 4. El dominio

@@ -211,7 +211,8 @@ momento, sin esperar a nada.
 - **Una copia de todo el blog**: con la sesión abierta, lasadcum.com/api/export descarga los textos
   en un fichero (las fotos se quedan en Cloudflare).
 - **Cambiar la contraseña**: en Cloudflare, *Workers & Pages* → **lasadcum** → *Settings* →
-  *Variables and Secrets* → `PASSWORD` → editar. Después hay que volver a entrar.
+  *Variables and Secrets* → `PASSWORD` → editar. Después hay que volver a entrar. Ojo: es el
+  *Variables and Secrets* de arriba, tipo **Secret**; no el de *Build*, que el blog no ve.
 - **sortir**, abajo del todo en /admin/, cierra la sesión (en un ordenador que no es vuestro).
 
 ---
