@@ -182,8 +182,9 @@ window.revelada = 'onpagereveal' in window ? new Promise((done) => addEventListe
 }</script>`;
 
   /** Una página entera. `path` es la ruta sin idioma; `unIdioma`, las que solo
-      hay en el idioma de la web (blog, admin, Guillem): sin hreflang ni idiomas. */
-  function pagina({ l, path, title, desc, body, cls = '', current = '', unIdioma = false, image = OG, indexar = INDEXAR, canonical = true }) {
+      hay en el idioma de la web (blog, admin, Guillem): sin hreflang ni idiomas.
+      `sinMenu`: sin la marca ni el menú (Guillem, que se abre en otra pestaña). */
+  function pagina({ l, path, title, desc, body, cls = '', current = '', unIdioma = false, sinMenu = false, image = OG, indexar = INDEXAR, canonical = true }) {
     const nav = ['about', 'calendario', 'trabajos', 'contacto', 'blog'].map(k => {
       const label = k === 'trabajos' && current.startsWith('trabajos - ') ? t(M.trabajos, l) + current.slice(8) : t(M[k], l);
       return `<a href="${url(k === 'blog' ? DEF : l, k + '/')}"${current.startsWith(k) ? ' aria-current="page"' : ''}>${esc(label)}</a>`;
@@ -215,8 +216,8 @@ ${img ? `<meta property="og:image" content="${publica('/' + img)}">` : ''}${dim 
 <script src="${src('js/transicion.js')}" defer></script>
 </head>
 <body class="${cls}">
-${cls === 'home' ? '' : `<a class="marca" href="${url(l)}">${wordmark}</a>`}
-<nav class="menu">${nav}</nav>
+${cls === 'home' || sinMenu ? '' : `<a class="marca" href="${url(l)}">${wordmark}</a>`}
+${sinMenu ? '' : `<nav class="menu">${nav}</nav>`}
 <main>
 ${body}
 </main>
@@ -332,9 +333,10 @@ ${nl ? `<li><span class="y">newsletter</span><span class="t"><form action="${esc
     });
   }
 
-  // Guillem Jiménez: su CV, tal cual lo pasan, en un solo idioma (se abre en otra pestaña desde el about)
+  // Guillem Jiménez: su CV, tal cual lo pasan, en un solo idioma. Se abre en otra pestaña desde
+  // el about y se vuelve cerrándola: sin marca ni menú
   const guillemPag = () => pagina({
-    l: DEF, path: 'about/guillem/', title: `Guillem Jiménez · ${site.title}`, current: 'about', cls: 'guillem', unIdioma: true,
+    l: DEF, path: 'about/guillem/', title: `Guillem Jiménez · ${site.title}`, current: 'about', cls: 'guillem', unIdioma: true, sinMenu: true,
     desc: guillem.title,
     body: `<div class="bio">\n<h1>${esc(guillem.title)}</h1>\n<ul class="cv">\n${guillem.items.map(x => `<li>${esc(x)}</li>`).join('\n')}\n</ul>\n</div>`,
   });
