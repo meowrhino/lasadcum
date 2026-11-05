@@ -88,7 +88,13 @@ Con ellos delante, siguiendo [GUIA.md](GUIA.md) (punto 0):
 
 ## 8. Al acabar
 
-- [ ] Search Console con su cuenta de Google: dar de alta `lasadcum.com` (el TXT, en su DNS) y
-      enviar `sitemap.xml`.
+- [ ] **Pendiente: el dominio está en camino** (2026-11-05). Hasta entonces la web va en
+      `lasadcum.lasadcum.workers.dev` con `noindex`, y Google no ve nada. Al llegar, el paso 4 y,
+      con él, esto.
+- [ ] Search Console con su cuenta de Google: dar de alta `lasadcum.com` como **propiedad de
+      dominio** (el TXT, en su DNS de Cloudflare) y, en *Sitemaps*, enviar
+      `https://lasadcum.com/sitemap.xml`. En *Inspección de URLs*, `https://lasadcum.com/blog/` →
+      *Solicitar indexación*: así entran antes los posts y sus fotos (llevan `alt` con el texto
+      del post, para Google Imágenes). Que salgan al buscar «lasadcum» tarda semanas.
 - [ ] Fila de lasadcum en `JAMstack/inventario.md` con las dos direcciones.
 - [ ] Nuestra copia sigue en github.io con `noindex` y los posts de ejemplo: no compite en Google.

@@ -108,9 +108,14 @@ export function pintarPost(x, { src = f => f, borrar = false } = {}) {
     + `<a class="d" href="#p${x.id}">${fecha}</a>${borrar ? ` <button class="esborrar" data-id="${x.id}">esborrar</button>` : ''}</li>`;
 }
 
-/** La foto de un post (la usa también el about, para sus fotos al azar). */
+/** La foto de un post (la usa también el about, para sus fotos al azar). El alt, el
+    nombre y el principio del texto: con alt="" Google la toma por decorativa y no la indexa. */
+const altPost = x => {
+  const t = `laSADCUM: ${String(x.text ?? '').replace(/\s+/g, ' ').trim()}`;
+  return t.length <= 125 ? t : t.slice(0, 124).replace(/\s+\S*$/, '') + '…';
+};
 export const fotoPost = (x, src = f => f, extra = '') =>
-  `<img src="${/^(https?:|\/)/.test(x.image.src) ? esc(x.image.src) : src(esc(x.image.src))}" width="${x.image.width}" height="${x.image.height}" alt="" loading="lazy"${extra}>`;
+  `<img src="${/^(https?:|\/)/.test(x.image.src) ? esc(x.image.src) : src(esc(x.image.src))}" width="${x.image.width}" height="${x.image.height}" alt="${esc(altPost(x))}" loading="lazy"${extra}>`;
 
 /** Un vídeo: el enlace lleva a su página (se ve sin JS) y js/main.js lo
     incrusta al pulsar; los de YouTube, desde youtube-nocookie. */
