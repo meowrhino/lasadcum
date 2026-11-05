@@ -3,25 +3,25 @@
   "title": "ACLUCALLS",
   "year": 2022,
   "kind": {
-    "ca": "peça escénica / laSADCUM",
+    "ca": "peça escènica / laSADCUM",
     "es": "pieza escénica / laSADCUM",
     "en": "dance piece / laSADCUM"
   },
   "text": {
     "ca": [
-      "Una peça de dansa que fa un retrat grotesc de la societat i generació post internet a partir de tres conceptes representatius: el workout, la pantalla i la programació informatica; exposant de manera escènica alguns dels traumes i frustracions generacionals."
+      "Una peça de dansa que fa un retrat grotesc de la societat i generació post internet a partir de tres conceptes representatius: el workout, la pantalla i la programació informàtica; exposant de manera escènica alguns dels traumes i frustracions generacionals."
     ],
     "es": [
-      "Una pieza de danza que hace un retrato grotesco de la sociedad y generación post internet a partir de tres conceptos representativos: el workout, la pantalla y la programación informatica; exponiendo de forma escénica esos traumas y frustraciones generacionales."
+      "Una pieza de danza que hace un retrato grotesco de la sociedad y generación post internet a partir de tres conceptos representativos: el workout, la pantalla y la programación informática; exponiendo de forma escénica esos traumas y frustraciones generacionales."
     ],
     "en": [
-      "A dance piece that makes a grotesque portrait of the post-Internet society and generation based on three representative concepts: workout, screen and computer programming; exposing some of the traumas and generational frustrations on stage.."
+      "A dance piece that makes a grotesque portrait of the post-Internet society and generation based on three representative concepts: workout, screen and computer programming; exposing some of the traumas and generational frustrations on stage."
     ]
   },
   "credits": [
     {
       "role": {
-        "ca": "Coreografia i dirección",
+        "ca": "Coreografia i direcció",
         "es": "Coreografía y dirección",
         "en": "Direction and Choreography"
       },
@@ -29,9 +29,9 @@
     },
     {
       "role": {
-        "ca": "Assessoria de movimient",
+        "ca": "Assessoria de moviment",
         "es": "Asesoría de movimiento",
-        "en": "Movement Asistant"
+        "en": "Movement assistant"
       },
       "name": "Carla Moll"
     },
@@ -42,7 +42,7 @@
         "en": "Performance"
       },
       "name": {
-        "ca": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares y Vera Palomino",
+        "ca": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares i Vera Palomino",
         "es": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares y Vera Palomino",
         "en": "Alexa Moya, Carla Moll, Guillem Jiménez, Jaume Clotet, Javi Valls, Judit Amengual, Laia Camps, Meritxell de Soto, Ona Cros, Stefano de Luca, Marina Olivares & Vera Palomino"
       }
@@ -83,7 +83,7 @@
       "role": {
         "ca": "Mirada externa",
         "es": "Mirada externa",
-        "en": "Extrenal view"
+        "en": "External view"
       },
       "name": "Claudia Mirambell"
     },
@@ -91,7 +91,7 @@
       "role": {
         "ca": "Disseny gràfic i animació",
         "es": "Diseño gráfico y animación",
-        "en": "Grafic design and animation"
+        "en": "Graphic design and animation"
       },
       "name": "Aina Mira"
     },
@@ -107,7 +107,7 @@
       "role": {
         "ca": "Agent de producció",
         "es": "Agente de producción",
-        "en": "Agent of producction"
+        "en": "Production agent"
       },
       "name": "Blanca Sartorius"
     },
@@ -115,15 +115,15 @@
       "role": {
         "ca": "Gestió de producció",
         "es": "Gestión de producción",
-        "en": "Producción"
+        "en": "Production"
       },
       "name": "Anastàtica Cultural - Muntsa Roca"
     },
     {
       "role": {
-        "ca": "Pràcticas artístiques",
+        "ca": "Pràctiques artístiques",
         "es": "Prácticas artísticas",
-        "en": "Artistic Intership"
+        "en": "Artistic internship"
       },
       "name": "Gabriel Levie"
     },
@@ -143,7 +143,7 @@
       "role": {
         "ca": "Coproducció",
         "es": "Coproducción",
-        "en": "Coproduccion"
+        "en": "Co-production"
       },
       "name": "CCCB, laSADCUM, ELAMOR"
     },
@@ -166,16 +166,16 @@
         "en": "Thanks to"
       },
       "name": {
-        "ca": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU y participantes del crowdfunding.",
+        "ca": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU i participants del crowdfunding.",
         "es": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU y participantes del crowdfunding.",
-        "en": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU & participantes del crowdfunding."
+        "en": "Pol Jiménez, Fito Conesa, Amalia S. de Nieves, Miquel Sánchez, Col·lectiu HIRU & crowdfunding participants."
       }
     }
   ],
   "awards": {
     "ca": [
-      "Premi a Millor Coreografía als premis DansaCat 2024",
-      "Premi a Millor Espai Socnor als premis DansaCat 2024"
+      "Premi a Millor Coreografia als premis DansaCat 2024",
+      "Premi a Millor Espai Sonor als premis DansaCat 2024"
     ],
     "es": [
       "Premio a Mejor Coreografía en los premios DansaCat 2024",

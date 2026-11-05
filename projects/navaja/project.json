@@ -3,7 +3,7 @@
   "title": "NAVAJA",
   "year": 2024,
   "kind": {
-    "ca": "peça escénica / laSADCUM",
+    "ca": "peça escènica / laSADCUM",
     "es": "pieza escénica / laSADCUM",
     "en": "dance piece / laSADCUM"
   },
@@ -67,7 +67,7 @@
       "role": {
         "ca": "Composició musical",
         "es": "Composición musical",
-        "en": "Music comopsition"
+        "en": "Music composition"
       },
       "name": "Alejandro Da Rocha, Guillem Jiménez"
     },
@@ -171,10 +171,10 @@
   "awards": {
     "ca": [
       "Premi a Millor Espectacle als premis DansaCat 2024",
-      "Premi del Juart a millor peça al festival Pedra Viva 2024"
+      "Premi del Jurat a millor peça al festival Pedra Viva 2024"
     ],
     "es": [
-      "Premio a Mejor Eespectáculo en los premios DansaCat 2024",
+      "Premio a Mejor Espectáculo en los premios DansaCat 2024",
       "Premio del Jurado a mejor pieza en el festival Pedra Viva 2024"
     ],
     "en": [
@@ -183,9 +183,9 @@
     ]
   },
   "photo_credit": {
-    "ca": "Fotos: Alan Gomi",
-    "es": "Fotos: Alan Gomi",
-    "en": "Pics: Alan Gomi"
+    "ca": "Fotos: Alan Gomis",
+    "es": "Fotos: Alan Gomis",
+    "en": "Pics: Alan Gomis"
   },
   "cover": "1",
   "photos": [

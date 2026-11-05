@@ -11,15 +11,15 @@
     "ca": [
       "En el règim del realisme capitalista, la megacorporació WKW III llança el seu projecte pilot més ambiciós: EVERAFTER. És una demo d’hiperrealitat playbour dissenyada per extreure rendibilitat de la promesa d’autorealització il·limitada. En aquesta demo viuen els seus set primers metahabitants: Fifth Lad, Violet Fox, The Kasper, BackPack X, Sean Coby, Hairy Oxter i Wilta Wound Wank; que esperen constantment que el projecte es faci realitat, i queden, per tant, reduïts a la condició de becaris perpetus en una suspensió performativa del potencial. El públic accedeix a aquest multivers com un inversor que participa en una experiència de turista voyeur, observant de prop la realitat d’aquest món en construcció.",
       "Una coproducció del Grec 2026 Festival de Barcelona, l’Antic Teatre, Graner, El Canal de Salt i el Mercat de les Flors. Amb el suport de la Briqueterie (París), Graner (Barcelona), Centre Cívic Drassanes (Barcelona), Canal de Salt (Salt), LAV (Tenerife) i Fabra i Coats (Barcelona). Amb la col·laboració de la Generalitat de Catalunya i l’Institut Ramon Llull.",
-      "Aquesta obra ha rebut una beca de creació artística, recerca i innovació de la Generalitat de Catalunya"
+      "Aquesta obra ha rebut una beca de creació artística, recerca i innovació de la Generalitat de Catalunya."
     ],
     "es": [
-      "En el régimen del realismo capitalista, la megacorporación WKW III lanza su proyecto piloto más ambicioso: EVERAFTER. Es una demo de hiperrealidad playbour diseñada para extraer rentabilidad de la promesa de autorrealización ilimitada. En esta demo viven sus siete primeros metahabirtantes: Fifth Lad, Violet Fox, The Kasper, BackPack X, Sean Coby, Hairy Oxter y Wilta Wound Wank; que esperan constantemente que el proyecto se haga realidad, y quedan reducidos a la condición de becarios perpetuos en una suspensión performativa del potencial. El público accede a este multiverso como un inversor que participa en una experiencia de turista voyeur, observando de cerca la realidad de este mundo en construcción.",
-      "Una coproducción del Grec 2026 Festival de Barcelona, el Antic Teatre, Graner, El Canal de Salt y el Mercat de les Flors. Con el apoyo de la Briqueterie (París), Graner (Barcelona), Centro Cívico Drassanes (Barcelona), Canal de Salt (Salt), LAV (Tenerife) y Fabra i Coats (Barcelona). Con colaboración de la Generalitat de Catalunya y el Institut Ramon Llull.",
-      "Esta obra ha recibido una beca de creación artística, investigación e innovación de la Generalitat de Catalunya"
+      "En el régimen del realismo capitalista, la megacorporación WKW III lanza su proyecto piloto más ambicioso: EVERAFTER. Es una demo de hiperrealidad playbour diseñada para extraer rentabilidad de la promesa de autorrealización ilimitada. En esta demo viven sus siete primeros metahabitantes: Fifth Lad, Violet Fox, The Kasper, BackPack X, Sean Coby, Hairy Oxter y Wilta Wound Wank; que esperan constantemente que el proyecto se haga realidad, y quedan reducidos a la condición de becarios perpetuos en una suspensión performativa del potencial. El público accede a este multiverso como un inversor que participa en una experiencia de turista voyeur, observando de cerca la realidad de este mundo en construcción.",
+      "Una coproducción del Grec 2026 Festival de Barcelona, el Antic Teatre, Graner, El Canal de Salt y el Mercat de les Flors. Con el apoyo de la Briqueterie (París), Graner (Barcelona), Centro Cívico Drassanes (Barcelona), Canal de Salt (Salt), LAV (Tenerife) y Fabra i Coats (Barcelona). Con la colaboración de la Generalitat de Catalunya y el Institut Ramon Llull.",
+      "Esta obra ha recibido una beca de creación artística, investigación e innovación de la Generalitat de Catalunya."
     ],
     "en": [
-      "In a capitalist realism regime, the megacorporation WKW III launches its most ambitious pilot project: EVERAFTER. It is a demo of playbour hyperreality designed to extract profit from the promise of unlimited self-fulfilment. This demo houses its first seven meta-inhabitants: Fifth Lad, Violet Fox, The Kasper, BackPack X, Sean Coby, Hairy Oxter, and Wilta Wound Wank; constantly waiting for the project to materialise, and thus reduced to the status of perpetual interns in a performative suspension of potential. The audience accesses this multiverse as an investor participating in a voyeuristic tourist experience, observing up this world in construction up close.",
+      "In a capitalist realism regime, the megacorporation WKW III launches its most ambitious pilot project: EVERAFTER. It is a demo of playbour hyperreality designed to extract profit from the promise of unlimited self-fulfilment. This demo houses its first seven meta-inhabitants: Fifth Lad, Violet Fox, The Kasper, BackPack X, Sean Coby, Hairy Oxter, and Wilta Wound Wank; constantly waiting for the project to materialise, and thus reduced to the status of perpetual interns in a performative suspension of potential. The audience accesses this multiverse as an investor participating in a voyeuristic tourist experience, observing this world under construction up close.",
       "A co-production by the 2026 Barcelona Grec Festival, Antic Teatre, Graner, El Canal de Salt and Mercat de les Flors. With the support of La Briqueterie (Paris), Graner (Barcelona), Drassanes Civic Centre (Barcelona), Canal de Salt (Salt), LAV (Tenerife) and Fabra i Coats (Barcelona). In collaboration with the Government of Catalonia and Institut Ramon Llull.",
       "This work has received a grant for artistic creation, research, and innovation from the Government of Catalonia."
     ]
@@ -29,7 +29,7 @@
       "role": {
         "ca": "Autoria",
         "es": "Autoría",
-        "en": "Autorship"
+        "en": "Authorship"
       },
       "name": "laSADCUM"
     },
@@ -136,16 +136,16 @@
         "en": "Produced by"
       },
       "name": {
-        "ca": "Lila Brick (Muntsa Roca i Tina Martí) i Blanca Sartorius Una",
+        "ca": "Lila Brick (Muntsa Roca i Tina Martí) i Blanca Sartorius",
         "es": "Lila Brick (Muntsa Roca y Tina Martí) y Blanca Sartorius",
         "en": "Lila Brick (Muntsa Roca and Tina Martí) and Blanca Sartorius"
       }
     }
   ],
   "photo_credit": {
-    "ca": "Fotos: Alan Gomi",
-    "es": "Fotos: Alan Gomi",
-    "en": "Pics: Alan Gomi"
+    "ca": "Fotos: Alan Gomis",
+    "es": "Fotos: Alan Gomis",
+    "en": "Pics: Alan Gomis"
   },
   "cover": "1",
   "photos": [
