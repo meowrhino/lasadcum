@@ -39,9 +39,9 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
 - [ ] *Workers & Pages* → *Create* → *Import a repository* → su `lasadcum`. Lo que sale por
       defecto vale; **Project name: `lasadcum`** (el `name` de `wrangler.jsonc`: si ponen otro,
       falla).
-- [ ] El primer deploy crea solo la base de datos y el almacén (`lasadcum-blog`, en D1 y en R2).
-      Si se queja de que no existen: crearlos a mano con ese nombre (*D1* → *Create*; *R2* →
-      *Create bucket*) y, en su copia, añadir a `wrangler.jsonc` el `"database_id"` que da D1.
+- [ ] **Antes del primer deploy, el bucket de R2**: *R2 Object Storage* → *Create bucket* →
+      `lasadcum-blog`. Wrangler no lo crea (lasadcum, 2026-11-05: falló con "R2 bucket not
+      found"); D1 sí, solo, con el primer deploy.
 - [ ] Sale en `lasadcum.<su-subdominio>.workers.dev`, con `noindex` (todavía sin `url`).
 
 ## 3. La contraseña del blog

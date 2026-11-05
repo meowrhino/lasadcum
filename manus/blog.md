@@ -9,8 +9,8 @@
 - **Un solo secreto**, `PASSWORD`: firma también la cookie (sin `AUTH_SECRET`). Cambiarla cierra
   todas las sesiones.
 - **La tabla se crea sola** con la primera petición (`CREATE TABLE IF NOT EXISTS`): nada que
-  migrar a mano. D1 y R2 van sin id en `wrangler.jsonc`: wrangler 4 los crea en su cuenta con el
-  primer deploy.
+  migrar a mano. D1 va sin id en `wrangler.jsonc`: wrangler 4 la crea en su cuenta con el
+  primer deploy. El bucket de R2, no: se crea a mano antes (falló el primero, 2026-11-05).
 - **Escribir exige `Origin` de la propia web** (y la cookie es `SameSite=Strict`) en vez de una
   cabecera propia: así vale también el formulario sin JS para un post sin foto.
 - **La foto**: `canvas.toBlob` a webp; donde no sabe (Safari, iPhone), jpg. Sin el WASM de jordis

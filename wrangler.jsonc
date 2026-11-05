@@ -2,7 +2,8 @@
 // Se publica en la raíz; con el dominio en data/site.json → "url", se indexa.
 // La web la sirve Cloudflare tal cual (dist/); solo las rutas de
 // run_worker_first pasan por el Worker del blog (worker/index.mjs).
-// D1 y R2 se crean solos en su cuenta con el primer deploy (sin id aquí).
+// D1 se crea solo con el primer deploy (sin id aquí); el bucket de R2,
+// "lasadcum-blog", hay que crearlo antes a mano (R2 → Create bucket).
 // El secreto PASSWORD (la contraseña de /admin/) se pone en el panel:
 // Workers → lasadcum → Settings → Variables and Secrets (GUIA, punto 8).
 {
