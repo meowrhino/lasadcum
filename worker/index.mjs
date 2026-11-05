@@ -92,14 +92,18 @@ async function rellenar(req, env, selector, html) {
 
 async function login(req, env) {
   if (!deAqui(req)) return texto('no', 403);
-  const pw = String((await req.formData()).get('password') || '');
+  if (!env.PASSWORD) return texto('Falta el secret PASSWORD a Cloudflare: Workers → lasadcum → Settings → Variables and Secrets (GUIA, punt 8).', 500);
+  // sin los espacios de los lados: un espacio de más al pegarla no deja fuera
+  const pw = String((await req.formData()).get('password') || '').trim();
   let libre = true;   // diez intentos por minuto y por IP (wrangler.jsonc → ratelimits)
   try { libre = (await env.LOGIN_LIMIT?.limit({ key: req.headers.get('cf-connecting-ip') || 'local' }))?.success ?? true; }
   catch (e) { console.error('sin límite de intentos:', e); }
-  if (libre && env.PASSWORD && iguales(pw, env.PASSWORD)) {
+  if (libre && iguales(pw, env.PASSWORD.trim())) {
     const ara = String(Date.now());
     return ir('/admin/', { 'set-cookie': cookie(`${ara}.${await firmar(env, ara)}`, DIAS * 86400) });
   }
+  // en Workers → lasadcum → Logs: por qué no ha entrado (sin la contraseña)
+  console.log('login fallido', { libre, largoEscrito: pw.length, largoSecret: env.PASSWORD.trim().length });
   await new Promise((r) => setTimeout(r, 1000));
   const res = await env.ASSETS.fetch(new Request(new URL('/login/', req.url)));
   return new HTMLRewriter().on('.error', { element: (el) => { el.removeAttribute('hidden'); } })
