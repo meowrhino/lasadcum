@@ -249,6 +249,23 @@
         "description": "Un nombre de color de HTML (\"dodgerblue\") o un código (\"#ff00aa\")"
       }
     },
+    "sparkles": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Los brillitos ✨ que saltan al tocar o clicar en cualquier sitio de la web.",
+      "properties": {
+        "count": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Cuántos ✨ salen en cada toque. 0: ninguno."
+        },
+        "size": {
+          "type": "number",
+          "minimum": 6,
+          "description": "Su tamaño, en píxeles (cada uno sale un poco más grande o más pequeño). La letra de la web mide 20."
+        }
+      }
+    },
     "menu": {
       "type": "object",
       "additionalProperties": {

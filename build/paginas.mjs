@@ -94,12 +94,15 @@ export const entradas = lista => (Array.isArray(lista?.projects) ? lista.project
   typeof e === 'string' ? { slug: e, visible: true, parts: [] }
     : { slug: e?.project, visible: e?.visible !== false, parts: Array.isArray(e?.parts) ? e.parts : [] });
 
-/** Un post del blog: el texto, la foto y la fecha. Va fuera de crearSitio
+/** Un post del blog: el texto, la foto y la fecha con la hora. Va fuera de crearSitio
     porque lo usa también el Worker del blog (worker/index.mjs). `src` pone la
     base delante de una foto del repo; las del Worker ya vienen enteras. */
+// la hora de Barcelona: created_at viene en UTC, y el Worker no sabe dónde está quien lo lee
+const HORA = new Intl.DateTimeFormat('ca', { timeZone: 'Europe/Madrid', day: '2-digit', month: '2-digit',
+  year: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
 export function pintarPost(x, { src = f => f, borrar = false } = {}) {
-  const iso = String(x.created_at);
-  const fecha = `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(2, 4)}`;
+  const p = Object.fromEntries(HORA.formatToParts(new Date(x.created_at)).map(q => [q.type, q.value]));
+  const fecha = `${p.day}.${p.month}.${p.year} ${p.hour}:${p.minute}`;
   const foto = x.image ? fotoPost(x, src) : '';
   return `<li id="p${x.id}">${String(x.text).split(/\n{2,}/).map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('')}${foto}`
     + `<a class="d" href="#p${x.id}">${fecha}</a>${borrar ? ` <button class="esborrar" data-id="${x.id}">esborrar</button>` : ''}</li>`;
@@ -198,7 +201,8 @@ window.revelada = 'onpagereveal' in window ? new Promise((done) => addEventListe
     const img = ogDe(image);
     const dim = img?.startsWith('og/') ? { w: 1200, h: 630 } : img && medidas(img);
     return `<!doctype html>
-<html lang="${l}"${site.colors?.length ? ` data-colors="${esc(site.colors.join(' '))}"` : ''}>
+<html lang="${l}"${site.colors?.length ? ` data-colors="${esc(site.colors.join(' '))}"` : ''}${site.sparkles
+  ? ` data-sparkles="${esc(`${site.sparkles.count ?? 3} ${site.sparkles.size ?? 22}`)}"` : ''}>
 <head>
 <meta charset="utf-8">
 ${transicion}

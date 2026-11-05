@@ -157,6 +157,10 @@
     "darkslategray",
     "black"
   ],
+  "sparkles": {
+    "count": 3,
+    "size": 22
+  },
   "menu": {
     "about": {
       "ca": "about",
