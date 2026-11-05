@@ -131,7 +131,6 @@ main { padding: var(--top) var(--m) 140px; }
 .sortir button { color: var(--gris); }
 
 /* about de Guillem: el CV, una línea por cosa */
-.guillem main { padding-top: calc(var(--m) + 8px); }   /* sin menú encima: arriba, a la altura de donde iría */
 .guillem h1 { font-weight: 700; margin-bottom: 1.2em; }
 .cv li + li { margin-top: .5em; }
 
