@@ -32,7 +32,7 @@ try {
   about = leerYMirar('data/about.json', 'about');
   agenda = leerYMirar('data/agenda.json', 'agenda');
   guillem = leerYMirar('data/guillem.json', 'guillem');
-  // shortcut: posts de ejemplo hasta que el blog tenga su Worker (manus/blog.md)
+  // los posts de ejemplo: los de verdad los pone el Worker (worker/index.mjs) en Cloudflare
   blog = leerYMirar('data/blog-ejemplo.json', 'blog');
   proyectos = slugs.map(slug => ({ ...leerYMirar(`projects/${slug}/project.json`, 'project'), slug }));
 } catch (e) {

@@ -1,5 +1,5 @@
 /* ============================================================
-   worker/index.mjs — el blog de laSADCUM (el plan: manus/blog.md).
+   worker/index.mjs — el blog de laSADCUM.
    ------------------------------------------------------------
    Cloudflare sirve la web (dist/) sin pasar por aquí. Solo llegan las
    rutas de run_worker_first (wrangler.jsonc):

@@ -4,7 +4,7 @@
 // run_worker_first pasan por el Worker del blog (worker/index.mjs).
 // D1 y R2 se crean solos en su cuenta con el primer deploy (sin id aquí).
 // El secreto PASSWORD (la contraseña de /admin/) se pone en el panel:
-// Workers → lasadcum → Settings → Variables and Secrets. TRASPASO.md.
+// Workers → lasadcum → Settings → Variables and Secrets (GUIA, punto 8).
 {
   "name": "lasadcum",
   "main": "worker/index.mjs",

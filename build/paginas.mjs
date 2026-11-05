@@ -93,7 +93,7 @@ export const entradas = lista => (Array.isArray(lista?.projects) ? lista.project
     : { slug: e?.project, visible: e?.visible !== false, parts: Array.isArray(e?.parts) ? e.parts : [] });
 
 /** Un post del blog: el texto, la foto y la fecha. Va fuera de crearSitio
-    porque lo usará también el Worker del blog (manus/blog.md). `src` pone la
+    porque lo usa también el Worker del blog (worker/index.mjs). `src` pone la
     base delante de una foto del repo; las del Worker ya vienen enteras. */
 export function pintarPost(x, { src = f => f, borrar = false } = {}) {
   const iso = String(x.created_at);
@@ -339,7 +339,7 @@ ${nl ? `<li><span class="y">newsletter</span><span class="t"><form action="${esc
     body: `<div class="bio">\n<h1>${esc(guillem.title)}</h1>\n<ul class="cv">\n${guillem.items.map(x => `<li>${esc(x)}</li>`).join('\n')}\n</ul>\n</div>`,
   });
 
-  // blog: uno solo, sin idiomas (el Worker rellenará <ol class="posts">; manus/blog.md)
+  // blog: uno solo, sin idiomas (el Worker rellena <ol class="posts">; worker/index.mjs)
   const blogPag = () => pagina({
     l: DEF, path: 'blog/', title: `blog · ${site.title}`, current: 'blog', cls: 'blog-page', unIdioma: true,
     body: `<ol class="posts">\n${blog.map(x => post(x)).join('\n')}\n</ol>`,
