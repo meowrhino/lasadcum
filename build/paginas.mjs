@@ -62,7 +62,9 @@ export function validar(dato, esquema, fichero) {
     }
     if (!tipoOk(v, s)) return [`${donde} tiene que ser ${[].concat(s.type).map(t => TIPO[t]).join(' o ')}${pista}`];
     const e = [];
-    if (s.enum && !s.enum.includes(v)) e.push(`${donde}: "${v}" no vale; tiene que ser ${s.enum.map(x => `"${x}"`).join(', ')}`);
+    // una lista larga (los colores) no cabe en el mensaje: la dice la description
+    if (s.enum && !s.enum.includes(v)) e.push(`${donde}: "${v}" no vale${s.enum.length > 12 ? pista
+      : `; tiene que ser ${s.enum.map(x => `"${x}"`).join(', ')}`}`);
     if (s.pattern && typeof v === 'string' && !new RegExp(s.pattern).test(v)) e.push(`${donde}: "${v}" no tiene la forma que toca${pista}`);
     if (s.minimum != null && typeof v === 'number' && v < s.minimum) e.push(`${donde} tiene que ser ${s.minimum} o más`);
     if (Array.isArray(v)) {
@@ -196,7 +198,7 @@ window.revelada = 'onpagereveal' in window ? new Promise((done) => addEventListe
     const img = ogDe(image);
     const dim = img?.startsWith('og/') ? { w: 1200, h: 630 } : img && medidas(img);
     return `<!doctype html>
-<html lang="${l}">
+<html lang="${l}"${site.colors?.length ? ` data-colors="${esc(site.colors.join(' '))}"` : ''}>
 <head>
 <meta charset="utf-8">
 ${transicion}
@@ -412,6 +414,7 @@ ${nl ? `<li><span class="y">newsletter</span><span class="t"><form action="${esc
     const avisos = [];
     const aviso = (quien, texto, grave = false) => avisos.push({ quien, texto, grave });
     for (const l of LANGS) if (!about?.[l]?.length) aviso('data/about.json', `falta el about en "${l}"`);
+    if ((site.colors?.length ?? 0) < 3) aviso('data/site.json', '"colors" necesita tres colores como mínimo: hasta entonces, la marca sale azul, roja y verde');
 
     const vistos = new Set();
     for (const lista of listas) {

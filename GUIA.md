@@ -179,6 +179,10 @@ los campos. El orden da igual: la web ordena por fecha y pasa sola al gris lo qu
   primero en contacte (con `null`, no sale).
 - **Los textos fijos** (el menú, «veure el tràiler», «Per veure la peça completa…»):
   `data/site.json` → `menu`.
+- **Los colores de la marca** (la-SAD-CUM sale con tres al azar en cada visita): `data/site.json`
+  → `colors`, uno por línea. Para quitar uno, borrad su línea (y la coma, si era el último);
+  para añadir, un nombre de color de HTML (`"gold"`; dentro de la lista, **Ctrl+Espacio** los
+  enseña) o un código (`"#ff00aa"`). Tres como mínimo.
 
 **Lo que sale en Google y al compartir**: el título de cada trabajo, su `description` (o el primer
 párrafo) y su foto `cover`; en el resto de páginas, `description` de `data/site.json`. Mientras

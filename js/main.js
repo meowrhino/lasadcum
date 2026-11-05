@@ -1,32 +1,12 @@
 // Lo poco que añade el navegador; sin JS la web se lee igual.
-// todos los colores con nombre de HTML (es.wikipedia.org/wiki/Colores_web), como los escribe
-// billwurtz: también los amarillos y los casi blancos, que sobre blanco casi desaparecen
-const PALETA = [
-  'lightcoral', 'salmon', 'indianred', 'red', 'crimson', 'firebrick', 'brown', 'darkred', 'maroon',
-  'papayawhip', 'blanchedalmond', 'bisque', 'moccasin', 'peachpuff', 'navajowhite', 'lightsalmon',
-  'darksalmon', 'orange', 'darkorange', 'coral', 'tomato', 'orangered', 'wheat', 'burlywood', 'tan',
-  'sandybrown', 'goldenrod', 'peru', 'darkgoldenrod', 'chocolate', 'sienna', 'saddlebrown',
-  'lightyellow', 'cornsilk', 'lemonchiffon', 'lightgoldenrodyellow', 'palegoldenrod', 'khaki',
-  'yellow', 'gold', 'darkkhaki', 'olive', 'greenyellow', 'chartreuse', 'lawngreen', 'yellowgreen',
-  'olivedrab', 'darkolivegreen', 'palegreen', 'lightgreen', 'mediumspringgreen', 'springgreen',
-  'lime', 'darkseagreen', 'limegreen', 'mediumseagreen', 'seagreen', 'forestgreen', 'green',
-  'darkgreen', 'lightcyan', 'paleturquoise', 'aquamarine', 'turquoise', 'mediumturquoise',
-  'darkturquoise', 'mediumaquamarine', 'lightseagreen', 'cadetblue', 'darkcyan', 'teal', 'lavender',
-  'powderblue', 'lightblue', 'lightskyblue', 'skyblue', 'lightsteelblue', 'deepskyblue',
-  'cornflowerblue', 'dodgerblue', 'steelblue', 'royalblue', 'blue', 'mediumblue', 'darkblue',
-  'navy', 'midnightblue', 'darkslateblue', 'thistle', 'plum', 'violet', 'orchid', 'mediumpurple',
-  'mediumorchid', 'mediumslateblue', 'slateblue', 'blueviolet', 'darkviolet', 'darkorchid',
-  'darkmagenta', 'purple', 'indigo', 'mistyrose', 'pink', 'lightpink', 'hotpink', 'rosybrown',
-  'palevioletred', 'deeppink', 'mediumvioletred', 'white', 'whitesmoke', 'snow', 'seashell',
-  'linen', 'antiquewhite', 'oldlace', 'floralwhite', 'ivory', 'beige', 'honeydew', 'mintcream',
-  'azure', 'aliceblue', 'ghostwhite', 'lavenderblush', 'gainsboro', 'lightgrey', 'silver',
-  'darkgray', 'lightslategray', 'slategray', 'gray', 'dimgray', 'darkslategray', 'black',
-];
+// los colores de la marca, los de data/site.json → "colors" (el build los pone en <html data-colors>)
+const PALETA = (document.documentElement.dataset.colors || '').split(' ').filter(Boolean);
 const azar = () => Math.floor(Math.random() * PALETA.length);
 
-// la marca: tres trozos, tres colores distintos en cada visita (billwurtz)
+// la marca: tres trozos, tres colores distintos en cada visita (billwurtz); con menos de tres
+// en la lista, los de css/style.css
 const mezcla = [...PALETA].sort(() => Math.random() - .5);
-['--c1', '--c2', '--c3'].forEach((v, i) => document.documentElement.style.setProperty(v, mezcla[i]));
+if (mezcla.length >= 3) ['--c1', '--c2', '--c3'].forEach((v, i) => document.documentElement.style.setProperty(v, mezcla[i]));
 
 // el cursor: la varita 🪄 espejada, con las estrellitas en la punta. El emoji lo dibuja cada
 // sistema (como el navicon), en 32 px y en 64 para pantallas retina. Sin ratón, nada
