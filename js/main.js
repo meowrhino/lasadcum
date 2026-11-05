@@ -8,11 +8,11 @@ const azar = () => Math.floor(Math.random() * PALETA.length);
 const mezcla = [...PALETA].sort(() => Math.random() - .5);
 if (mezcla.length >= 3) ['--c1', '--c2', '--c3'].forEach((v, i) => document.documentElement.style.setProperty(v, mezcla[i]));
 
-// al tocar, unos ✨ saltan un poco y caen girando, como purpurina (con «reducir movimiento», no).
+// al tocar, unos ✨ saltan un poco y caen girando, como purpurina.
 // Cuántos y de qué tamaño, en data/site.json → "sparkles" (el build los pone en <html data-sparkles>)
 const r = (a, b) => a + Math.random() * (b - a);
 const [cuantos = 3, tam = 22] = (document.documentElement.dataset.sparkles || '').split(' ').filter(Boolean).map(Number);
-if (cuantos > 0 && !matchMedia('(prefers-reduced-motion: reduce)').matches)
+if (cuantos > 0)
   addEventListener('pointerdown', e => {
     const k = tam / 13;   // los más grandes, más lejos
     for (let i = cuantos; i--;) {

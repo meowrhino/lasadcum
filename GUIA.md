@@ -211,7 +211,8 @@ momento, sin esperar a nada.
    en el about.
 
 - **Corregir un post**: no se edita. Se borra (**esborrar**, al lado de su fecha) y se vuelve a
-  publicar bien. Lo borrado no se pierde del todo: si fue sin querer, escribidnos.
+  publicar bien. Lo borrado deja de salir, también su foto, pero no se pierde del todo: si fue
+  sin querer, escribidnos.
 - **Una copia de todo el blog**: con la sesión abierta, lasadcum.com/api/export descarga los textos
   en un fichero (las fotos se quedan en Cloudflare).
 - **Cambiar la contraseña**: en Cloudflare, *Workers & Pages* → **lasadcum** → *Settings* →

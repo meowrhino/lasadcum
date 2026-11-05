@@ -185,7 +185,7 @@ try {
   const d = JSON.parse(sessionStorage.getItem('transicion'));
   back = !d && performance.getEntriesByType('navigation')[0]?.type === 'back_forward';
   if (d?.carga) html.style.setProperty('--carga', d.carga);
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && (back || d)) html.classList.add('tapada');
+  if (back || d) html.classList.add('tapada');
 } catch {}
 window.revelada = 'onpagereveal' in window ? new Promise((done) => addEventListener('pagereveal', (e) => {
   const vt = e.viewTransition;
@@ -230,6 +230,7 @@ ${img ? `<meta property="og:image" content="${publica('/' + img)}">` : ''}${dim 
 <script src="${src('js/transicion.js')}" defer></script>
 </head>
 <body class="${cls}">
+<div class="carga" aria-hidden="true">${wordmark}</div>
 ${cls === 'home' || sinMenu ? '' : `<a class="marca" href="${url(l)}">${wordmark}</a>`}
 ${sinMenu ? '' : `<nav class="menu">${nav}</nav>`}
 <main>

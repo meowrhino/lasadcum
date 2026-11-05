@@ -146,6 +146,22 @@ main { padding: var(--top) var(--m) 140px; }
 .firma { position: absolute; right: var(--m); bottom: 28px; color: var(--gris); font-size: .7rem; }
 .firma a { color: inherit; text-decoration: none; }
 
+/* el loader (css/transicion.css): en vez del cuadrado, laSADCUM pequeñito en el centro, con los
+   tres colores de la visita dando vueltas. Sale, como el cuadrado, si el blanco pasa de medio segundo */
+.tapada body::after, .cargando body::after { content: none; }
+.carga { display: none; position: fixed; top: 50%; left: 50%; z-index: 11; translate: -50% -50%; pointer-events: none; }
+.tapada .carga, .cargando .carga { display: block; animation: aparecer 0s .5s both; }
+.tapada:not(.cargando) .carga { animation: aparecer 0s .5s both, destapar 0s 5s forwards; }
+.tapando .carga { display: none; }
+.carga span { animation: rueda .9s infinite; }
+.carga .c2 { animation-delay: -.3s; }
+.carga .c3 { animation-delay: -.6s; }
+@keyframes rueda {
+  0% { color: var(--c1); animation-timing-function: steps(1); }
+  33.3% { color: var(--c2); animation-timing-function: steps(1); }
+  66.6% { color: var(--c3); animation-timing-function: steps(1); }
+}
+
 @media (max-width: 760px) {
   :root { --m: 16px; --top: 120px; }
   html { font-size: 17px; }
@@ -154,12 +170,7 @@ main { padding: var(--top) var(--m) 140px; }
   .home .menu { top: 16px; left: auto; }
   .idioma { bottom: 16px; }
   .firma { bottom: 16px; }
-  .publicar label, .publicar p,
-  .lista li { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
+  .publicar label, .publicar p { grid-template-columns: 1fr; gap: 0; margin-bottom: .5em; }
   .cover { display: none; }
   .gigante { bottom: 12vh; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .gigante span, .flecha { transition: none; }
 }

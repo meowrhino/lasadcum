@@ -102,8 +102,8 @@ async function login(req, env) {
     const ara = String(Date.now());
     return ir('/admin/', { 'set-cookie': cookie(`${ara}.${await firmar(env, ara)}`, DIAS * 86400) });
   }
-  // en Workers → lasadcum → Logs: por qué no ha entrado (sin la contraseña)
-  console.log('login fallido', { libre, largoEscrito: pw.length, largoSecret: env.PASSWORD.trim().length });
+  // en Workers → lasadcum → Logs: por qué no ha entrado (sin nada de la contraseña)
+  console.log('login fallido', { libre });
   await new Promise((r) => setTimeout(r, 1000));
   const res = await env.ASSETS.fetch(new Request(new URL('/login/', req.url)));
   return new HTMLRewriter().on('.error', { element: (el) => { el.removeAttribute('hidden'); } })
@@ -142,8 +142,10 @@ async function esborrar(id, env) {
   return r.meta.changes ? Response.json({ ok: true }) : texto('no hi és', 404);
 }
 
+// la foto de un post esborrat deja de salir (sigue en R2, por si hay que recuperarlo)
 async function media(key, env) {
-  const o = await env.MEDIA.get(key);
+  const viva = await (await db(env)).prepare('SELECT 1 FROM posts WHERE image_key = ? AND deleted_at IS NULL').bind(key).first();
+  const o = viva && await env.MEDIA.get(key);
   if (!o) return texto('no hi és', 404);
   const headers = new Headers();
   o.writeHttpMetadata(headers);
@@ -161,7 +163,8 @@ export default {
       if (p === '/blog/') return rellenar(req, env, 'ol.posts', async () => (await posts(env)).map((x) => pintarPost(x)).join('\n'));
       if (/^\/((es|en)\/)?about\/$/.test(p)) return rellenar(req, env, 'div.azar', async () =>
         (await leer(env, `${VISIBLES} AND image_key IS NOT NULL ORDER BY RANDOM() LIMIT 1`)).map((x) => fotoPost(x)).join('\n'));
-      if (p.startsWith('/media/') && m === 'GET') return media(decodeURIComponent(p.slice(7)), env);
+      // las claves (2026/11/<uuid>.webp) no llevan nada que descodificar
+      if (p.startsWith('/media/') && (m === 'GET' || m === 'HEAD')) return media(p.slice(7), env);
       if (p === '/api/posts' && m === 'GET') return Response.json(await posts(env));
       if (p === '/api/login' && m === 'POST') return login(req, env);
       if (p === '/api/logout' && m === 'POST') return ir('/', { 'set-cookie': cookie('', 0) });
