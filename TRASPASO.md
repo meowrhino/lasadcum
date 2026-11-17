@@ -76,10 +76,10 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
       cámara → sale en `/blog/` y su foto en el about, y en `…/media/…` acaba en **`.webp`** (si
       acaba en `.jpg`, no ha cargado `js/webp/`: la consola lo dice). Luego **esborrar**, y ya no sale.
 - [ ] En `/about/`, la firma `web: meowrhino.studio`.
-- [ ] **La copia del domingo** (`.github/workflows/copia.yml`): en su GitHub, *Actions* →
+- [x] (2026-11-17) **La copia del domingo** (`.github/workflows/copia.yml`): en su GitHub, *Actions* →
       «copia del blog» → *Run workflow*, una vez, y sale un commit «copia del blog: …» con
       `data/blog.json` y `assets/img/blog/`. Desde ahí corre sola cada domingo en su repo.
-- [ ] **En nuestra copia, la copia del domingo pasa a manual**: en `copia.yml` de
+- [x] (2026-11-17) **En nuestra copia, la copia del domingo pasa a manual**: en `copia.yml` de
       `meowrhino/lasadcum`, quitar el `schedule:` (con su `cron`) y dejar solo
       `workflow_dispatch`. Si no, los dos repos copian lo mismo cada semana.
 
