@@ -19,9 +19,11 @@ tamaño, listas de fecha + enlace y la marca partida en colores (billwurtz.com).
 - `worker/index.mjs`: el blog. Cloudflare sirve `dist/` y solo pasan por el Worker `/blog/`, el
   about (su foto al azar), `/admin/`, `/api/*` y `/media/*` (`wrangler.jsonc`). Posts en
   D1, fotos en R2, la contraseña en el secreto `PASSWORD`. Probarlo en local: un `.dev.vars` con
-  `PASSWORD=…` y `npx wrangler@4 dev`. La foto se comprime en el navegador (`js/admin.js`):
-  webp con canvas y, donde canvas no sabe (Safari, todo el iPhone), con `js/webp/`, el códec de
-  Squoosh en wasm (`@jsquash/webp` 1.5.0, Apache-2.0, copiado tal cual, como en notas8).
+  `PASSWORD=…` y `npx wrangler@4 dev`. La foto se comprime en el navegador (webp ≤ 2000 px, q85)
+  con el conversor de imgToWeb, que `js/admin.js` carga de
+  `meowrhino.github.io/imgToWeb/js/converter.js`: aquí no hay copia, lo que cambie allí llega
+  solo, y si imgToWeb cambia de dirección hay que cambiarla en `admin.js`. Hace webp también en
+  Safari y el iPhone.
 - **La copia del blog**, para que nada se quede solo en Cloudflare: cada domingo (05:00 UTC, como
   profilepics) `.github/workflows/copia.yml` corre `tools/copia.mjs`, que baja de la web
   `data/blog.json` (`date`, `text` en párrafos, `photo`) y las fotos a

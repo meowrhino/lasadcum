@@ -79,7 +79,7 @@ hayan dado acceso a su Cloudflare (paso 5).
 - [ ] Compartir un proyecto por WhatsApp: sale su foto.
 - [x] **El blog, desde su móvil**: `/admin/`, la contraseña, un post de prueba con una foto de la
       cámara → sale en `/blog/` y su foto en el about, y en `…/media/…` acaba en **`.webp`** (si
-      acaba en `.jpg`, no ha cargado `js/webp/`: la consola lo dice). Luego **esborrar**, y ya no sale.
+      acaba en `.jpg`, no ha cargado el códec de imgToWeb: la consola lo dice). Luego **esborrar**, y ya no sale.
 - [x] En `/about/`, la firma `web: meowrhino.studio`.
 - [x] (2026-11-17) **La copia del domingo** (`.github/workflows/copia.yml`): en su GitHub, *Actions* →
       «copia del blog» → *Run workflow*, una vez, y sale un commit «copia del blog: …» con

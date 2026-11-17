@@ -1,83 +1,18 @@
 // /admin/: publicar y esborrar en el blog (el Worker, worker/index.mjs).
-// La foto se pasa en el navegador a webp ≤ 2000 px, q85, con lo de imgToWeb
-// (meowrhino/imgToWeb, js/converter.js): HEIC con heic2any y TIFF con UTIF, que se
-// cargan solo si hacen falta. Safari no sabe hacer webp con canvas (ni ningún
-// navegador del iPhone): ahí lo hace js/webp/, el códec de Squoosh en wasm
-// (@jsquash/webp 1.5.0, Apache-2.0; como notas8), y si no carga, sale jpg.
+// La foto se pasa en el navegador a webp ≤ 2000 px, q85, con el conversor de imgToWeb, que
+// se carga de su web: aquí no hay copia, y lo que cambie en meowrhino/imgToWeb
+// (js/converter.js) llega solo. Hace webp también en Safari y el iPhone (su códec en wasm);
+// si ni eso carga, sale jpg.
 const form = document.querySelector('form[action="/api/posts"]');
-const WEBP = new URL('webp/', document.currentScript.src);   // al lado de este fichero
+const IMGTOWEB = 'https://meowrhino.github.io/imgToWeb/js/converter.js';
 const estat = form?.querySelector('.estat');
 
-// las librerías de imgToWeb (js/loaders.js), con SRI para no ejecutar nada alterado
-const LIBS = {
-  heic2any: ['https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js',
-    'sha384-OTofQ0MEeiSgh62havBcemCIK0gqj809wX6UA0uPISNMRnR6NZyCdGzX3SbLrgwL'],
-  UTIF: ['https://cdn.jsdelivr.net/npm/utif@3.1.0/UTIF.js',
-    'sha384-RyBmXHdfZ/Uon+ud+/AqSyWpUWnKYt2tkRG/P4gWoRUGDU+qIAV3tGBPNlYTBZEF'],
-};
-const cargar = (nom) => window[nom] ? Promise.resolve(window[nom]) : new Promise((ok, ko) => {
-  const s = Object.assign(document.createElement('script'), { src: LIBS[nom][0], integrity: LIBS[nom][1], crossOrigin: 'anonymous' });
-  s.onload = () => ok(window[nom]);
-  s.onerror = () => { s.remove(); ko(new Error(`no s’ha pogut carregar ${nom}`)); };
-  document.head.append(s);
-});
-
-// con <img> el navegador aplica la orientación EXIF, como al mostrarla
-const llegir = (blob) => new Promise((ok, ko) => {
-  const url = URL.createObjectURL(blob);
-  const img = new Image();
-  img.onload = () => { URL.revokeObjectURL(url); ok(img); };
-  img.onerror = () => { URL.revokeObjectURL(url); ko(new Error('el navegador no sap llegir aquesta imatge')); };
-  img.src = url;
-});
-
-async function obrir(file) {
-  if (file.type === 'image/tiff' || /\.tiff?$/i.test(file.name)) {
-    const UTIF = await cargar('UTIF');
-    const buf = await file.arrayBuffer();
-    const [p] = UTIF.decode(buf);
-    if (!p) throw new Error('tiff sense imatges');
-    UTIF.decodeImage(buf, p);
-    const c = Object.assign(document.createElement('canvas'), { width: p.width, height: p.height });
-    c.getContext('2d').putImageData(new ImageData(new Uint8ClampedArray(UTIF.toRGBA8(p)), p.width, p.height), 0, 0);
-    return c;
-  }
-  try { return await llegir(file); }
-  catch (e) {
-    // HEIC (fotos de iPhone): Safari lo lee; Chrome y Firefox, con heic2any
-    if (!/^image\/hei[cf]$/.test(file.type) && !/\.hei[cf]$/i.test(file.name)) throw e;
-    const out = await (await cargar('heic2any'))({ blob: file, toType: 'image/png' });
-    return llegir(Array.isArray(out) ? out[0] : out);
-  }
-}
-
-// el códec se carga la primera vez que hace falta (280 KB) y se queda
-let codec = null;
-async function webpWasm(c) {
-  codec ??= Promise.all([import(new URL('webp_enc.js', WEBP)), import(new URL('meta.js', WEBP))])
-    .then(async ([enc, meta]) => [await enc.default({ noInitialRun: true }), meta.defaultOptions])
-    .catch((e) => { codec = null; throw e; });
-  const [m, opcions] = await codec;
-  const d = c.getContext('2d').getImageData(0, 0, c.width, c.height);
-  const out = m.encode(d.data, d.width, d.height, { ...opcions, quality: 85 });
-  if (!out?.byteLength) throw new Error('webp buit');
-  return new Blob([out], { type: 'image/webp' });
-}
-
 async function comprimir(file) {
-  const src = await obrir(file);
-  const w0 = src.naturalWidth || src.width, h0 = src.naturalHeight || src.height;
-  const k = Math.min(1, 2000 / Math.max(w0, h0));
-  const c = Object.assign(document.createElement('canvas'), { width: Math.max(1, Math.round(w0 * k)), height: Math.max(1, Math.round(h0 * k)) });
-  const ctx = c.getContext('2d');
-  ctx.imageSmoothingQuality = 'high';   // con el de por defecto, una reducción grande sale con dientes
-  ctx.drawImage(src, 0, 0, c.width, c.height);
-  const blob = (tipo) => new Promise((ok) => c.toBlob(ok, tipo, 0.85));
-  let b = await blob('image/webp');
-  if (b?.type !== 'image/webp') b = await webpWasm(c).catch((e) => { console.warn('sense webp en wasm:', e); return null; });
-  if (b?.type !== 'image/webp') b = await blob('image/jpeg');
-  if (!b) throw new Error('el navegador no ha pogut fer la imatge');
-  return { b, w: c.width, h: c.height };
+  const { convertToWebp } = await import(IMGTOWEB).catch(() => {
+    throw new Error('no s’ha pogut carregar el conversor (imgToWeb); torna a carregar la pàgina');
+  });
+  const { blob, dimensions } = await convertToWebp(file, { quality: 0.85, maxDimension: 2000, jpegFallback: true });
+  return { b: blob, w: dimensions.width, h: dimensions.height };
 }
 
 form?.addEventListener('submit', async (e) => {
