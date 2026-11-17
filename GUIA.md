@@ -215,7 +215,9 @@ momento, sin esperar a nada.
   sin querer, escribidnos.
 - **Una copia de todo el blog, cada domingo**: lo que sale en el blog se copia solo a vuestro
   GitHub, los textos en `data/blog.json` y las fotos en `assets/img/blog/`. No tenéis que hacer
-  nada, y esos dos no se tocan: los rehace la copia. Si la queréis al momento: en GitHub,
+  nada. **La copia no se edita**: va de la web a GitHub, no al revés. Si cambiáis
+  `blog.json` o ponéis una foto en `assets/img/blog/`, no sale en la web, y el domingo
+  siguiente se rehace y se pierde. Para publicar o corregir, siempre /admin/. Si la queréis al momento: en GitHub,
   *Actions* → «copia del blog» → *Run workflow*. Como la copia sube un cambio a GitHub, el
   domingo VS Code os dirá que hay algo nuevo: **Sync** lo baja.
 - Lo **esborrat** sale de la copia, pero no se pierde: con la sesión abierta,
