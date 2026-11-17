@@ -213,8 +213,14 @@ momento, sin esperar a nada.
 - **Corregir un post**: no se edita. Se borra (**esborrar**, al lado de su fecha) y se vuelve a
   publicar bien. Lo borrado deja de salir, también su foto, pero no se pierde del todo: si fue
   sin querer, escribidnos.
-- **Una copia de todo el blog**: con la sesión abierta, lasadcum.com/api/export descarga los textos
-  en un fichero (las fotos se quedan en Cloudflare).
+- **Una copia de todo el blog, cada domingo**: lo que sale en el blog se copia solo a vuestro
+  GitHub, los textos en `data/blog.json` y las fotos en `assets/img/blog/`. No tenéis que hacer
+  nada, y esos dos no se tocan: los rehace la copia. Si la queréis al momento: en GitHub,
+  *Actions* → «copia del blog» → *Run workflow*. Como la copia sube un cambio a GitHub, el
+  domingo VS Code os dirá que hay algo nuevo: **Sync** lo baja.
+- Lo **esborrat** sale de la copia, pero no se pierde: con la sesión abierta,
+  lasadcum.com/api/export descarga los textos de todo, también lo borrado (las fotos siguen en
+  Cloudflare → R2 → `lasadcum-blog`).
 - **Cambiar la contraseña**: en Cloudflare, *Workers & Pages* → **lasadcum** → *Settings* →
   *Variables and Secrets* → `PASSWORD` → editar. Después hay que volver a entrar. Ojo: es el
   *Variables and Secrets* de arriba, tipo **Secret**; no el de *Build*, que el blog no ve.

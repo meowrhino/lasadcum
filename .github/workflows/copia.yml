@@ -1,0 +1,36 @@
+# La copia del blog en el repo (tools/copia.mjs): cada domingo baja de la web
+# data/blog.json y las fotos (assets/img/blog/), y hace commit si algo ha
+# cambiado. Así nada se queda solo en Cloudflare. Sin secretos: lee lo que la web
+# ya enseña. También se lanza a mano: Actions → copia del blog → Run workflow.
+#
+# Traspaso (TRASPASO.md): en nuestra copia se quita el `schedule` (se queda a
+# mano) y en la de laSADCUM se comprueba que corre (Actions → Run workflow, una vez).
+name: copia del blog
+on:
+  schedule:
+    - cron: '0 5 * * 0'   # domingo 05:00 UTC (las 6 en Barcelona en invierno, las 7 en verano), como profilepics
+  workflow_dispatch:
+
+permissions:
+  contents: write   # para el commit con la copia
+
+concurrency:
+  group: copia
+  cancel-in-progress: false
+
+jobs:
+  copia:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+      - run: node tools/copia.mjs   # sin npm ci: no usa dependencias
+      - name: commit si algo ha cambiado
+        run: |
+          git add -A data/blog.json assets/img/blog
+          if git diff --cached --quiet; then echo "nada nuevo esta semana"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "copia del blog: $(date -u +%F)"
+          git push

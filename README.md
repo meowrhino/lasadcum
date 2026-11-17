@@ -19,5 +19,12 @@ tamaño, listas de fecha + enlace y la marca partida en colores (billwurtz.com).
   about (su foto al azar), `/admin/`, `/api/*` y `/media/*` (`wrangler.jsonc`). Posts en
   D1, fotos en R2, la contraseña en el secreto `PASSWORD`. Probarlo en local: un `.dev.vars` con
   `PASSWORD=…` y `npx wrangler@4 dev`.
+- **La copia del blog**, para que nada se quede solo en Cloudflare: cada domingo (05:00 UTC, como
+  profilepics) `.github/workflows/copia.yml` corre `tools/copia.mjs`, que baja de la web
+  `data/blog.json` (`date`, `text` en párrafos, `photo`) y las fotos a
+  `assets/img/blog/<año>/<mes>/<uuid>.jpg` (la clave de R2), y hace commit si algo ha cambiado.
+  Sin secretos: lee `/api/posts` y `/media/`, lo mismo que enseña la web, así que lo esborrat
+  sale de la copia (y queda en el historial de git). No se publica: el build se salta
+  `assets/img/blog/` y no copia `data/`. A mano: `node tools/copia.mjs [web]`.
 - Publica: la copia de laSADCUM, Workers Builds en su Cloudflare (`wrangler.jsonc`); la nuestra,
   la Action a `meowrhino.github.io/lasadcum/` (noindex, sin blog de verdad).

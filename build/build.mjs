@@ -149,7 +149,9 @@ if (avisos.some(a => a.grave)) {
 /* ---------- escribir ------------------------------------ */
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
-for (const dir of ['css', 'js', 'assets']) cpSync(join(ROOT, dir), join(OUT, dir), { recursive: true });
+// assets/img/blog no: es la copia del blog (tools/copia.mjs), y la web saca esas fotos de R2
+const copiaBlog = join(ROOT, 'assets', 'img', 'blog');
+for (const dir of ['css', 'js', 'assets']) cpSync(join(ROOT, dir), join(OUT, dir), { recursive: true, filter: f => !f.startsWith(copiaBlog) });
 // las fotos de cada proyecto, en el mismo sitio que en el repo; el project.json no, que va dentro del HTML
 for (const slug of slugs) {
   const img = join(ROOT, 'projects', slug, 'img');
