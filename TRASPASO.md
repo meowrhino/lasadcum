@@ -73,7 +73,8 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
       `/robots.txt` dice `Allow`; `/sitemap.xml`, con su dominio.
 - [ ] Compartir un proyecto por WhatsApp: sale su foto.
 - [ ] **El blog, desde su móvil**: `/admin/`, la contraseña, un post de prueba con una foto de la
-      cámara → sale en `/blog/` y su foto en el about. Luego **esborrar**, y ya no sale.
+      cámara → sale en `/blog/` y su foto en el about, y en `…/media/…` acaba en **`.webp`** (si
+      acaba en `.jpg`, no ha cargado `js/webp/`: la consola lo dice). Luego **esborrar**, y ya no sale.
 - [ ] En `/about/`, la firma `web: meowrhino.studio`.
 - [ ] **La copia del domingo** (`.github/workflows/copia.yml`): en su GitHub, *Actions* →
       «copia del blog» → *Run workflow*, una vez, y sale un commit «copia del blog: …» con

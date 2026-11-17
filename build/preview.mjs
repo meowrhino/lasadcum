@@ -68,13 +68,13 @@ async function arrancar() {
 
     /* Lo mismo que comprueba el build con schema/ (en VS Code, subrayado en rojo). */
     const esquemas = {};
-    for (const t of ['site', 'about', 'agenda', 'guillem', 'blog', 'project']) {
+    for (const t of ['site', 'about', 'agenda', 'guillem', 'blog-ejemplo', 'project']) {
       try { esquemas[t] = JSON.parse(await pedir(`schema/${t}.json`)); } catch { /* sin esquema, sin mirar */ }
     }
     const mirar = (d, t, f) => (esquemas[t] ? validar(d, esquemas[t], f) : []);
     const errores = [...mirar(site, 'site', 'data/site.json'), ...mirar(about, 'about', 'data/about.json'),
       ...mirar(agenda, 'agenda', 'data/agenda.json'), ...mirar(guillem, 'guillem', 'data/guillem.json'),
-      ...mirar(blog, 'blog', 'data/blog-ejemplo.json'),
+      ...mirar(blog, 'blog-ejemplo', 'data/blog-ejemplo.json'),
       ...proyectos.flatMap(({ slug, ...p }) => mirar(p, 'project', `projects/${slug}/project.json`))];
     if (errores.length) { pantallaDeError('Hay algo mal en un JSON', errores.join('\n')); return; }
     datos = { site, about, agenda, guillem, blog, proyectos };

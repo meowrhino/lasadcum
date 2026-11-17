@@ -38,6 +38,29 @@ manu. No borres fotos ni proyectos.
 Commit y push solo cuando te lo pidan: mensaje en castellano diciendo qué se
 arregla. Al publicarse, la Action cierra el issue sola.
 
+## Si la copia del domingo falla
+
+La web no se entera: sigue igual. Lo que falta es la copia del blog en el repo
+(`data/blog.json` y `assets/img/blog/`, README).
+
+1. **El error**: la Action abre un issue con la etiqueta `copia` y las últimas líneas
+   dentro: `gh issue list --label copia` y `gh issue view <n>`. El registro entero:
+   `gh run list --workflow=copia.yml -L 3` y `gh run view <id> --log-failed`.
+2. **Reprodúcelo aquí**: `node tools/copia.mjs`. Lee lo mismo que en GitHub (la `url` de
+   `data/site.json`, o la de workers.dev si no hay) y dice lo mismo.
+3. **Casi siempre es la web, no la copia**:
+   - «/api/posts: 5xx» o «fetch failed»: la web estaba caída o el dominio ha cambiado.
+     Mira la web en el navegador y, si cambió el dominio, la `url` de `data/site.json`.
+   - «la web no ha dado ningún post: no toco la copia»: la lista vino vacía. Puede ser un
+     fallo de D1 o que lo han esborrat todo; pregúntales antes de tocar nada.
+   - «/media/…: 404»: una foto que la lista dice que está y R2 no tiene. Mira en Cloudflare
+     → R2 → `lasadcum-blog`.
+   - Un fallo en `git push`: alguien subió algo a la vez; vuelve a lanzarla (*Run workflow*).
+4. **Comprueba**: `node tools/copia.mjs` termina con «copia de …: N posts, N fotos».
+
+No edites `data/blog.json` ni `assets/img/blog/` a mano: los rehace la copia. No borres
+posts ni fotos. Cuando la copia vuelve a ir, la Action cierra el issue sola.
+
 ## Lo que no es del build
 
 - **El blog**: `worker/index.mjs` (README). Los posts están en D1, en el Cloudflare de

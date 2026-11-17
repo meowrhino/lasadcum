@@ -1,11 +1,12 @@
 {
-  // Sync: si en GitHub hay un commit que aquí no está (uno nuestro), el suyo se
+  // Sync: si en GitHub hay un commit que aquí no está (uno nuestro, o la copia del domingo), el suyo se
   // pone encima sin preguntar. Y no bajar etiquetas, que git no se queje.
   "git.rebaseWhenSync": true,
   "git.pullTags": false,
-  // agenda.json y blog-ejemplo.json son listas: su esquema se dice aquí
+  // agenda.json, blog-ejemplo.json y blog.json (la copia) son listas: su esquema se dice aquí
   "json.schemas": [
     { "fileMatch": ["data/agenda.json"], "url": "./schema/agenda.json" },
-    { "fileMatch": ["data/blog-ejemplo.json"], "url": "./schema/blog.json" }
+    { "fileMatch": ["data/blog-ejemplo.json"], "url": "./schema/blog-ejemplo.json" },
+    { "fileMatch": ["data/blog.json"], "url": "./schema/blog.json" }
   ]
 }

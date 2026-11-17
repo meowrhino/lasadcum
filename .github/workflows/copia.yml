@@ -13,6 +13,7 @@ on:
 
 permissions:
   contents: write   # para el commit con la copia
+  issues: write     # el aviso si la copia falla (abajo)
 
 concurrency:
   group: copia
@@ -25,7 +26,9 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with: { node-version: '22' }
-      - run: node tools/copia.mjs   # sin npm ci: no usa dependencias
+      # lo que dice va también a copia.log: si falla, sale en un issue
+      - run: node tools/copia.mjs 2>&1 | tee copia.log   # sin npm ci: no usa dependencias
+        shell: bash
       - name: commit si algo ha cambiado
         run: |
           git add -A data/blog.json assets/img/blog
@@ -33,4 +36,34 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "copia del blog: $(date -u +%F)"
+          git pull --rebase   # si alguien ha subido algo mientras; la copia solo toca sus carpetas
           git push
+
+      # Si falla, un issue con el error, para verlo al entrar al repo (uno abierto a la vez;
+      # los siguientes fallos, como comentarios). Se cierra solo cuando la copia vuelve a ir.
+      # Cómo arreglarlo: CLAUDE.md. Como en pepe y en el build (deploy.yml).
+      - name: avisar del error en un issue
+        if: failure()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REGISTRO: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          GUIA: ${{ github.server_url }}/${{ github.repository }}/blob/main/CLAUDE.md
+        run: |
+          errores=$(tail -n 20 copia.log 2>/dev/null || echo 'falló antes de la copia: mira el registro')
+          cuerpo=$(printf 'La copia del blog de esta semana no se ha hecho: la web sigue igual, lo que falta es la copia en el repo.\n\n```\n%s\n```\n\n[El registro entero](%s) · [cómo arreglarlo](%s) ("Si la copia del domingo falla")' "$errores" "$REGISTRO" "$GUIA")
+          n=$(gh issue list --state open --label copia --json number -q '.[0].number')
+          if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"
+          else
+            gh label create copia --color B60205 --description 'la copia del blog ha fallado' --force
+            gh issue create --title 'La copia del blog ha fallado' --label copia --body "$cuerpo"
+          fi
+      - name: cerrar el aviso, si lo hay
+        if: success()
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for n in $(gh issue list --state open --label copia --json number -q '.[].number'); do
+            gh issue close "$n" --comment "Arreglado: la copia ha vuelto a hacerse."
+          done

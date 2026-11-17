@@ -1,46 +1,16 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "data/blog-ejemplo.json: posts de ejemplo del blog",
-  "description": "Solo para ver el diseño hasta que el blog funcione con su Worker (manus/blog.md).",
+  "title": "data/blog.json: la copia del blog",
+  "description": "data/blog.json: la copia del domingo de lo que sale en el blog (tools/copia.mjs). No se edita: va de la web a GitHub, y el domingo siguiente se rehace. Para cambiar algo, el blog (/admin/).",
   "type": "array",
   "items": {
     "type": "object",
+    "required": ["date", "text"],
     "additionalProperties": false,
-    "required": [
-      "id",
-      "created_at",
-      "text"
-    ],
     "properties": {
-      "id": {
-        "type": "number"
-      },
-      "created_at": {
-        "type": "string"
-      },
-      "text": {
-        "type": "string"
-      },
-      "image": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "src",
-          "width",
-          "height"
-        ],
-        "properties": {
-          "src": {
-            "type": "string"
-          },
-          "width": {
-            "type": "number"
-          },
-          "height": {
-            "type": "number"
-          }
-        }
-      }
+      "date": { "type": "string", "description": "Cuándo se publicó (UTC)." },
+      "text": { "type": "array", "items": { "type": "string" }, "description": "El texto, un párrafo por línea." },
+      "photo": { "type": "string", "pattern": "^assets/img/blog/", "description": "Dónde está su foto en el repo, si tiene." }
     }
   }
 }
