@@ -8,22 +8,27 @@ dos repositorios separados: los cambios, en el suyo.
 
 Tiempo: unos 30 minutos, más lo que tarden los DNS.
 
+**Estado (2026-11-17)**: traspasada el 2026-11-05 a `lasadcum-sketch/web`, en
+`lasadcum.lasadcum.workers.dev`. Queda **el dominio** (pasos 4, 6 y 8: espera el mail de Cargo).
+Sin confirmar: lo de su ordenador (paso 7; en su repo todos los commits son nuestros) y que nos
+hayan dado acceso a su Cloudflare (paso 5).
+
 ## Antes
 
-- [ ] `main` al día y sin cambios a medias (`git status` limpio), y `node build/build.mjs` sin ✗.
+- [x] `main` al día y sin cambios a medias (`git status` limpio), y `node build/build.mjs` sin ✗.
 - [ ] Traen el ordenador con **VS Code y git** (Mac: `xcode-select --install`; `git --version` lo comprueba).
-- [ ] Tienen cuenta de GitHub. Su usuario: `<su-usuario>`.
-- [ ] Su cuenta de Cloudflare con `lasadcum.com` dentro (el DNS).
-- [ ] **R2 activado** en su Cloudflare (*R2 Object Storage* → *Purchase R2 Plan*, el gratis). Pide
+- [x] Tienen cuenta de GitHub. Su usuario: `<su-usuario>`.
+- [x] Su cuenta de Cloudflare con `lasadcum.com` dentro (el DNS).
+- [x] **R2 activado** en su Cloudflare (*R2 Object Storage* → *Purchase R2 Plan*, el gratis). Pide
       una tarjeta aunque no cobre: que la pongan ellos. Sin R2, el primer deploy falla.
-- [ ] La contraseña del blog, la que han elegido. **No se escribe en el repo** (es público): solo
+- [x] La contraseña del blog, la que han elegido. **No se escribe en el repo** (es público): solo
       en Cloudflare, paso 3.
 
 ## 1. Su copia, sin historial
 
-- [ ] En su cuenta, **New repository** → `lasadcum`, vacío (sin README ni licencia). Puede ser
+- [x] En su cuenta, **New repository** → `lasadcum`, vacío (sin README ni licencia). Puede ser
       **privado**: lo publica Cloudflare, no Pages.
-- [ ] Desde esta carpeta:
+- [x] Desde esta carpeta:
       ```bash
       rm -rf /tmp/lasadcum && mkdir /tmp/lasadcum && git archive HEAD | tar -x -C /tmp/lasadcum
       cd /tmp/lasadcum && rm -r CLAUDE.md TRASPASO.md manus
@@ -31,26 +36,26 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
       git push https://github.com/<su-usuario>/lasadcum.git main
       ```
       (si pide permiso, que nos añada antes como colaboradores, paso 5). Nada de `push --mirror`.
-- [ ] En su copia no van `CLAUDE.md`, `TRASPASO.md` ni `manus/` (son nuestros). `GUIA.md` y
+- [x] En su copia no van `CLAUDE.md`, `TRASPASO.md` ni `manus/` (son nuestros). `GUIA.md` y
       `README.md` sí.
 
 ## 2. Workers Builds, en su Cloudflare
 
-- [ ] *Workers & Pages* → *Create* → *Import a repository* → su `lasadcum`. Lo que sale por
+- [x] *Workers & Pages* → *Create* → *Import a repository* → su `lasadcum`. Lo que sale por
       defecto vale; **Project name: `lasadcum`** (el `name` de `wrangler.jsonc`: si ponen otro,
       falla).
-- [ ] **Antes del primer deploy, el bucket de R2**: *R2 Object Storage* → *Create bucket* →
+- [x] **Antes del primer deploy, el bucket de R2**: *R2 Object Storage* → *Create bucket* →
       `lasadcum-blog`. Wrangler no lo crea (lasadcum, 2026-11-05: falló con "R2 bucket not
       found"); D1 sí, solo, con el primer deploy.
-- [ ] Sale en `lasadcum.<su-subdominio>.workers.dev`, con `noindex` (todavía sin `url`).
+- [x] Sale en `lasadcum.<su-subdominio>.workers.dev`, con `noindex` (todavía sin `url`).
 
 ## 3. La contraseña del blog
 
-- [ ] *Workers* → **lasadcum** → *Settings* → *Variables and Secrets* → *Add* → tipo **Secret**,
+- [x] *Workers* → **lasadcum** → *Settings* → *Variables and Secrets* → *Add* → tipo **Secret**,
       nombre `PASSWORD`, valor: la suya. La escriben ellos. **No en *Build → Variables and
       secrets*** (eso solo lo ve el build) **ni como *Text*** (el siguiente deploy lo borra):
       lasadcum, 2026-11-05. Si falta, `/api/login` lo dice.
-- [ ] En `…workers.dev/admin/`: entra con la contraseña y **sortir** cierra la sesión.
+- [x] En `…workers.dev/admin/`: entra con la contraseña y **sortir** cierra la sesión.
 
 ## 4. El dominio
 
@@ -62,7 +67,7 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
 
 ## 5. Que nos dejen entrar
 
-- [ ] GitHub, su repo: *Settings* → *Collaborators* → `meowrhino`, con **Write**.
+- [x] GitHub, su repo: *Settings* → *Collaborators* → `meowrhino`, con **Write**.
 - [ ] Cloudflare: *Manage account* → *Members* → nuestro correo, para ver los builds y los logs
       del Worker.
 
@@ -72,10 +77,10 @@ Tiempo: unos 30 minutos, más lo que tarden los DNS.
 - [ ] `view-source:`: `canonical` y `og:url` con `lasadcum.com`, y **sin** `noindex`.
       `/robots.txt` dice `Allow`; `/sitemap.xml`, con su dominio.
 - [ ] Compartir un proyecto por WhatsApp: sale su foto.
-- [ ] **El blog, desde su móvil**: `/admin/`, la contraseña, un post de prueba con una foto de la
+- [x] **El blog, desde su móvil**: `/admin/`, la contraseña, un post de prueba con una foto de la
       cámara → sale en `/blog/` y su foto en el about, y en `…/media/…` acaba en **`.webp`** (si
       acaba en `.jpg`, no ha cargado `js/webp/`: la consola lo dice). Luego **esborrar**, y ya no sale.
-- [ ] En `/about/`, la firma `web: meowrhino.studio`.
+- [x] En `/about/`, la firma `web: meowrhino.studio`.
 - [x] (2026-11-17) **La copia del domingo** (`.github/workflows/copia.yml`): en su GitHub, *Actions* →
       «copia del blog» → *Run workflow*, una vez, y sale un commit «copia del blog: …» con
       `data/blog.json` y `assets/img/blog/`. Desde ahí corre sola cada domingo en su repo.
@@ -103,5 +108,5 @@ Con ellos delante, siguiendo [GUIA.md](GUIA.md) (punto 0):
       `https://lasadcum.com/sitemap.xml`. En *Inspección de URLs*, `https://lasadcum.com/blog/` →
       *Solicitar indexación*: así entran antes los posts y sus fotos (llevan `alt` con el texto
       del post, para Google Imágenes). Que salgan al buscar «lasadcum» tarda semanas.
-- [ ] Fila de lasadcum en `JAMstack/inventario.md` con las dos direcciones.
-- [ ] Nuestra copia sigue en github.io con `noindex` y los posts de ejemplo: no compite en Google.
+- [x] Fila de lasadcum en `JAMstack/inventario.md` con las dos direcciones.
+- [x] Nuestra copia sigue en github.io con `noindex` y los posts de ejemplo: no compite en Google.
