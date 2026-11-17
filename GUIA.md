@@ -219,7 +219,9 @@ momento, sin esperar a nada.
   `blog.json` o ponéis una foto en `assets/img/blog/`, no sale en la web, y el domingo
   siguiente se rehace y se pierde. Para publicar o corregir, siempre /admin/. Si la queréis al momento: en GitHub,
   *Actions* → «copia del blog» → *Run workflow*. Como la copia sube un cambio a GitHub, el
-  domingo VS Code os dirá que hay algo nuevo: **Sync** lo baja.
+  domingo VS Code os dirá que hay algo nuevo: **Sync** lo baja. Si un domingo GitHub abre un
+  aviso (*Issues*) «La copia del blog ha fallado», la web está bien: volved a lanzarla (*Run
+  workflow*) y, si vuelve a fallar, escribidnos. Cuando vuelve a ir, el aviso se cierra solo.
 - Lo **esborrat** sale de la copia, pero no se pierde: con la sesión abierta,
   lasadcum.com/api/export descarga los textos de todo, también lo borrado (las fotos siguen en
   Cloudflare → R2 → `lasadcum-blog`).

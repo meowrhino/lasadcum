@@ -50,8 +50,10 @@ jobs:
           REGISTRO: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
           GUIA: ${{ github.server_url }}/${{ github.repository }}/blob/main/CLAUDE.md
         run: |
+          # en la copia de laSADCUM no va CLAUDE.md (es nuestro): ahí, la GUIA (punto 8)
+          if [ -f CLAUDE.md ]; then donde=' ("Si la copia del domingo falla")'; else GUIA="${GUIA%CLAUDE.md}GUIA.md"; donde=' (punto 8)'; fi
           errores=$(tail -n 20 copia.log 2>/dev/null || echo 'falló antes de la copia: mira el registro')
-          cuerpo=$(printf 'La copia del blog de esta semana no se ha hecho: la web sigue igual, lo que falta es la copia en el repo.\n\n```\n%s\n```\n\n[El registro entero](%s) · [cómo arreglarlo](%s) ("Si la copia del domingo falla")' "$errores" "$REGISTRO" "$GUIA")
+          cuerpo=$(printf 'La copia del blog de esta semana no se ha hecho: la web sigue igual, lo que falta es la copia en el repo.\n\n```\n%s\n```\n\n[El registro entero](%s) · [cómo arreglarlo](%s)%s' "$errores" "$REGISTRO" "$GUIA" "$donde")
           n=$(gh issue list --state open --label copia --json number -q '.[0].number')
           if [ -n "$n" ]; then gh issue comment "$n" --body "$cuerpo"
           else
